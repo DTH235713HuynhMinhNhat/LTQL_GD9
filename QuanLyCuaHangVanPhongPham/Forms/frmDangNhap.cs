@@ -77,7 +77,7 @@ namespace QuanLyVanPhongPham.Forms
             frmDangKy fDangKy = new frmDangKy();
             this.Hide(); // Ẩn form đăng nhập
             fDangKy.ShowDialog(); // Mở form đăng ký lên
-            this.Show(); // Sau khi tắt form đăng ký thì hiện lại form đăng nhập
+            this.Show(); // Sau khi tắt form đăng ký thì hiện lại form đăng nhập   
         }
     }
 }
