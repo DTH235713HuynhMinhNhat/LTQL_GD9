@@ -1,4 +1,4 @@
-﻿namespace QuanLyCuaHangVanPhongPham.Forms
+﻿namespace QuanLyVanPhongPham.Forms
 {
     partial class frmDangNhap
     {
@@ -11,7 +11,7 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
+        protected override void Dispose(bool disposing) // ĐÃ SỬA TẠI ĐÂY
         {
             if (disposing && (components != null))
             {
@@ -164,7 +164,5 @@
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.LinkLabel linkDangKy;
-
-
     }
 }

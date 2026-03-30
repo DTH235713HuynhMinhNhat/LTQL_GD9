@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using QuanLyCuaHangVanPhongPham.Forms;
 using QuanLyVanPhongPham.Data; // Thay bằng namespace chứa DbContext của bạn nếu cần
 
 namespace QuanLyVanPhongPham.Forms
