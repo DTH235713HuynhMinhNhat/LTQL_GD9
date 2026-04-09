@@ -73,7 +73,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             txtTimKiem.Font = new Font("Segoe UI", 10F);
             txtTimKiem.Location = new Point(638, 15);
             txtTimKiem.Name = "txtTimKiem";
-            txtTimKiem.Size = new Size(280, 30);
+            txtTimKiem.Size = new Size(260, 30);
             txtTimKiem.TabIndex = 16;
             txtTimKiem.TextChanged += txtTimKiem_TextChanged;
             // 
