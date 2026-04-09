@@ -1,20 +1,18 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace QuanLyVanPhongPham.Data
 {
     public class ThuongHieu
     {
-        [Key]
-        public int ID { get; set; }
+        [Key] // Đánh dấu đây là khóa chính
+        [StringLength(10)]
+        public string MaTH { get; set; }
 
-        [Required(ErrorMessage = "Tên thương hiệu không được để trống")]
+        [Required]
         [StringLength(100)]
         public string TenThuongHieu { get; set; }
 
-        public string MoTa { get; set; }
-
-        // Một thương hiệu có thể có nhiều sản phẩm (Mối quan hệ 1-N)
-        public virtual ICollection<SanPham> SanPhams { get; set; }
+        // Nhớ có dòng này để tránh lỗi khi bảng chưa có sản phẩm
+        public virtual ICollection<SanPham> SanPhams { get; set; } = new List<SanPham>();
     }
 }

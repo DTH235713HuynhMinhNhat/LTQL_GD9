@@ -2,8 +2,15 @@
 {
     partial class ucThuongHieu
     {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -15,27 +22,31 @@
 
         #region Component Designer generated code
 
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
-            pnlTop = new Panel();
-            btnHuy = new Button();
-            btnLuu = new Button();
-            btnXoa = new Button();
-            btnSua = new Button();
-            btnThem = new Button();
-            txtTenThuongHieu = new TextBox();
-            lblTenThuongHieu = new Label();
-            txtMaThuongHieu = new TextBox();
-            lblMaThuongHieu = new Label();
-            lblTitle = new Label();
-            dgvThuongHieu = new DataGridView();
+            pnlTop = new System.Windows.Forms.Panel();
+            btnHuy = new System.Windows.Forms.Button();
+            btnLuu = new System.Windows.Forms.Button();
+            btnXoa = new System.Windows.Forms.Button();
+            btnSua = new System.Windows.Forms.Button();
+            btnThem = new System.Windows.Forms.Button();
+            txtTenThuongHieu = new System.Windows.Forms.TextBox();
+            lblTenThuongHieu = new System.Windows.Forms.Label();
+            txtMaThuongHieu = new System.Windows.Forms.TextBox();
+            lblMaThuongHieu = new System.Windows.Forms.Label();
+            lblTitle = new System.Windows.Forms.Label();
+            dgvThuongHieu = new System.Windows.Forms.DataGridView();
             pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvThuongHieu).BeginInit();
             SuspendLayout();
             // 
             // pnlTop
             // 
-            pnlTop.BackColor = Color.White;
+            pnlTop.BackColor = System.Drawing.Color.White;
             pnlTop.Controls.Add(btnHuy);
             pnlTop.Controls.Add(btnLuu);
             pnlTop.Controls.Add(btnXoa);
@@ -46,22 +57,22 @@
             pnlTop.Controls.Add(txtMaThuongHieu);
             pnlTop.Controls.Add(lblMaThuongHieu);
             pnlTop.Controls.Add(lblTitle);
-            pnlTop.Dock = DockStyle.Top;
-            pnlTop.Location = new Point(0, 0);
+            pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            pnlTop.Location = new System.Drawing.Point(0, 0);
             pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(950, 200);
+            pnlTop.Size = new System.Drawing.Size(950, 200);
             pnlTop.TabIndex = 0;
             // 
             // btnHuy
             // 
-            btnHuy.BackColor = Color.Gray;
+            btnHuy.BackColor = System.Drawing.Color.Gray;
             btnHuy.FlatAppearance.BorderSize = 0;
-            btnHuy.FlatStyle = FlatStyle.Flat;
-            btnHuy.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnHuy.ForeColor = Color.White;
-            btnHuy.Location = new Point(540, 130);
+            btnHuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnHuy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            btnHuy.ForeColor = System.Drawing.Color.White;
+            btnHuy.Location = new System.Drawing.Point(540, 130);
             btnHuy.Name = "btnHuy";
-            btnHuy.Size = new Size(90, 40);
+            btnHuy.Size = new System.Drawing.Size(90, 40);
             btnHuy.TabIndex = 9;
             btnHuy.Text = "Hủy";
             btnHuy.UseVisualStyleBackColor = false;
@@ -69,14 +80,14 @@
             // 
             // btnLuu
             // 
-            btnLuu.BackColor = Color.FromArgb(46, 204, 113);
+            btnLuu.BackColor = System.Drawing.Color.FromArgb(46, 204, 113);
             btnLuu.FlatAppearance.BorderSize = 0;
-            btnLuu.FlatStyle = FlatStyle.Flat;
-            btnLuu.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnLuu.ForeColor = Color.White;
-            btnLuu.Location = new Point(430, 130);
+            btnLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnLuu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            btnLuu.ForeColor = System.Drawing.Color.White;
+            btnLuu.Location = new System.Drawing.Point(430, 130);
             btnLuu.Name = "btnLuu";
-            btnLuu.Size = new Size(90, 40);
+            btnLuu.Size = new System.Drawing.Size(90, 40);
             btnLuu.TabIndex = 8;
             btnLuu.Text = "Lưu";
             btnLuu.UseVisualStyleBackColor = false;
@@ -84,14 +95,14 @@
             // 
             // btnXoa
             // 
-            btnXoa.BackColor = Color.FromArgb(231, 76, 60);
+            btnXoa.BackColor = System.Drawing.Color.FromArgb(231, 76, 60);
             btnXoa.FlatAppearance.BorderSize = 0;
-            btnXoa.FlatStyle = FlatStyle.Flat;
-            btnXoa.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnXoa.ForeColor = Color.White;
-            btnXoa.Location = new Point(320, 130);
+            btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnXoa.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            btnXoa.ForeColor = System.Drawing.Color.White;
+            btnXoa.Location = new System.Drawing.Point(320, 130);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(90, 40);
+            btnXoa.Size = new System.Drawing.Size(90, 40);
             btnXoa.TabIndex = 7;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = false;
@@ -99,14 +110,14 @@
             // 
             // btnSua
             // 
-            btnSua.BackColor = Color.FromArgb(241, 196, 15);
+            btnSua.BackColor = System.Drawing.Color.FromArgb(241, 196, 15);
             btnSua.FlatAppearance.BorderSize = 0;
-            btnSua.FlatStyle = FlatStyle.Flat;
-            btnSua.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnSua.ForeColor = Color.White;
-            btnSua.Location = new Point(210, 130);
+            btnSua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnSua.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            btnSua.ForeColor = System.Drawing.Color.White;
+            btnSua.Location = new System.Drawing.Point(210, 130);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(90, 40);
+            btnSua.Size = new System.Drawing.Size(90, 40);
             btnSua.TabIndex = 6;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = false;
@@ -114,14 +125,14 @@
             // 
             // btnThem
             // 
-            btnThem.BackColor = Color.FromArgb(52, 152, 219);
+            btnThem.BackColor = System.Drawing.Color.FromArgb(52, 152, 219);
             btnThem.FlatAppearance.BorderSize = 0;
-            btnThem.FlatStyle = FlatStyle.Flat;
-            btnThem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnThem.ForeColor = Color.White;
-            btnThem.Location = new Point(100, 130);
+            btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnThem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            btnThem.ForeColor = System.Drawing.Color.White;
+            btnThem.Location = new System.Drawing.Point(100, 130);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(90, 40);
+            btnThem.Size = new System.Drawing.Size(90, 40);
             btnThem.TabIndex = 5;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = false;
@@ -129,50 +140,49 @@
             // 
             // txtTenThuongHieu
             // 
-            txtTenThuongHieu.Font = new Font("Segoe UI", 10F);
-            txtTenThuongHieu.Location = new Point(420, 70);
+            txtTenThuongHieu.Font = new System.Drawing.Font("Segoe UI", 10F);
+            txtTenThuongHieu.Location = new System.Drawing.Point(420, 70);
             txtTenThuongHieu.Name = "txtTenThuongHieu";
-            txtTenThuongHieu.Size = new Size(300, 30);
+            txtTenThuongHieu.Size = new System.Drawing.Size(300, 30);
             txtTenThuongHieu.TabIndex = 4;
-            txtTenThuongHieu.TextChanged += txtTenThuongHieu_TextChanged;
             // 
             // lblTenThuongHieu
             // 
             lblTenThuongHieu.AutoSize = true;
-            lblTenThuongHieu.Font = new Font("Segoe UI", 10F);
-            lblTenThuongHieu.Location = new Point(280, 73);
+            lblTenThuongHieu.Font = new System.Drawing.Font("Segoe UI", 10F);
+            lblTenThuongHieu.Location = new System.Drawing.Point(280, 73);
             lblTenThuongHieu.Name = "lblTenThuongHieu";
-            lblTenThuongHieu.Size = new Size(139, 23);
+            lblTenThuongHieu.Size = new System.Drawing.Size(139, 23);
             lblTenThuongHieu.TabIndex = 3;
             lblTenThuongHieu.Text = "Tên thương hiệu:";
             // 
             // txtMaThuongHieu
             // 
-            txtMaThuongHieu.Font = new Font("Segoe UI", 10F);
-            txtMaThuongHieu.Location = new Point(130, 70);
+            txtMaThuongHieu.Enabled = false;
+            txtMaThuongHieu.Font = new System.Drawing.Font("Segoe UI", 10F);
+            txtMaThuongHieu.Location = new System.Drawing.Point(130, 70);
             txtMaThuongHieu.Name = "txtMaThuongHieu";
             txtMaThuongHieu.ReadOnly = true;
-            txtMaThuongHieu.Size = new Size(120, 30);
+            txtMaThuongHieu.Size = new System.Drawing.Size(120, 30);
             txtMaThuongHieu.TabIndex = 2;
-            txtMaThuongHieu.TextChanged += txtMaThuongHieu_TextChanged;
             // 
             // lblMaThuongHieu
             // 
             lblMaThuongHieu.AutoSize = true;
-            lblMaThuongHieu.Font = new Font("Segoe UI", 10F);
-            lblMaThuongHieu.Location = new Point(50, 73);
+            lblMaThuongHieu.Font = new System.Drawing.Font("Segoe UI", 10F);
+            lblMaThuongHieu.Location = new System.Drawing.Point(50, 73);
             lblMaThuongHieu.Name = "lblMaThuongHieu";
-            lblMaThuongHieu.Size = new Size(64, 23);
+            lblMaThuongHieu.Size = new System.Drawing.Size(64, 23);
             lblMaThuongHieu.TabIndex = 1;
             lblMaThuongHieu.Text = "Mã TH:";
             // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblTitle.Location = new Point(20, 15);
+            lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            lblTitle.Location = new System.Drawing.Point(20, 15);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(294, 32);
+            lblTitle.Size = new System.Drawing.Size(294, 32);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "QUẢN LÝ THƯƠNG HIỆU";
             // 
@@ -180,33 +190,32 @@
             // 
             dgvThuongHieu.AllowUserToAddRows = false;
             dgvThuongHieu.AllowUserToDeleteRows = false;
-            dgvThuongHieu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvThuongHieu.BackgroundColor = Color.White;
-            dgvThuongHieu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvThuongHieu.Dock = DockStyle.Fill;
-            dgvThuongHieu.Location = new Point(0, 200);
+            dgvThuongHieu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dgvThuongHieu.BackgroundColor = System.Drawing.Color.White;
+            dgvThuongHieu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvThuongHieu.Dock = System.Windows.Forms.DockStyle.Fill;
+            dgvThuongHieu.Location = new System.Drawing.Point(0, 200);
             dgvThuongHieu.Name = "dgvThuongHieu";
             dgvThuongHieu.ReadOnly = true;
             dgvThuongHieu.RowHeadersWidth = 51;
-            dgvThuongHieu.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvThuongHieu.Size = new Size(950, 500);
+            dgvThuongHieu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dgvThuongHieu.Size = new System.Drawing.Size(950, 500);
             dgvThuongHieu.TabIndex = 1;
             dgvThuongHieu.CellClick += dgvThuongHieu_CellClick;
             // 
             // ucThuongHieu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             Controls.Add(dgvThuongHieu);
             Controls.Add(pnlTop);
             Name = "ucThuongHieu";
-            Size = new Size(950, 700);
+            Size = new System.Drawing.Size(950, 700);
             Load += ucThuongHieu_Load;
             pnlTop.ResumeLayout(false);
             pnlTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvThuongHieu).EndInit();
             ResumeLayout(false);
-
         }
 
         #endregion

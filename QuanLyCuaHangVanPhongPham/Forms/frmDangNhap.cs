@@ -73,7 +73,7 @@ namespace QuanLyVanPhongPham.Forms
         // Xử lý sự kiện khi bấm vào dòng chữ "Chưa có tài khoản? Đăng ký"
         private void linkDangKy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // Mở form đăng ký (Đảm bảo bạn đã tạo form frmDangKy)
+            
             frmDangKy fDangKy = new frmDangKy();
             this.Hide(); // Ẩn form đăng nhập
             fDangKy.ShowDialog(); // Mở form đăng ký lên

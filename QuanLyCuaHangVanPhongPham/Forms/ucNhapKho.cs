@@ -33,7 +33,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                     {
                         cboNhaCungCap.DataSource = listNCC;
                         cboNhaCungCap.DisplayMember = "TenNCC";
-                        cboNhaCungCap.ValueMember = "ID";
+                        cboNhaCungCap.ValueMember = "MaNCC";
                     }
                     else
                     {
@@ -47,7 +47,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                     {
                         cboSanPham.DataSource = listSP;
                         cboSanPham.DisplayMember = "TenSanPham";
-                        cboSanPham.ValueMember = "ID";
+                        cboSanPham.ValueMember = "MaSP";
                     }
                     else
                     {
@@ -64,13 +64,14 @@ namespace QuanLyCuaHangVanPhongPham.Forms
 
         private void TaoPhieuMoi()
         {
-            // Hiển thị mã tạm thời cho người dùng xem
-            txtMaPN.Text = "PN_" + DateTime.Now.ToString("yyyyMMdd_HHmm");
+            // 🔴 FIX LỖI "MaPN" QUÁ DÀI: 
+            // Đổi từ "PN_yyyyMMdd_HHmm" (16 ký tự) sang "PN" + "ddMMHHmm" (10 ký tự)
+            txtMaPN.Text = "PN" + DateTime.Now.ToString("ddMMHHmm"); // Kết quả ví dụ: PN03041830
             dtpNgayNhap.Value = DateTime.Now;
 
             dtChiTiet = new DataTable();
-            dtChiTiet.Columns.Add("Mã SP");
-            dtChiTiet.Columns.Add("Tên Sản Phẩm");
+            dtChiTiet.Columns.Add("Mã SP", typeof(string));
+            dtChiTiet.Columns.Add("Tên Sản Phẩm", typeof(string));
             dtChiTiet.Columns.Add("Số Lượng", typeof(int));
             dtChiTiet.Columns.Add("Giá Nhập", typeof(decimal));
             dtChiTiet.Columns.Add("Thành Tiền", typeof(decimal));
@@ -147,30 +148,31 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                             // 1. Tạo đối tượng PhieuNhap chính
                             var pn = new PhieuNhap
                             {
+                                MaPN = txtMaPN.Text.Trim(),
                                 NgayNhap = dtpNgayNhap.Value,
-                                NhaCungCapID = Convert.ToInt32(cboNhaCungCap.SelectedValue),
+                                MaNCC = cboNhaCungCap.SelectedValue.ToString(),
                                 TongTien = dtChiTiet.AsEnumerable().Sum(r => r.Field<decimal>("Thành Tiền"))
                             };
                             db.PhieuNhap.Add(pn);
-                            db.SaveChanges(); // SQL sẽ tự động sinh ID cho pn
+                            db.SaveChanges(); // Lưu Phiếu Nhập trước để tồn tại MaPN
 
                             // 2. Lưu Chi Tiết Phiếu Nhập & Cập nhật tồn kho
                             foreach (DataRow row in dtChiTiet.Rows)
                             {
-                                int idSP = Convert.ToInt32(row["Mã SP"]);
+                                string maSP = row["Mã SP"].ToString();
                                 int sl = Convert.ToInt32(row["Số Lượng"]);
 
                                 var ctpn = new ChiTietPhieuNhap
                                 {
-                                    PhieuNhapID = pn.ID, // Lấy ID vừa được tự sinh
-                                    SanPhamID = idSP,
+                                    MaPN = pn.MaPN,
+                                    MaSP = maSP,
                                     SoLuong = sl,
                                     GiaNhap = (decimal)row["Giá Nhập"]
                                 };
                                 db.ChiTietPhieuNhap.Add(ctpn);
 
                                 // Cập nhật số lượng tồn kho trong bảng SanPham
-                                var sp = db.SanPham.Find(idSP);
+                                var sp = db.SanPham.Find(maSP);
                                 if (sp != null)
                                 {
                                     sp.SoLuong += sl;
@@ -184,8 +186,9 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                         }
                         catch (Exception ex)
                         {
-                            transaction.Rollback();
-                            MessageBox.Show("Lỗi khi lưu dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            // Lấy chi tiết lỗi thật sự từ Database
+                            string errMsg = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                            MessageBox.Show("Chi tiết lỗi: " + errMsg, "Lỗi Lưu Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }

@@ -12,16 +12,16 @@ namespace QuanLyVanPhongPham.Forms
     public partial class frmChiTietSanPham : Form
     {
         private QLCHVPPDbContext db = new QLCHVPPDbContext();
-        private int? _idSanPham;
+        private string _maSP; // Chứa mã SP được truyền từ Form cha (nếu là Sửa)
 
-        public frmChiTietSanPham(int? id = null)
+        public frmChiTietSanPham(string maSP = null)
         {
             InitializeComponent();
-            _idSanPham = id;
+            _maSP = maSP;
 
             // Đăng ký sự kiện
             this.Load += frmChiTietSanPham_Load;
-            btnLuu.Click += BtnLuu_Click;
+            btnLuu.Click += btnLuu_Click;
             btnHuy.Click += (s, e) => this.Close();
             btnChonAnh.Click += BtnChonAnh_Click;
 
@@ -32,16 +32,24 @@ namespace QuanLyVanPhongPham.Forms
 
         private void frmChiTietSanPham_Load(object sender, EventArgs e)
         {
-            LoadComboBox(); // Phải chạy trước để có dữ liệu cho SelectedValue phía dưới
+            LoadComboBox();
 
-            if (_idSanPham != null)
+            if (!string.IsNullOrEmpty(_maSP))
             {
+                // Trạng thái: SỬA SẢN PHẨM
                 lblTitle.Text = "CHỈNH SỬA SẢN PHẨM";
+                txtMaSP.Enabled = false; // Khóa mã SP không cho sửa
                 LoadProductData();
             }
             else
             {
+                // Trạng thái: THÊM MỚI
                 lblTitle.Text = "THÊM MỚI SẢN PHẨM";
+
+                // Sinh mã tự động và khóa Textbox lại để bảo vệ cấu trúc mã
+                txtMaSP.Text = SinhMaSanPhamTuDong();
+                txtMaSP.Enabled = false;
+
                 txtGiaBan.Text = "0";
                 txtSoLuong.Text = "0";
             }
@@ -51,35 +59,25 @@ namespace QuanLyVanPhongPham.Forms
         {
             try
             {
-
-                var dsLoai = db.LoaiSanPham.AsNoTracking().ToList();
-                MessageBox.Show($"Đã truy vấn CSDL: Tìm thấy {dsLoai.Count} Loại Sản Phẩm!");
-                // Load Loại Sản Phẩm
-                
-                cboLoaiSP.DataSource = dsLoai;
+                // Load danh sách dữ liệu cho ComboBox
+                cboLoaiSP.DataSource = db.LoaiSanPham.AsNoTracking().ToList();
                 cboLoaiSP.DisplayMember = "TenLoai";
-                cboLoaiSP.ValueMember = "ID";
+                cboLoaiSP.ValueMember = "MaLoai";
                 cboLoaiSP.SelectedIndex = -1;
 
-                // Load Đơn Vị Tính
-                var dsDVT = db.DonViTinh.AsNoTracking().ToList();
-                cboDVT.DataSource = dsDVT;
+                cboDVT.DataSource = db.DonViTinh.AsNoTracking().ToList();
                 cboDVT.DisplayMember = "TenDonVi";
-                cboDVT.ValueMember = "ID";
+                cboDVT.ValueMember = "MaDVT";
                 cboDVT.SelectedIndex = -1;
 
-                // Load Thương Hiệu
-                var dsTH = db.ThuongHieu.AsNoTracking().ToList();
-                cboThuongHieu.DataSource = dsTH;
+                cboThuongHieu.DataSource = db.ThuongHieu.AsNoTracking().ToList();
                 cboThuongHieu.DisplayMember = "TenThuongHieu";
-                cboThuongHieu.ValueMember = "ID";
+                cboThuongHieu.ValueMember = "MaTH";
                 cboThuongHieu.SelectedIndex = -1;
 
-                // Load Nhà Cung Cấp
-                var dsNCC = db.NhaCungCap.AsNoTracking().ToList();
-                cboNhaCungCap.DataSource = dsNCC;
-                cboNhaCungCap.DisplayMember = "TenNCC";
-                cboNhaCungCap.ValueMember = "ID";
+                cboNhaCungCap.DataSource = db.NhaCungCap.AsNoTracking().ToList();
+                cboNhaCungCap.DisplayMember = "TenNhaCungCap";
+                cboNhaCungCap.ValueMember = "MaNCC";
                 cboNhaCungCap.SelectedIndex = -1;
             }
             catch (Exception ex)
@@ -90,28 +88,27 @@ namespace QuanLyVanPhongPham.Forms
 
         private void LoadProductData()
         {
-            var sp = db.SanPham.Find(_idSanPham);
+            var sp = db.SanPham.Find(_maSP);
             if (sp != null)
             {
+                txtMaSP.Text = sp.MaSP;
                 txtTenSP.Text = sp.TenSanPham;
 
-                // Gán giá trị trước khi định dạng
-                txtGiaBan.Text = sp.GiaBan.ToString();
+                // Format tiền tệ
+                txtGiaBan.Text = sp.GiaBan.ToString("N0", CultureInfo.CreateSpecificCulture("vi-VN"));
                 txtSoLuong.Text = sp.SoLuong.ToString();
 
-                // Quan trọng: Gán đúng ID vào SelectedValue
-                cboLoaiSP.SelectedValue = sp.LoaiSanPhamID;
-                cboDVT.SelectedValue = sp.DonViTinhID;
-                cboThuongHieu.SelectedValue = sp.ThuongHieuID;
-                cboNhaCungCap.SelectedValue = sp.NhaCungCapID;
+                // Gán ComboBox
+                cboLoaiSP.SelectedValue = sp.MaLoai ?? (object)DBNull.Value;
+                cboDVT.SelectedValue = sp.MaDVT ?? (object)DBNull.Value;
+                cboThuongHieu.SelectedValue = sp.MaTH ?? (object)DBNull.Value;
+                cboNhaCungCap.SelectedValue = sp.MaNCC ?? (object)DBNull.Value;
 
+                // Gán hình ảnh
                 if (!string.IsNullOrEmpty(sp.HinhAnh))
                 {
-                    try
-                    {
-                        ptbHinhAnh.ImageLocation = sp.HinhAnh;
-                    }
-                    catch { /* Bỏ qua nếu đường dẫn ảnh cũ bị lỗi/không tồn tại */ }
+                    try { ptbHinhAnh.ImageLocation = sp.HinhAnh; }
+                    catch { /* Bỏ qua nếu đường dẫn ảnh bị lỗi */ }
                 }
             }
         }
@@ -123,82 +120,114 @@ namespace QuanLyVanPhongPham.Forms
 
             try
             {
-                // Xóa tất cả ký tự không phải số
+                // Giữ lại các chữ số, bỏ đi các dấu phẩy/chấm
                 string value = new string(txt.Text.Where(char.IsDigit).ToArray());
-                if (double.TryParse(value, out double result))
+                if (decimal.TryParse(value, out decimal result))
                 {
-                    // Định dạng theo chuẩn Việt Nam (dấu chấm phân cách hàng nghìn)
-                    txt.TextChanged -= MoneyFormat_TextChanged; // Tạm tắt event để tránh lặp vô tận
+                    txt.TextChanged -= MoneyFormat_TextChanged;
                     txt.Text = result.ToString("N0", CultureInfo.CreateSpecificCulture("vi-VN"));
                     txt.SelectionStart = txt.Text.Length;
-                    txt.TextChanged += MoneyFormat_TextChanged; // Bật lại event
+                    txt.TextChanged += MoneyFormat_TextChanged;
                 }
             }
             catch { }
         }
 
-        private void BtnLuu_Click(object sender, EventArgs e)
+        private void btnLuu_Click(object sender, EventArgs e)
         {
+            // 1. Kiểm tra các dữ liệu bắt buộc nhập
+            if (string.IsNullOrWhiteSpace(txtMaSP.Text))
+            {
+                MessageBox.Show("Mã sản phẩm không được để trống!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMaSP.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtTenSP.Text))
+            {
+                MessageBox.Show("Tên sản phẩm không được để trống!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTenSP.Focus();
+                return;
+            }
+
             try
             {
-                // 1. Validation cơ bản (Đã bổ sung thêm kiểm tra tất cả các ô chọn)
-                if (string.IsNullOrWhiteSpace(txtTenSP.Text))
+                // Khóa an toàn: Xóa cache tracking để tránh lỗi khi lưu lại sau một lần lỗi trước đó
+                db.ChangeTracker.Clear();
+
+                // 2. Chuyển đổi dữ liệu số lượng, giá bán
+                string strGiaBan = new string(txtGiaBan.Text.Where(char.IsDigit).ToArray());
+                decimal giaBan = string.IsNullOrEmpty(strGiaBan) ? 0 : decimal.Parse(strGiaBan);
+                int soLuong = string.IsNullOrEmpty(txtSoLuong.Text) ? 0 : int.Parse(txtSoLuong.Text);
+
+                bool isAdding = string.IsNullOrEmpty(_maSP);
+
+                if (isAdding)
                 {
-                    MessageBox.Show("Vui lòng nhập tên sản phẩm!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    // --- THÊM MỚI SẢN PHẨM ---
+                    if (db.SanPham.Any(s => s.MaSP == txtMaSP.Text.Trim()))
+                    {
+                        MessageBox.Show("Mã sản phẩm này đã tồn tại, vui lòng nhập mã khác!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    var spMoi = new SanPham()
+                    {
+                        MaSP = txtMaSP.Text.Trim(),
+                        TenSanPham = txtTenSP.Text.Trim(),
+                        GiaBan = giaBan,
+                        SoLuong = soLuong,
+                        MaLoai = cboLoaiSP.SelectedValue?.ToString(),
+                        MaDVT = cboDVT.SelectedValue?.ToString(),
+                        MaTH = cboThuongHieu.SelectedValue?.ToString(),
+                        MaNCC = cboNhaCungCap.SelectedValue?.ToString(),
+                        HinhAnh = ptbHinhAnh.ImageLocation,
+
+                        // FIX LỖI SỐ 1: Gán rỗng để Database không báo lỗi NULL
+                        MoTa = ""
+                    };
+
+                    db.SanPham.Add(spMoi);
+                    db.SaveChanges();
+                    MessageBox.Show("Thêm mới sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // --- CẬP NHẬT SẢN PHẨM ---
+                    var spUpdate = db.SanPham.Find(_maSP);
+                    if (spUpdate != null)
+                    {
+                        spUpdate.TenSanPham = txtTenSP.Text.Trim();
+                        spUpdate.GiaBan = giaBan;
+                        spUpdate.SoLuong = soLuong;
+                        spUpdate.MaLoai = cboLoaiSP.SelectedValue?.ToString();
+                        spUpdate.MaDVT = cboDVT.SelectedValue?.ToString();
+                        spUpdate.MaTH = cboThuongHieu.SelectedValue?.ToString();
+                        spUpdate.MaNCC = cboNhaCungCap.SelectedValue?.ToString();
+                        spUpdate.HinhAnh = ptbHinhAnh.ImageLocation;
+
+                        // FIX LỖI SỐ 1: Gán rỗng để Database không báo lỗi NULL khi sửa
+                        spUpdate.MoTa = "";
+
+                        db.SaveChanges();
+                        MessageBox.Show("Cập nhật sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
 
-                if (cboLoaiSP.SelectedValue == null || cboDVT.SelectedValue == null ||
-                    cboThuongHieu.SelectedValue == null || cboNhaCungCap.SelectedValue == null)
-                {
-                    MessageBox.Show("Vui lòng chọn đầy đủ: Loại SP, Đơn vị tính, Thương hiệu và Nhà cung cấp!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // 2. Chuẩn bị đối tượng
-                SanPham sp = (_idSanPham == null) ? new SanPham() : db.SanPham.Find(_idSanPham);
-
-                sp.TenSanPham = txtTenSP.Text.Trim();
-
-                // Xử lý giá bán an toàn (phòng trường hợp người dùng copy/paste lỗi)
-                string giaNet = new string(txtGiaBan.Text.Where(char.IsDigit).ToArray());
-                sp.GiaBan = string.IsNullOrEmpty(giaNet) ? 0 : int.Parse(giaNet);
-
-                // Xử lý số lượng an toàn
-                sp.SoLuong = string.IsNullOrWhiteSpace(txtSoLuong.Text) ? 0 : int.Parse(txtSoLuong.Text.Trim());
-
-                // Lấy ID an toàn từ ComboBox
-                sp.LoaiSanPhamID = Convert.ToInt32(cboLoaiSP.SelectedValue);
-                sp.DonViTinhID = Convert.ToInt32(cboDVT.SelectedValue);
-                sp.ThuongHieuID = Convert.ToInt32(cboThuongHieu.SelectedValue);
-                sp.NhaCungCapID = Convert.ToInt32(cboNhaCungCap.SelectedValue);
-
-                sp.HinhAnh = ptbHinhAnh.ImageLocation;
-
-                // 3. Thực thi lưu trữ
-                if (_idSanPham == null)
-                {
-                    db.SanPham.Add(sp);
-                }
-
-                db.SaveChanges();
-
-                MessageBox.Show("Lưu sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close(); // Chủ động đóng Form Chi Tiết lại sau khi thêm xong
+                // Lưu thành công thì đóng Form
+                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi lưu dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string errMsg = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                MessageBox.Show("Lỗi khi lưu dữ liệu: " + errMsg, "Lỗi Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void OnlyNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Cho phép nhập số và phím Backspace (điều hướng xóa)
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true;
+                e.Handled = true; // Chặn không cho nhập chữ vào ô số
             }
         }
 
@@ -206,7 +235,6 @@ namespace QuanLyVanPhongPham.Forms
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                // Thêm bộ lọc để người dùng chỉ có thể chọn file ảnh
                 ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
                 ofd.Title = "Chọn hình ảnh sản phẩm";
 
@@ -214,6 +242,37 @@ namespace QuanLyVanPhongPham.Forms
                 {
                     ptbHinhAnh.ImageLocation = ofd.FileName;
                 }
+            }
+        }
+
+        private string SinhMaSanPhamTuDong()
+        {
+            try
+            {
+                var lastSP = db.SanPham
+                               .Where(s => s.MaSP.StartsWith("SP"))
+                               .OrderByDescending(s => s.MaSP)
+                               .FirstOrDefault();
+
+                if (lastSP == null)
+                {
+                    return "SP001";
+                }
+
+                string lastMa = lastSP.MaSP;
+                string numberPart = lastMa.Substring(2);
+
+                if (int.TryParse(numberPart, out int number))
+                {
+                    number++;
+                    return "SP" + number.ToString("D3");
+                }
+
+                return "SP001";
+            }
+            catch
+            {
+                return "SP" + DateTime.Now.ToString("yyMMddHHmm");
             }
         }
     }

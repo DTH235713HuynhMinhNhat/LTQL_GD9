@@ -1,3 +1,4 @@
+using QuanLyCuaHangVanPhongPham.Forms;
 using QuanLyVanPhongPham.Forms;
 
 namespace QuanLyCuaHangVanPhongPham

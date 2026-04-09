@@ -1,4 +1,4 @@
-﻿namespace QuanLyVanPhongPham.Forms
+namespace QuanLyVanPhongPham.Forms
 {
     partial class ucSanPham : UserControl
     {
@@ -20,6 +20,8 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pnlHeader = new Panel();
+            cboLoaiSP = new ComboBox();
+            lblLoaiSP = new Label();
             btnXoa = new Button();
             btnSua = new Button();
             btnThemMoi = new Button();
@@ -27,13 +29,21 @@
             txtTimKiem = new TextBox();
             lblTitle = new Label();
             dgvSanPham = new DataGridView();
+            pnlFooter = new Panel();
+            lblTongSanPham = new Label();
+            lblTongGiaTri = new Label();
+            lblTimKiem = new Label();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
+            pnlFooter.SuspendLayout();
             SuspendLayout();
             // 
             // pnlHeader
             // 
             pnlHeader.BackColor = Color.White;
+            pnlHeader.Controls.Add(lblTimKiem);
+            pnlHeader.Controls.Add(cboLoaiSP);
+            pnlHeader.Controls.Add(lblLoaiSP);
             pnlHeader.Controls.Add(btnXoa);
             pnlHeader.Controls.Add(btnSua);
             pnlHeader.Controls.Add(btnThemMoi);
@@ -43,8 +53,27 @@
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Size = new Size(910, 80);
+            pnlHeader.Size = new Size(910, 100);
             pnlHeader.TabIndex = 1;
+            // 
+            // cboLoaiSP
+            // 
+            cboLoaiSP.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboLoaiSP.FormattingEnabled = true;
+            cboLoaiSP.Location = new Point(110, 60);
+            cboLoaiSP.Name = "cboLoaiSP";
+            cboLoaiSP.Size = new Size(220, 31);
+            cboLoaiSP.TabIndex = 7;
+            cboLoaiSP.SelectedIndexChanged += cboLoaiSP_SelectedIndexChanged;
+            // 
+            // lblLoaiSP
+            // 
+            lblLoaiSP.AutoSize = true;
+            lblLoaiSP.Location = new Point(10, 64);
+            lblLoaiSP.Name = "lblLoaiSP";
+            lblLoaiSP.Size = new Size(93, 23);
+            lblLoaiSP.TabIndex = 6;
+            lblLoaiSP.Text = "Danh mục:";
             // 
             // btnXoa
             // 
@@ -53,7 +82,7 @@
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.ForeColor = Color.White;
-            btnXoa.Location = new Point(797, 20);
+            btnXoa.Location = new Point(793, 10);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(100, 40);
             btnXoa.TabIndex = 5;
@@ -68,7 +97,7 @@
             btnSua.FlatAppearance.BorderSize = 0;
             btnSua.FlatStyle = FlatStyle.Flat;
             btnSua.ForeColor = Color.White;
-            btnSua.Location = new Point(687, 20);
+            btnSua.Location = new Point(683, 10);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(100, 40);
             btnSua.TabIndex = 4;
@@ -83,7 +112,7 @@
             btnThemMoi.FlatAppearance.BorderSize = 0;
             btnThemMoi.FlatStyle = FlatStyle.Flat;
             btnThemMoi.ForeColor = Color.White;
-            btnThemMoi.Location = new Point(577, 20);
+            btnThemMoi.Location = new Point(573, 10);
             btnThemMoi.Name = "btnThemMoi";
             btnThemMoi.Size = new Size(100, 40);
             btnThemMoi.TabIndex = 2;
@@ -98,7 +127,7 @@
             btnXuatExcel.FlatAppearance.BorderSize = 0;
             btnXuatExcel.FlatStyle = FlatStyle.Flat;
             btnXuatExcel.ForeColor = Color.White;
-            btnXuatExcel.Location = new Point(467, 20);
+            btnXuatExcel.Location = new Point(463, 10);
             btnXuatExcel.Name = "btnXuatExcel";
             btnXuatExcel.Size = new Size(100, 40);
             btnXuatExcel.TabIndex = 3;
@@ -108,9 +137,9 @@
             // 
             // txtTimKiem
             // 
-            txtTimKiem.Location = new Point(200, 26);
+            txtTimKiem.Location = new Point(485, 64);
             txtTimKiem.Name = "txtTimKiem";
-            txtTimKiem.Size = new Size(255, 30);
+            txtTimKiem.Size = new Size(250, 30);
             txtTimKiem.TabIndex = 1;
             // 
             // lblTitle
@@ -142,7 +171,7 @@
             dgvSanPham.ColumnHeadersHeight = 45;
             dgvSanPham.Dock = DockStyle.Fill;
             dgvSanPham.EnableHeadersVisualStyles = false;
-            dgvSanPham.Location = new Point(0, 80);
+            dgvSanPham.Location = new Point(0, 100);
             dgvSanPham.Name = "dgvSanPham";
             dgvSanPham.RowHeadersVisible = false;
             dgvSanPham.RowHeadersWidth = 51;
@@ -153,8 +182,53 @@
             dgvSanPham.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvSanPham.RowTemplate.Height = 40;
             dgvSanPham.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSanPham.Size = new Size(910, 500);
+            dgvSanPham.Size = new Size(910, 440);
             dgvSanPham.TabIndex = 2;
+            dgvSanPham.CellFormatting += dgvSanPham_CellFormatting;
+            // 
+            // pnlFooter
+            // 
+            pnlFooter.BackColor = Color.WhiteSmoke;
+            pnlFooter.Controls.Add(lblTongSanPham);
+            pnlFooter.Controls.Add(lblTongGiaTri);
+            pnlFooter.Dock = DockStyle.Bottom;
+            pnlFooter.Location = new Point(0, 540);
+            pnlFooter.Name = "pnlFooter";
+            pnlFooter.Size = new Size(910, 40);
+            pnlFooter.TabIndex = 3;
+            // 
+            // lblTongSanPham
+            // 
+            lblTongSanPham.AutoSize = true;
+            lblTongSanPham.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTongSanPham.ForeColor = Color.FromArgb(64, 64, 64);
+            lblTongSanPham.Location = new Point(10, 10);
+            lblTongSanPham.Name = "lblTongSanPham";
+            lblTongSanPham.Size = new Size(319, 23);
+            lblTongSanPham.TabIndex = 0;
+            lblTongSanPham.Text = "Tổng số mặt hàng: 0 | Tổng tồn kho: 0";
+            // 
+            // lblTongGiaTri
+            // 
+            lblTongGiaTri.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTongGiaTri.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTongGiaTri.ForeColor = Color.FromArgb(231, 76, 60);
+            lblTongGiaTri.Location = new Point(500, 10);
+            lblTongGiaTri.Name = "lblTongGiaTri";
+            lblTongGiaTri.Size = new Size(400, 23);
+            lblTongGiaTri.TabIndex = 1;
+            lblTongGiaTri.Text = "Tổng giá trị hàng tồn: 0 VNĐ";
+            lblTongGiaTri.TextAlign = ContentAlignment.TopRight;
+            // 
+            // lblTimKiem
+            // 
+            lblTimKiem.AutoSize = true;
+            lblTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTimKiem.Location = new Point(388, 67);
+            lblTimKiem.Name = "lblTimKiem";
+            lblTimKiem.Size = new Size(91, 23);
+            lblTimKiem.TabIndex = 18;
+            lblTimKiem.Text = "Tìm kiếm:";
             // 
             // ucSanPham
             // 
@@ -162,6 +236,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(dgvSanPham);
+            Controls.Add(pnlFooter);
             Controls.Add(pnlHeader);
             Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 4, 3, 4);
@@ -170,6 +245,8 @@
             pnlHeader.ResumeLayout(false);
             pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).EndInit();
+            pnlFooter.ResumeLayout(false);
+            pnlFooter.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -183,5 +260,11 @@
         private System.Windows.Forms.DataGridView dgvSanPham;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Panel pnlFooter;
+        private System.Windows.Forms.Label lblTongSanPham;
+        private System.Windows.Forms.Label lblTongGiaTri;
+        private System.Windows.Forms.Label lblLoaiSP;
+        private System.Windows.Forms.ComboBox cboLoaiSP;
+        private Label lblTimKiem;
     }
 }

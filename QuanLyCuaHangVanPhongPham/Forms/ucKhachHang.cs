@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using QuanLyVanPhongPham.Data; // Đảm bảo đúng namespace chứa DbContext của bạn
 
 namespace QuanLyCuaHangVanPhongPham.Forms
 {
@@ -9,8 +10,8 @@ namespace QuanLyCuaHangVanPhongPham.Forms
     {
         private bool isAdding = false;
 
-        // Uncomment dòng dưới khi bạn đã chuẩn bị xong Entity Framework kết nối DB
-        // private QLCHVPPDbContext db = new QLCHVPPDbContext(); 
+        // Khởi tạo kết nối CSDL
+        private QLCHVPPDbContext db = new QLCHVPPDbContext();
 
         public ucKhachHang()
         {
@@ -19,32 +20,73 @@ namespace QuanLyCuaHangVanPhongPham.Forms
 
         private void ucKhachHang_Load(object sender, EventArgs e)
         {
+            // Placeholder cho ô tìm kiếm
+            txtTimKiem.Text = "Nhập tên, SĐT, mã KH...";
+            txtTimKiem.ForeColor = System.Drawing.Color.Gray;
+            txtTimKiem.Enter += txtTimKiem_Enter;
+            txtTimKiem.Leave += txtTimKiem_Leave;
+
             LoadData();
             SetControlState(false);
+            txtMaKH.Enabled = false; // Không cho phép sửa mã thủ công
         }
 
         private void LoadData()
         {
             try
             {
-                // Gọi dữ liệu từ database:
-                // dgvKhachHang.DataSource = db.KhachHangs.ToList();
+                string keyword = txtTimKiem.Text.Trim();
+                if (keyword == "Nhập tên, SĐT, mã KH...") keyword = "";
 
-                // Code giả lập dữ liệu:
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Mã KH");
-                dt.Columns.Add("Tên Khách Hàng");
-                dt.Columns.Add("Điện Thoại");
-                dt.Columns.Add("Địa Chỉ");
-                dt.Rows.Add("KH01", "Nguyễn Văn Tuấn", "0987123456", "Long Xuyên, An Giang");
-                dt.Rows.Add("KH02", "Trần Thị Bé", "0909888777", "Châu Đốc, An Giang");
-                dt.Rows.Add("KH03", "Cửa hàng Hoa Hồng", "0868112233", "Cần Thơ");
-                dgvKhachHang.DataSource = dt;
+                var query = db.KhachHang.AsQueryable();
+
+                if (!string.IsNullOrEmpty(keyword))
+                {
+                    query = query.Where(kh => kh.TenKhachHang.Contains(keyword) || 
+                                              kh.SoDienThoai.Contains(keyword) || 
+                                              kh.MaKH.Contains(keyword));
+                }
+
+                // Load dữ liệu thực từ database
+                dgvKhachHang.DataSource = query.Select(kh => new
+                {
+                    MaKH = kh.MaKH,
+                    TenKH = kh.TenKhachHang,
+                    DienThoai = kh.SoDienThoai,
+                    DiaChi = kh.DiaChi
+                }).ToList();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // --- HÀM TỰ ĐỘNG SINH MÃ KHÁCH HÀNG (MỚI THÊM) ---
+        private string GenerateMaKH()
+        {
+            try
+            {
+                var lastKH = db.KhachHang.OrderByDescending(k => k.MaKH).FirstOrDefault();
+
+                if (lastKH == null || string.IsNullOrEmpty(lastKH.MaKH))
+                {
+                    return "KH01";
+                }
+
+                string lastMa = lastKH.MaKH;
+                if (lastMa.StartsWith("KH"))
+                {
+                    string numberPart = lastMa.Substring(2);
+                    if (int.TryParse(numberPart, out int number))
+                    {
+                        number++;
+                        return "KH" + number.ToString("D2");
+                    }
+                }
+            }
+            catch { return "KH01"; }
+            return "KH01";
         }
 
         private void SetControlState(bool editing)
@@ -87,6 +129,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             isAdding = true;
             ClearInput();
             SetControlState(true);
+            txtMaKH.Text = GenerateMaKH(); // Gọi hàm sinh mã khi nhấn Thêm
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -100,24 +143,6 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             SetControlState(true);
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtMaKH.Text))
-            {
-                MessageBox.Show("Vui lòng chọn khách hàng cần xóa!", "Thông báo");
-                return;
-            }
-
-            if (MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                // db.KhachHangs.Remove(db.KhachHangs.Find(txtMaKH.Text));
-                // db.SaveChanges();
-                MessageBox.Show("Xóa thành công!");
-                LoadData();
-                ClearInput();
-            }
-        }
-
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTenKH.Text))
@@ -126,23 +151,105 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                 return;
             }
 
-            if (isAdding)
+            try
             {
-                MessageBox.Show("Thêm mới khách hàng thành công!");
+                db.ChangeTracker.Clear();
+
+                if (isAdding)
+                {
+                    // Thêm mới
+                    var khMoi = new KhachHang() // Đảm bảo tên class đúng với Model của bạn
+                    {
+                        MaKH = txtMaKH.Text,
+                        TenKhachHang = txtTenKH.Text,
+                        SoDienThoai = txtDienThoai.Text,
+                        DiaChi = txtDiaChi.Text
+                    };
+                    db.KhachHang.Add(khMoi);
+                    db.SaveChanges();
+                    MessageBox.Show("Thêm mới khách hàng thành công!");
+                }
+                else
+                {
+                    // Sửa
+                    var khSua = db.KhachHang.Find(txtMaKH.Text);
+                    if (khSua != null)
+                    {
+                        khSua.TenKhachHang = txtTenKH.Text;
+                        khSua.SoDienThoai = txtDienThoai.Text;
+                        khSua.DiaChi = txtDiaChi.Text;
+                        db.SaveChanges();
+                        MessageBox.Show("Cập nhật thành công!");
+                    }
+                }
+
+                SetControlState(false);
+                LoadData();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Cập nhật thông tin thành công!");
+                MessageBox.Show("Lỗi khi lưu: " + ex.Message);
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMaKH.Text))
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng!", "Thông báo");
+                return;
             }
 
-            SetControlState(false);
-            LoadData();
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                try
+                {
+                    db.ChangeTracker.Clear();
+                    var kh = db.KhachHang.Find(txtMaKH.Text);
+                    if (kh != null)
+                    {
+                        db.KhachHang.Remove(kh);
+                        db.SaveChanges();
+                        MessageBox.Show("Xóa thành công!");
+                        LoadData();
+                        ClearInput();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi xóa: " + ex.Message);
+                }
+            }
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
             SetControlState(false);
             ClearInput();
+        }
+
+        // --- HÀM TÌM KIẾM & PLACEHOLDER ---
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void txtTimKiem_Enter(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text == "Nhập tên, SĐT, mã KH...")
+            {
+                txtTimKiem.Text = "";
+                txtTimKiem.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+
+        private void txtTimKiem_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTimKiem.Text))
+            {
+                txtTimKiem.Text = "Nhập tên, SĐT, mã KH...";
+                txtTimKiem.ForeColor = System.Drawing.Color.Gray;
+            }
         }
     }
 }

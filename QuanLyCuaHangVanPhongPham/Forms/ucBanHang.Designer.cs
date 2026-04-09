@@ -1,4 +1,4 @@
-﻿namespace QuanLyCuaHangVanPhongPham.Forms
+namespace QuanLyCuaHangVanPhongPham.Forms
 {
     partial class ucBanHang
     {
@@ -34,7 +34,11 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             pnlLeft = new Panel();
             dgvSanPham = new DataGridView();
+            pnlLeftBottom = new Panel();
+            btnThemVaoGio = new Button();
             pnlLeftTop = new Panel();
+            cboLoaiSP = new ComboBox();
+            lblLoaiSP = new Label();
             txtTimKiem = new TextBox();
             lblTitleLeft = new Label();
             pnlRight = new Panel();
@@ -53,19 +57,24 @@
             cboKhachHang = new ComboBox();
             label1 = new Label();
             lblTitleRight = new Label();
+            nudQuantityAdd = new NumericUpDown();
+            lblSoLuong = new Label();
             pnlLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
+            pnlLeftBottom.SuspendLayout();
             pnlLeftTop.SuspendLayout();
             pnlRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGioHang).BeginInit();
             pnlRightBottom.SuspendLayout();
             pnlRightTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudQuantityAdd).BeginInit();
             SuspendLayout();
             // 
             // pnlLeft
             // 
             pnlLeft.BorderStyle = BorderStyle.FixedSingle;
             pnlLeft.Controls.Add(dgvSanPham);
+            pnlLeft.Controls.Add(pnlLeftBottom);
             pnlLeft.Controls.Add(pnlLeftTop);
             pnlLeft.Dock = DockStyle.Left;
             pnlLeft.Location = new Point(0, 0);
@@ -89,7 +98,7 @@
             dgvSanPham.ColumnHeadersHeight = 40;
             dgvSanPham.Dock = DockStyle.Fill;
             dgvSanPham.EnableHeadersVisualStyles = false;
-            dgvSanPham.Location = new Point(0, 60);
+            dgvSanPham.Location = new Point(0, 100);
             dgvSanPham.Name = "dgvSanPham";
             dgvSanPham.RowHeadersVisible = false;
             dgvSanPham.RowHeadersWidth = 51;
@@ -99,24 +108,69 @@
             dgvSanPham.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvSanPham.RowTemplate.Height = 35;
             dgvSanPham.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSanPham.Size = new Size(448, 518);
+            dgvSanPham.Size = new Size(448, 378);
             dgvSanPham.TabIndex = 1;
+            // 
+            // pnlLeftBottom
+            // 
+            pnlLeftBottom.BackColor = Color.WhiteSmoke;
+            pnlLeftBottom.BorderStyle = BorderStyle.FixedSingle;
+            pnlLeftBottom.Controls.Add(btnThemVaoGio);
+            pnlLeftBottom.Dock = DockStyle.Bottom;
+            pnlLeftBottom.Location = new Point(0, 478);
+            pnlLeftBottom.Name = "pnlLeftBottom";
+            pnlLeftBottom.Size = new Size(448, 100);
+            pnlLeftBottom.TabIndex = 2;
+            // 
+            // btnThemVaoGio
+            // 
+            btnThemVaoGio.BackColor = Color.FromArgb(52, 152, 219);
+            btnThemVaoGio.FlatStyle = FlatStyle.Flat;
+            btnThemVaoGio.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnThemVaoGio.ForeColor = Color.White;
+            btnThemVaoGio.Location = new Point(230, 45);
+            btnThemVaoGio.Name = "btnThemVaoGio";
+            btnThemVaoGio.Size = new Size(180, 40);
+            btnThemVaoGio.TabIndex = 0;
+            btnThemVaoGio.Text = "THÊM VÀO GIỎ";
+            btnThemVaoGio.UseVisualStyleBackColor = false;
+            btnThemVaoGio.Click += btnThemVaoGio_Click_1;
             // 
             // pnlLeftTop
             // 
             pnlLeftTop.BackColor = Color.White;
+            pnlLeftTop.Controls.Add(cboLoaiSP);
+            pnlLeftTop.Controls.Add(lblLoaiSP);
             pnlLeftTop.Controls.Add(txtTimKiem);
             pnlLeftTop.Controls.Add(lblTitleLeft);
             pnlLeftTop.Dock = DockStyle.Top;
             pnlLeftTop.Location = new Point(0, 0);
             pnlLeftTop.Name = "pnlLeftTop";
-            pnlLeftTop.Size = new Size(448, 60);
+            pnlLeftTop.Size = new Size(448, 100);
             pnlLeftTop.TabIndex = 0;
+            // 
+            // cboLoaiSP
+            // 
+            cboLoaiSP.FormattingEnabled = true;
+            cboLoaiSP.Location = new Point(210, 56);
+            cboLoaiSP.Name = "cboLoaiSP";
+            cboLoaiSP.Size = new Size(220, 31);
+            cboLoaiSP.TabIndex = 3;
+            // 
+            // lblLoaiSP
+            // 
+            lblLoaiSP.AutoSize = true;
+            lblLoaiSP.Location = new Point(110, 60);
+            lblLoaiSP.Name = "lblLoaiSP";
+            lblLoaiSP.Size = new Size(93, 23);
+            lblLoaiSP.TabIndex = 4;
+            lblLoaiSP.Text = "Danh mục:";
             // 
             // txtTimKiem
             // 
             txtTimKiem.Location = new Point(170, 16);
             txtTimKiem.Name = "txtTimKiem";
+            txtTimKiem.PlaceholderText = "Tìm theo tên sản phẩm...";
             txtTimKiem.Size = new Size(260, 30);
             txtTimKiem.TabIndex = 1;
             // 
@@ -190,6 +244,7 @@
             colSoLuong.HeaderText = "SL";
             colSoLuong.MinimumWidth = 6;
             colSoLuong.Name = "colSoLuong";
+            colSoLuong.ReadOnly = true;
             // 
             // colDonGia
             // 
@@ -287,20 +342,20 @@
             // 
             cboKhachHang.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cboKhachHang.FormattingEnabled = true;
-            cboKhachHang.Location = new Point(250, 15);
+            cboKhachHang.Location = new Point(227, 14);
             cboKhachHang.Name = "cboKhachHang";
-            cboKhachHang.Size = new Size(190, 31);
+            cboKhachHang.Size = new Size(183, 31);
             cboKhachHang.TabIndex = 2;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(140, 18);
+            label1.Location = new Point(160, 19);
             label1.Name = "label1";
-            label1.Size = new Size(105, 23);
+            label1.Size = new Size(61, 23);
             label1.TabIndex = 3;
-            label1.Text = "Khách hàng:";
+            label1.Text = "Khách:";
             // 
             // lblTitleRight
             // 
@@ -311,6 +366,24 @@
             lblTitleRight.Size = new Size(112, 28);
             lblTitleRight.TabIndex = 4;
             lblTitleRight.Text = "GIỎ HÀNG";
+            // 
+            // nudQuantityAdd
+            // 
+            nudQuantityAdd.Location = new Point(40, 50);
+            nudQuantityAdd.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nudQuantityAdd.Name = "nudQuantityAdd";
+            nudQuantityAdd.Size = new Size(120, 27);
+            nudQuantityAdd.TabIndex = 1;
+            nudQuantityAdd.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // lblSoLuong
+            // 
+            lblSoLuong.AutoSize = true;
+            lblSoLuong.Location = new Point(40, 20);
+            lblSoLuong.Name = "lblSoLuong";
+            lblSoLuong.Size = new Size(82, 23);
+            lblSoLuong.TabIndex = 2;
+            lblSoLuong.Text = "Số lượng:";
             // 
             // ucBanHang
             // 
@@ -323,6 +396,7 @@
             Size = new Size(910, 580);
             pnlLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).EndInit();
+            pnlLeftBottom.ResumeLayout(false);
             pnlLeftTop.ResumeLayout(false);
             pnlLeftTop.PerformLayout();
             pnlRight.ResumeLayout(false);
@@ -331,6 +405,7 @@
             pnlRightBottom.PerformLayout();
             pnlRightTop.ResumeLayout(false);
             pnlRightTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nudQuantityAdd).EndInit();
             ResumeLayout(false);
         }
 
@@ -342,11 +417,16 @@
         private TextBox txtTimKiem;
         private DataGridView dgvSanPham;
 
+        private Panel pnlLeftBottom;
+        private Button btnThemVaoGio;
+
         private Panel pnlRight;
         private Panel pnlRightTop;
         private Label lblTitleRight;
+
         private ComboBox cboKhachHang;
         private Label label1;
+
         private DataGridView dgvGioHang;
 
         private Panel pnlRightBottom;
@@ -355,11 +435,15 @@
         private Button btnThanhToan;
         private Button btnXoaKhaiGio;
 
-        // Các cột của giỏ hàng
+        // Trả lại 5 cột sạch sẽ
         private DataGridViewTextBoxColumn colMaSP;
         private DataGridViewTextBoxColumn colTenSP;
         private DataGridViewTextBoxColumn colSoLuong;
         private DataGridViewTextBoxColumn colDonGia;
         private DataGridViewTextBoxColumn colThanhTien;
+        private ComboBox cboLoaiSP;
+        private Label lblLoaiSP;
+        private NumericUpDown nudQuantityAdd;
+        private Label lblSoLuong;
     }
 }

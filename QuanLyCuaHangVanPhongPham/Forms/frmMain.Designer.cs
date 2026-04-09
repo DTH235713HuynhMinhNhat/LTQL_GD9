@@ -1,4 +1,7 @@
-﻿namespace QuanLyVanPhongPham.Forms
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace QuanLyVanPhongPham.Forms
 {
     partial class frmMain : Form
     {
@@ -18,6 +21,7 @@
         private void InitializeComponent()
         {
             pnlSidebar = new Panel();
+            button1 = new Button();
             btnDangXuat = new Button();
             btnNhaCungCap = new Button();
             btnNhanVien = new Button();
@@ -39,6 +43,7 @@
             // pnlSidebar
             // 
             pnlSidebar.BackColor = Color.FromArgb(44, 46, 62);
+            pnlSidebar.Controls.Add(button1);
             pnlSidebar.Controls.Add(btnDangXuat);
             pnlSidebar.Controls.Add(btnNhaCungCap);
             pnlSidebar.Controls.Add(btnNhanVien);
@@ -55,6 +60,22 @@
             pnlSidebar.Name = "pnlSidebar";
             pnlSidebar.Size = new Size(250, 700);
             pnlSidebar.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.Dock = DockStyle.Top;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(0, 590);
+            button1.Name = "button1";
+            button1.Padding = new Padding(20, 0, 0, 0);
+            button1.Size = new Size(250, 50);
+            button1.TabIndex = 11;
+            button1.Text = "Lịch sử nhập kho ";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // btnDangXuat
             // 
@@ -165,7 +186,6 @@
             btnSanPham.Text = "Sản phẩm";
             btnSanPham.TextAlign = ContentAlignment.MiddleLeft;
             btnSanPham.UseVisualStyleBackColor = true;
-            btnSanPham.Click += btnSanPham_Click_1;
             // 
             // btnNhapKho
             // 
@@ -271,7 +291,6 @@
             pnlLogo.ResumeLayout(false);
             pnlLogo.PerformLayout();
             ResumeLayout(false);
-
         }
 
         #endregion
@@ -291,5 +310,6 @@
         private System.Windows.Forms.Panel pnlLogo;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblRole;
+        private Button button1;
     }
 }

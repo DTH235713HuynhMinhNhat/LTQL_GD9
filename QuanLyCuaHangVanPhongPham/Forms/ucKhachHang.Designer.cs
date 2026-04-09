@@ -1,4 +1,4 @@
-﻿namespace QuanLyCuaHangVanPhongPham.Forms
+namespace QuanLyCuaHangVanPhongPham.Forms
 {
     partial class ucKhachHang
     {
@@ -32,6 +32,8 @@
             this.txtMaKH = new System.Windows.Forms.TextBox();
             this.lblMaKH = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.lblTimKiem = new System.Windows.Forms.Label();
             this.dgvKhachHang = new System.Windows.Forms.DataGridView();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
@@ -40,6 +42,8 @@
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.White;
+            this.pnlTop.Controls.Add(this.txtTimKiem);
+            this.pnlTop.Controls.Add(this.lblTimKiem);
             this.pnlTop.Controls.Add(this.txtDiaChi);
             this.pnlTop.Controls.Add(this.lblDiaChi);
             this.pnlTop.Controls.Add(this.txtDienThoai);
@@ -218,6 +222,25 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "QUẢN LÝ KHÁCH HÀNG";
             // 
+            // txtTimKiem
+            // 
+            this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtTimKiem.Location = new System.Drawing.Point(620, 15);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(280, 30);
+            this.txtTimKiem.TabIndex = 14;
+            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
+            // 
+            // lblTimKiem
+            // 
+            this.lblTimKiem.AutoSize = true;
+            this.lblTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblTimKiem.Location = new System.Drawing.Point(520, 18);
+            this.lblTimKiem.Name = "lblTimKiem";
+            this.lblTimKiem.Size = new System.Drawing.Size(91, 23);
+            this.lblTimKiem.TabIndex = 15;
+            this.lblTimKiem.Text = "Tìm kiếm:";
+            // 
             // dgvKhachHang
             // 
             this.dgvKhachHang.AllowUserToAddRows = false;
@@ -269,6 +292,8 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.Label lblTimKiem;
         private System.Windows.Forms.DataGridView dgvKhachHang;
     }
 }

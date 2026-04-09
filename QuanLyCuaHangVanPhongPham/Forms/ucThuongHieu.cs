@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using QuanLyVanPhongPham.Data;
 
 namespace QuanLyCuaHangVanPhongPham.Forms
 {
     public partial class ucThuongHieu : UserControl
     {
-        // Khai báo sẵn biến isAdding
         private bool isAdding = false;
-
-        // Uncomment dòng dưới nếu đã nối DB
-        // private QLCHVPPDbContext db = new QLCHVPPDbContext(); 
+        private QLCHVPPDbContext db; // Chỉ khai báo, chưa khởi tạo vội
 
         public ucThuongHieu()
         {
@@ -22,27 +21,31 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         {
             LoadData();
             SetControlState(false);
+
+            txtMaThuongHieu.ReadOnly = true;
+            txtMaThuongHieu.BackColor = Color.LightGray;
         }
 
         private void LoadData()
         {
             try
             {
-                // Gọi DB ở đây: dgvThuongHieu.DataSource = db.ThuongHieus.ToList();
+                // Khởi tạo mới DBContext mỗi lần load để luôn lấy dữ liệu mới nhất (chống cache)
+                db = new QLCHVPPDbContext();
 
-                // Code giả lập dữ liệu hiển thị (khi nối DB thì xóa phần này đi)
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Mã TH");
-                dt.Columns.Add("Tên Thương Hiệu");
-                dt.Rows.Add("TH01", "Thiên Long");
-                dt.Rows.Add("TH02", "Hồng Hà");
-                dt.Rows.Add("TH03", "Bến Nghé");
-                dt.Rows.Add("TH04", "Campus");
-                dgvThuongHieu.DataSource = dt;
+                var danhSachTH = db.ThuongHieu
+                                   .Select(th => new
+                                   {
+                                       Mã_TH = th.MaTH,
+                                       Tên_Thương_Hiệu = th.TenThuongHieu
+                                   })
+                                   .ToList();
+
+                dgvThuongHieu.DataSource = danhSachTH;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("Lỗi kết nối CSDL: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -65,9 +68,33 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             txtTenThuongHieu.Focus();
         }
 
+        private string GenerateMaTH()
+        {
+            try
+            {
+                var lastTH = db.ThuongHieu
+                               .OrderByDescending(t => t.MaTH)
+                               .FirstOrDefault();
+
+                if (lastTH != null && !string.IsNullOrEmpty(lastTH.MaTH))
+                {
+                    string curID = lastTH.MaTH;
+                    // Lấy các ký tự số phía sau chữ "TH" (bỏ qua 2 ký tự đầu)
+                    if (int.TryParse(curID.Substring(2), out int num))
+                    {
+                        return "TH" + (num + 1).ToString("D2"); // D2: Format dạng 01, 02...
+                    }
+                }
+            }
+            catch { }
+
+            return "TH01"; // Trả về mặc định nếu bảng trống hoặc lỗi
+        }
+
         private void dgvThuongHieu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            // Tránh lỗi click vào tiêu đề cột (RowIndex = -1)
+            if (e.RowIndex >= 0 && !btnLuu.Enabled)
             {
                 DataGridViewRow row = dgvThuongHieu.Rows[e.RowIndex];
                 txtMaThuongHieu.Text = row.Cells[0].Value?.ToString();
@@ -78,72 +105,103 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         private void btnThem_Click(object sender, EventArgs e)
         {
             isAdding = true;
-            ClearInput();
             SetControlState(true);
+            ClearInput();
+            txtMaThuongHieu.Text = GenerateMaTH();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMaThuongHieu.Text))
             {
-                MessageBox.Show("Vui lòng chọn thương hiệu cần sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn một thương hiệu dưới bảng để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             isAdding = false;
             SetControlState(true);
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtMaThuongHieu.Text))
-            {
-                MessageBox.Show("Vui lòng chọn thương hiệu cần xóa!", "Thông báo");
-                return;
-            }
-
-            if (MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                MessageBox.Show("Xóa thành công!");
-                LoadData();
-                ClearInput();
-            }
+            txtTenThuongHieu.Focus(); // Cho con trỏ chuột nhảy thẳng vào ô Tên để sửa
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtTenThuongHieu.Text))
+            string ma = txtMaThuongHieu.Text;
+            string ten = txtTenThuongHieu.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(ten))
             {
-                MessageBox.Show("Tên thương hiệu không được để trống!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tên thương hiệu không được để trống!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTenThuongHieu.Focus();
                 return;
             }
 
-            if (isAdding)
+            try
             {
-                MessageBox.Show("Thêm thành công!");
+                if (isAdding)
+                {
+                    // Thêm mới
+                    ThuongHieu thMoi = new ThuongHieu()
+                    {
+                        MaTH = ma,
+                        TenThuongHieu = ten
+                    };
+                    db.ThuongHieu.Add(thMoi);
+                }
+                else
+                {
+                    // Cập nhật (Tìm theo MaTH)
+                    var thSua = db.ThuongHieu.FirstOrDefault(t => t.MaTH == ma);
+                    if (thSua != null)
+                    {
+                        thSua.TenThuongHieu = ten;
+                    }
+                }
+
+                db.SaveChanges();
+                SetControlState(false);
+                ClearInput();
+                LoadData(); // Load lại bảng để cập nhật dữ liệu mới
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Cập nhật thành công!");
+                MessageBox.Show("Lỗi khi lưu dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            string ma = txtMaThuongHieu.Text;
+            if (string.IsNullOrEmpty(ma))
+            {
+                MessageBox.Show("Vui lòng chọn một thương hiệu để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            SetControlState(false);
-            LoadData();
+            if (MessageBox.Show($"Bạn có chắc chắn muốn xóa thương hiệu '{txtTenThuongHieu.Text}'?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    var thXoa = db.ThuongHieu.FirstOrDefault(t => t.MaTH == ma);
+                    if (thXoa != null)
+                    {
+                        db.ThuongHieu.Remove(thXoa);
+                        db.SaveChanges();
+                        ClearInput();
+                        LoadData(); // Load lại bảng sau khi xóa
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Không thể xóa do thương hiệu này đang chứa sản phẩm!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
             SetControlState(false);
             ClearInput();
-        }
-
-        private void txtMaThuongHieu_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTenThuongHieu_TextChanged(object sender, EventArgs e)
-        {
-
+            LoadData(); // Phục hồi lại dữ liệu cũ trên các ô Textbox nếu người dùng đang sửa dở
         }
     }
 }

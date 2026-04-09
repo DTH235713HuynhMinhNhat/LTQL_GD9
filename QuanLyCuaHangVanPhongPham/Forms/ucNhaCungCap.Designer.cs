@@ -1,4 +1,4 @@
-﻿namespace QuanLyCuaHangVanPhongPham.Forms
+namespace QuanLyCuaHangVanPhongPham.Forms
 {
     partial class ucNhaCungCap
     {
@@ -32,6 +32,8 @@
             txtMaNCC = new TextBox();
             lblMaNCC = new Label();
             lblTitle = new Label();
+            txtTimKiem = new TextBox();
+            lblTimKiem = new Label();
             dgvNhaCungCap = new DataGridView();
             pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvNhaCungCap).BeginInit();
@@ -40,6 +42,8 @@
             // pnlTop
             // 
             pnlTop.BackColor = Color.White;
+            pnlTop.Controls.Add(txtTimKiem);
+            pnlTop.Controls.Add(lblTimKiem);
             pnlTop.Controls.Add(txtDiaChi);
             pnlTop.Controls.Add(lblDiaChi);
             pnlTop.Controls.Add(txtDienThoai);
@@ -218,6 +222,25 @@
             lblTitle.TabIndex = 0;
             lblTitle.Text = "QUẢN LÝ NHÀ CUNG CẤP";
             // 
+            // txtTimKiem
+            // 
+            txtTimKiem.Font = new Font("Segoe UI", 10F);
+            txtTimKiem.Location = new Point(620, 15);
+            txtTimKiem.Name = "txtTimKiem";
+            txtTimKiem.Size = new Size(280, 30);
+            txtTimKiem.TabIndex = 14;
+            txtTimKiem.TextChanged += txtTimKiem_TextChanged;
+            // 
+            // lblTimKiem
+            // 
+            lblTimKiem.AutoSize = true;
+            lblTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTimKiem.Location = new Point(520, 18);
+            lblTimKiem.Name = "lblTimKiem";
+            lblTimKiem.Size = new Size(91, 23);
+            lblTimKiem.TabIndex = 15;
+            lblTimKiem.Text = "Tìm kiếm:";
+            // 
             // dgvNhaCungCap
             // 
             dgvNhaCungCap.AllowUserToAddRows = false;
@@ -268,6 +291,8 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.Label lblTimKiem;
         private System.Windows.Forms.DataGridView dgvNhaCungCap;
     }
 }
