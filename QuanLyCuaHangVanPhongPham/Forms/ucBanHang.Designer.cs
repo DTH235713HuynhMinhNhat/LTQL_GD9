@@ -32,6 +32,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            tableLayoutPanelMain = new TableLayoutPanel();
             pnlLeft = new Panel();
             dgvSanPham = new DataGridView();
             pnlLeftBottom = new Panel();
@@ -50,8 +51,8 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             colThanhTien = new DataGridViewTextBoxColumn();
             pnlRightBottom = new Panel();
             btnXoaKhaiGio = new Button();
-            btnThanhToan = new Button();
             btnInHoaDon = new Button();
+            btnThanhToan = new Button();
             lblTongTienValue = new Label();
             lblTongTienText = new Label();
             pnlRightTop = new Panel();
@@ -60,6 +61,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             lblTitleRight = new Label();
             nudQuantityAdd = new NumericUpDown();
             lblSoLuong = new Label();
+            tableLayoutPanelMain.SuspendLayout();
             pnlLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
             pnlLeftBottom.SuspendLayout();
@@ -71,16 +73,31 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             ((System.ComponentModel.ISupportInitialize)nudQuantityAdd).BeginInit();
             SuspendLayout();
             // 
+            // tableLayoutPanelMain
+            // 
+            tableLayoutPanelMain.ColumnCount = 2;
+            tableLayoutPanelMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanelMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanelMain.Controls.Add(pnlLeft, 0, 0);
+            tableLayoutPanelMain.Controls.Add(pnlRight, 1, 0);
+            tableLayoutPanelMain.Dock = DockStyle.Fill;
+            tableLayoutPanelMain.Location = new Point(0, 0);
+            tableLayoutPanelMain.Name = "tableLayoutPanelMain";
+            tableLayoutPanelMain.RowCount = 1;
+            tableLayoutPanelMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanelMain.Size = new Size(910, 580);
+            tableLayoutPanelMain.TabIndex = 0;
+            // 
             // pnlLeft
             // 
             pnlLeft.BorderStyle = BorderStyle.FixedSingle;
             pnlLeft.Controls.Add(dgvSanPham);
             pnlLeft.Controls.Add(pnlLeftBottom);
             pnlLeft.Controls.Add(pnlLeftTop);
-            pnlLeft.Dock = DockStyle.Left;
-            pnlLeft.Location = new Point(0, 0);
+            pnlLeft.Dock = DockStyle.Fill;
+            pnlLeft.Location = new Point(3, 3);
             pnlLeft.Name = "pnlLeft";
-            pnlLeft.Size = new Size(450, 580);
+            pnlLeft.Size = new Size(449, 574);
             pnlLeft.TabIndex = 0;
             // 
             // dgvSanPham
@@ -109,7 +126,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             dgvSanPham.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvSanPham.RowTemplate.Height = 35;
             dgvSanPham.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSanPham.Size = new Size(448, 378);
+            dgvSanPham.Size = new Size(447, 372);
             dgvSanPham.TabIndex = 1;
             // 
             // pnlLeftBottom
@@ -118,9 +135,9 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlLeftBottom.BorderStyle = BorderStyle.FixedSingle;
             pnlLeftBottom.Controls.Add(btnThemVaoGio);
             pnlLeftBottom.Dock = DockStyle.Bottom;
-            pnlLeftBottom.Location = new Point(0, 478);
+            pnlLeftBottom.Location = new Point(0, 472);
             pnlLeftBottom.Name = "pnlLeftBottom";
-            pnlLeftBottom.Size = new Size(448, 100);
+            pnlLeftBottom.Size = new Size(447, 100);
             pnlLeftBottom.TabIndex = 2;
             // 
             // btnThemVaoGio
@@ -136,7 +153,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnThemVaoGio.Name = "btnThemVaoGio";
             btnThemVaoGio.Size = new Size(180, 40);
             btnThemVaoGio.TabIndex = 0;
-            btnThemVaoGio.Text = "\U0001f6d2 THÊM VÀO GIỎ";
+            btnThemVaoGio.Text = "🛒 THÊM VÀO GIỎ";
             btnThemVaoGio.UseVisualStyleBackColor = false;
             btnThemVaoGio.Click += btnThemVaoGio_Click_1;
             // 
@@ -150,7 +167,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlLeftTop.Dock = DockStyle.Top;
             pnlLeftTop.Location = new Point(0, 0);
             pnlLeftTop.Name = "pnlLeftTop";
-            pnlLeftTop.Size = new Size(448, 100);
+            pnlLeftTop.Size = new Size(447, 100);
             pnlLeftTop.TabIndex = 0;
             // 
             // cboLoaiSP
@@ -184,7 +201,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             lblTitleLeft.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblTitleLeft.Location = new Point(10, 16);
             lblTitleLeft.Name = "lblTitleLeft";
-            lblTitleLeft.Size = new Size(119, 28);
+            lblTitleLeft.Size = new Size(116, 28);
             lblTitleLeft.TabIndex = 2;
             lblTitleLeft.Text = "SẢN PHẨM";
             // 
@@ -194,9 +211,9 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlRight.Controls.Add(pnlRightBottom);
             pnlRight.Controls.Add(pnlRightTop);
             pnlRight.Dock = DockStyle.Fill;
-            pnlRight.Location = new Point(450, 0);
+            pnlRight.Location = new Point(458, 3);
             pnlRight.Name = "pnlRight";
-            pnlRight.Size = new Size(460, 580);
+            pnlRight.Size = new Size(449, 574);
             pnlRight.TabIndex = 1;
             // 
             // dgvGioHang
@@ -225,7 +242,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             dgvGioHang.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvGioHang.RowTemplate.Height = 35;
             dgvGioHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvGioHang.Size = new Size(460, 370);
+            dgvGioHang.Size = new Size(449, 364);
             dgvGioHang.TabIndex = 1;
             // 
             // colMaSP
@@ -274,9 +291,9 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlRightBottom.Controls.Add(lblTongTienValue);
             pnlRightBottom.Controls.Add(lblTongTienText);
             pnlRightBottom.Dock = DockStyle.Bottom;
-            pnlRightBottom.Location = new Point(0, 430);
+            pnlRightBottom.Location = new Point(0, 424);
             pnlRightBottom.Name = "pnlRightBottom";
-            pnlRightBottom.Size = new Size(460, 150);
+            pnlRightBottom.Size = new Size(449, 150);
             pnlRightBottom.TabIndex = 2;
             // 
             // btnXoaKhaiGio
@@ -297,6 +314,22 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnXoaKhaiGio.UseVisualStyleBackColor = false;
             btnXoaKhaiGio.Click += btnXoaKhaiGio_Click_1;
             // 
+            // btnInHoaDon
+            // 
+            btnInHoaDon.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnInHoaDon.BackColor = Color.FromArgb(52, 152, 219);
+            btnInHoaDon.FlatAppearance.BorderSize = 0;
+            btnInHoaDon.FlatStyle = FlatStyle.Flat;
+            btnInHoaDon.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnInHoaDon.ForeColor = Color.White;
+            btnInHoaDon.Location = new Point(139, 90);
+            btnInHoaDon.Name = "btnInHoaDon";
+            btnInHoaDon.Size = new Size(88, 40);
+            btnInHoaDon.TabIndex = 4;
+            btnInHoaDon.Text = "🖨 In Bill";
+            btnInHoaDon.UseVisualStyleBackColor = false;
+            btnInHoaDon.Click += btnInHoaDon_Click;
+            // 
             // btnThanhToan
             // 
             btnThanhToan.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -307,29 +340,13 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnThanhToan.FlatStyle = FlatStyle.Flat;
             btnThanhToan.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnThanhToan.ForeColor = Color.White;
-            btnThanhToan.Location = new Point(244, 80);
+            btnThanhToan.Location = new Point(233, 80);
             btnThanhToan.Name = "btnThanhToan";
             btnThanhToan.Size = new Size(196, 50);
             btnThanhToan.TabIndex = 1;
             btnThanhToan.Text = "💳 THANH TOÁN";
             btnThanhToan.UseVisualStyleBackColor = false;
             btnThanhToan.Click += btnThanhToan_Click_1;
-            // 
-            // btnInHoaDon
-            // 
-            btnInHoaDon.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnInHoaDon.BackColor = Color.FromArgb(52, 152, 219);
-            btnInHoaDon.FlatAppearance.BorderSize = 0;
-            btnInHoaDon.FlatStyle = FlatStyle.Flat;
-            btnInHoaDon.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnInHoaDon.ForeColor = Color.White;
-            btnInHoaDon.Location = new Point(150, 90);
-            btnInHoaDon.Name = "btnInHoaDon";
-            btnInHoaDon.Size = new Size(88, 40);
-            btnInHoaDon.TabIndex = 4;
-            btnInHoaDon.Text = "🖨 In Bill";
-            btnInHoaDon.UseVisualStyleBackColor = false;
-            btnInHoaDon.Click += btnInHoaDon_Click;
             // 
             // lblTongTienValue
             // 
@@ -362,14 +379,14 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlRightTop.Dock = DockStyle.Top;
             pnlRightTop.Location = new Point(0, 0);
             pnlRightTop.Name = "pnlRightTop";
-            pnlRightTop.Size = new Size(460, 60);
+            pnlRightTop.Size = new Size(449, 60);
             pnlRightTop.TabIndex = 0;
             // 
             // cboKhachHang
             // 
             cboKhachHang.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cboKhachHang.FormattingEnabled = true;
-            cboKhachHang.Location = new Point(227, 14);
+            cboKhachHang.Location = new Point(216, 14);
             cboKhachHang.Name = "cboKhachHang";
             cboKhachHang.Size = new Size(183, 31);
             cboKhachHang.TabIndex = 2;
@@ -378,7 +395,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(160, 19);
+            label1.Location = new Point(149, 19);
             label1.Name = "label1";
             label1.Size = new Size(61, 23);
             label1.TabIndex = 3;
@@ -416,11 +433,11 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pnlRight);
-            Controls.Add(pnlLeft);
+            Controls.Add(tableLayoutPanelMain);
             Font = new Font("Segoe UI", 10.2F);
             Name = "ucBanHang";
             Size = new Size(910, 580);
+            tableLayoutPanelMain.ResumeLayout(false);
             pnlLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).EndInit();
             pnlLeftBottom.ResumeLayout(false);
@@ -438,6 +455,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
 
         #endregion
 
+        private TableLayoutPanel tableLayoutPanelMain;
         private Panel pnlLeft;
         private Panel pnlLeftTop;
         private Label lblTitleLeft;
