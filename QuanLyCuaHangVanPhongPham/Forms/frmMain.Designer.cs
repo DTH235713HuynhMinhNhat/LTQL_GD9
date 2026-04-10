@@ -291,6 +291,7 @@ namespace QuanLyVanPhongPham.Forms
             btnDangXuat.Text = "🚪 Đăng xuất";
             btnDangXuat.TextAlign = ContentAlignment.MiddleLeft;
             btnDangXuat.UseVisualStyleBackColor = true;
+            btnDangXuat.Click += btnDangXuat_Click;
             // 
             // pnlMain
             // 

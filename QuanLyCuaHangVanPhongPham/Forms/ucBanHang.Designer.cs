@@ -51,6 +51,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlRightBottom = new Panel();
             btnXoaKhaiGio = new Button();
             btnThanhToan = new Button();
+            btnInHoaDon = new Button();
             lblTongTienValue = new Label();
             lblTongTienText = new Label();
             pnlRightTop = new Panel();
@@ -268,6 +269,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlRightBottom.BackColor = Color.WhiteSmoke;
             pnlRightBottom.BorderStyle = BorderStyle.FixedSingle;
             pnlRightBottom.Controls.Add(btnXoaKhaiGio);
+            pnlRightBottom.Controls.Add(btnInHoaDon);
             pnlRightBottom.Controls.Add(btnThanhToan);
             pnlRightBottom.Controls.Add(lblTongTienValue);
             pnlRightBottom.Controls.Add(lblTongTienText);
@@ -312,6 +314,22 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnThanhToan.Text = "💳 THANH TOÁN";
             btnThanhToan.UseVisualStyleBackColor = false;
             btnThanhToan.Click += btnThanhToan_Click_1;
+            // 
+            // btnInHoaDon
+            // 
+            btnInHoaDon.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnInHoaDon.BackColor = Color.FromArgb(52, 152, 219);
+            btnInHoaDon.FlatAppearance.BorderSize = 0;
+            btnInHoaDon.FlatStyle = FlatStyle.Flat;
+            btnInHoaDon.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnInHoaDon.ForeColor = Color.White;
+            btnInHoaDon.Location = new Point(150, 90);
+            btnInHoaDon.Name = "btnInHoaDon";
+            btnInHoaDon.Size = new Size(88, 40);
+            btnInHoaDon.TabIndex = 4;
+            btnInHoaDon.Text = "🖨 In Bill";
+            btnInHoaDon.UseVisualStyleBackColor = false;
+            btnInHoaDon.Click += btnInHoaDon_Click;
             // 
             // lblTongTienValue
             // 
@@ -443,6 +461,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         private Label lblTongTienValue;
         private Button btnThanhToan;
         private Button btnXoaKhaiGio;
+        private Button btnInHoaDon;
 
         // Trả lại 5 cột sạch sẽ
         private DataGridViewTextBoxColumn colMaSP;

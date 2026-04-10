@@ -67,6 +67,9 @@ namespace QuanLyCuaHangVanPhongPham.Forms
 
             btnThanhToan.Click -= btnThanhToan_Click_1;
             btnThanhToan.Click += btnThanhToan_Click_1;
+
+            btnInHoaDon.Click -= btnInHoaDon_Click;
+            btnInHoaDon.Click += btnInHoaDon_Click;
         }
 
         private void UcBanHang_Load(object sender, EventArgs e)
@@ -464,6 +467,87 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         private void btnLamMoiKH_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        // --- 6. IN HÓA ĐƠN ---
+        private void btnInHoaDon_Click(object sender, EventArgs e)
+        {
+            if (dgvGioHang.Rows.Count == 0)
+            {
+                MessageBox.Show("Giỏ hàng trống, không có gì để in!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            PrintPreviewDialog ppd = new PrintPreviewDialog();
+            System.Drawing.Printing.PrintDocument pd = new System.Drawing.Printing.PrintDocument();
+            pd.PrintPage += Pd_PrintPage;
+            ppd.Document = pd;
+            ppd.WindowState = FormWindowState.Maximized;
+            ppd.ShowDialog();
+        }
+
+        private void Pd_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            Font fontTieuDe = new Font("Arial", 18, FontStyle.Bold);
+            Font fontNoiDung = new Font("Arial", 12);
+            Font fontBold = new Font("Arial", 12, FontStyle.Bold);
+
+            float y = 50;
+            float margin = 50;
+            float fullWidth = e.PageBounds.Width - 2 * margin;
+
+            // 1. TIÊU ĐỀ
+            g.DrawString("HÓA ĐƠN BÁN HÀNG", fontTieuDe, Brushes.Black, new PointF(margin + (fullWidth - g.MeasureString("HÓA ĐƠN BÁN HÀNG", fontTieuDe).Width) / 2, y));
+            y += 40;
+            g.DrawString("CỬA HÀNG VĂN PHÒNG PHẨM ABC", fontBold, Brushes.Black, new PointF(margin + (fullWidth - g.MeasureString("CỬA HÀNG VĂN PHÒNG PHẨM ABC", fontBold).Width) / 2, y));
+            y += 25;
+            g.DrawString("Đ/C: 123 Đường ABC, Quận XYZ, TP.HCM", fontNoiDung, Brushes.Black, new PointF(margin + (fullWidth - g.MeasureString("Đ/C: 123 Đường ABC, Quận XYZ, TP.HCM", fontNoiDung).Width) / 2, y));
+            y += 40;
+
+            // 2. THÔNG TIN KHÁCH HÀNG & NGÀY LẬP
+            g.DrawString("Ngày lập: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm"), fontNoiDung, Brushes.Black, margin, y);
+            y += 25;
+            string tenKH = cboKhachHang.Text;
+            g.DrawString("Khách hàng: " + tenKH, fontNoiDung, Brushes.Black, margin, y);
+            y += 40;
+
+            // 3. DANH SÁCH SẢN PHẨM (BẢNG)
+            g.DrawLine(Pens.Black, margin, y, margin + fullWidth, y);
+            y += 5;
+            g.DrawString("Tên Sản Phẩm", fontBold, Brushes.Black, margin, y);
+            g.DrawString("SL", fontBold, Brushes.Black, margin + 350, y);
+            g.DrawString("Đơn Giá", fontBold, Brushes.Black, margin + 420, y);
+            g.DrawString("Thành Tiền", fontBold, Brushes.Black, margin + 550, y);
+            y += 25;
+            g.DrawLine(Pens.Black, margin, y, margin + fullWidth, y);
+            y += 10;
+
+            foreach (DataGridViewRow row in dgvGioHang.Rows)
+            {
+                string ten = row.Cells["colTenSP"].Value.ToString();
+                string sl = row.Cells["colSoLuong"].Value.ToString();
+                decimal gia = Convert.ToDecimal(row.Cells["colDonGia"].Value);
+                decimal tt = Convert.ToDecimal(row.Cells["colThanhTien"].Value);
+
+                g.DrawString(ten, fontNoiDung, Brushes.Black, margin, y);
+                g.DrawString(sl, fontNoiDung, Brushes.Black, margin + 350, y);
+                g.DrawString(gia.ToString("N0"), fontNoiDung, Brushes.Black, margin + 420, y);
+                g.DrawString(tt.ToString("N0"), fontNoiDung, Brushes.Black, margin + 550, y);
+                y += 25;
+
+                if (y > e.PageBounds.Height - 100) break; // Tránh tràn trang
+            }
+
+            // 4. TỔNG TIỀN
+            y += 20;
+            g.DrawLine(Pens.Black, margin, y, margin + fullWidth, y);
+            y += 10;
+            g.DrawString("TỔNG CỘNG: ", fontBold, Brushes.Black, margin + 350, y);
+            g.DrawString(lblTongTienValue.Text, fontBold, Brushes.Red, margin + 550, y);
+            
+            y += 60;
+            g.DrawString("Cảm ơn quý khách đã mua hàng!", new Font("Arial", 12, FontStyle.Italic), Brushes.Black, margin + (fullWidth - g.MeasureString("Cảm ơn quý khách đã mua hàng!", new Font("Arial", 12, FontStyle.Italic)).Width) / 2, y);
         }
     }
 }

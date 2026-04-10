@@ -11,10 +11,31 @@ namespace QuanLyVanPhongPham.Forms
 
         // Biến lưu trữ nút (menu) đang được chọn
         private Button currentButton;
+        private QuanLyVanPhongPham.Data.TaiKhoan _currentUser;
 
-        public frmMain()
+        public frmMain(QuanLyVanPhongPham.Data.TaiKhoan user)
         {
             InitializeComponent();
+            _currentUser = user;
+            
+            // Xử lý hiển thị thông tin user
+            lblName.Text = _currentUser.NhanVien?.HoTen ?? _currentUser.TenDangNhap;
+            lblRole.Text = _currentUser.QuyenHan == "Admin" ? "Quản trị viên" : "Nhân viên";
+
+            // Áp dụng phân quyền
+            ApplyPermissions();
+        }
+
+        private void ApplyPermissions()
+        {
+            if (_currentUser.QuyenHan != "Admin")
+            {
+                // Ẩn các tính năng dành cho Admin
+                btnNhanVien.Visible = false;
+                btnLichSuNhapKho.Visible = false;
+                btnNhaCungCap.Visible = false;
+                btnNhapKho.Visible = false;
+            }
         }
 
         #endregion
@@ -74,9 +95,8 @@ namespace QuanLyVanPhongPham.Forms
         // ==========================================
         private void btnTrangChu_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
-            pnlMain.Controls.Clear();
-            // Optional: Thêm Dashboard hoặc Welcome Label vào đây
+            ucTrangChu uc = new ucTrangChu();
+            AddUserControl(uc, sender);
         }
 
         private void btnHoaDon_Click(object sender, EventArgs e)
@@ -131,6 +151,15 @@ namespace QuanLyVanPhongPham.Forms
         private void btnNhanVien_Click(object sender, EventArgs e)
         {
             AddUserControl(new ucNhanVien(), sender);
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.DialogResult = DialogResult.OK; // Đánh dấu là đóng để đăng xuất
+                this.Close();
+            }
         }
 
         #endregion

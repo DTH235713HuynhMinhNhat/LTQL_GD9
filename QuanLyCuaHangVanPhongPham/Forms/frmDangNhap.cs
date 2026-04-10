@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 using QuanLyCuaHangVanPhongPham.Forms;
@@ -40,12 +40,20 @@ namespace QuanLyVanPhongPham.Forms
                         MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // Khởi tạo và mở Form Main
-                        frmMain fMain = new frmMain();
+                        // Truyền object user sang Form Main để phân quyền
+                        frmMain fMain = new frmMain(user);
                         this.Hide(); // Ẩn form đăng nhập đi
-                        fMain.ShowDialog();
 
-                        // Sau khi Form Main bị đóng, thì đóng luôn chương trình
-                        this.Close();
+                        // Nếu ShowDialog trả về OK nghĩa là user bấm "Đăng xuất"
+                        if (fMain.ShowDialog() == DialogResult.OK)
+                        {
+                            txtMatKhau.Clear();
+                            this.Show();
+                        }
+                        else
+                        {
+                            this.Close(); // Thoát hẳn chương trình nếu đóng X
+                        }
                     }
                     else
                     {

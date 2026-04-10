@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore; // Thêm thư viện này để dùng AsNoTracking()
 using QuanLyVanPhongPham.Data;
 using ClosedXML.Excel;
+using QuanLyVanPhongPham.Utilities;
 
 namespace QuanLyVanPhongPham.Forms
 {
@@ -294,74 +295,7 @@ namespace QuanLyVanPhongPham.Forms
 
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
-            // Tính năng xuất Excel sẽ code ở đây
-            // Kiểm tra xem có dữ liệu trên DataGridView không
-            if (dgvSanPham.Rows.Count == 0)
-            {
-                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Mở hộp thoại cho phép người dùng chọn nơi lưu file
-            using (SaveFileDialog sfd = new SaveFileDialog())
-            {
-                sfd.Filter = "Excel Workbook (*.xlsx)|*.xlsx";
-                sfd.Title = "Lưu danh sách sản phẩm";
-                sfd.FileName = "DanhSachSanPham.xlsx"; // Tên file mặc định
-
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        // Khởi tạo file Excel mới
-                        using (XLWorkbook workbook = new XLWorkbook())
-                        {
-                            // Tạo một sheet mới tên là "Danh sách SP"
-                            var worksheet = workbook.Worksheets.Add("Danh sách SP");
-
-                            // 1. In Tiêu đề cột (Header) từ DataGridView
-                            for (int i = 0; i < dgvSanPham.Columns.Count; i++)
-                            {
-                                worksheet.Cell(1, i + 1).Value = dgvSanPham.Columns[i].HeaderText;
-                            }
-
-                            // 2. Đổ dữ liệu các dòng
-                            for (int i = 0; i < dgvSanPham.Rows.Count; i++)
-                            {
-                                for (int j = 0; j < dgvSanPham.Columns.Count; j++)
-                                {
-                                    // 🌟 Xử lý ngoại lệ: Nếu là cột Hình Ảnh thì chỉ in ra chữ "[Có ảnh]" thay vì lỗi
-                                    if (dgvSanPham.Columns[j] is DataGridViewImageColumn)
-                                    {
-                                        worksheet.Cell(i + 2, j + 1).Value = "[Có ảnh]";
-                                    }
-                                    else
-                                    {
-                                        // Lấy giá trị của ô, nếu null thì gán bằng chuỗi rỗng
-                                        worksheet.Cell(i + 2, j + 1).Value = dgvSanPham.Rows[i].Cells[j].Value?.ToString() ?? "";
-                                    }
-                                }
-                            }
-
-                            // 3. Định dạng làm đẹp Excel
-                            var headerRow = worksheet.Row(1);
-                            headerRow.Style.Font.Bold = true; // In đậm tiêu đề
-                            headerRow.Style.Fill.BackgroundColor = XLColor.LightGray; // Tô nền xám cho tiêu đề
-                            worksheet.Columns().AdjustToContents(); // Tự động căn chỉnh độ rộng cột cho vừa với chữ
-
-                            // 4. Lưu file vào đường dẫn đã chọn
-                            workbook.SaveAs(sfd.FileName);
-                        }
-
-                        MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        // Bắt lỗi trong trường hợp file đang bị mở bởi phần mềm khác không ghi đè được
-                        MessageBox.Show("Lỗi khi xuất file: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
+            ExcelHelper.ExportToExcel(dgvSanPham, "DanhSachSanPham");
         }
 
         private void dgvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
