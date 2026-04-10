@@ -24,6 +24,9 @@ namespace QuanLyVanPhongPham.Forms
 
             // Áp dụng phân quyền
             ApplyPermissions();
+
+            // Mặc định vào Trang Chủ khi mở ứng dụng
+            btnTrangChu_Click(btnTrangChu, EventArgs.Empty);
         }
 
         private void ApplyPermissions()

@@ -18,6 +18,8 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         private void InitializeComponent()
         {
             pnlTop = new Panel();
+            txtTimKiem = new TextBox();
+            lblTimKiem = new Label();
             txtDiaChi = new TextBox();
             lblDiaChi = new Label();
             txtDienThoai = new TextBox();
@@ -32,8 +34,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             txtMaNCC = new TextBox();
             lblMaNCC = new Label();
             lblTitle = new Label();
-            txtTimKiem = new TextBox();
-            lblTimKiem = new Label();
+            btnXuatExcel = new Button();
             dgvNhaCungCap = new DataGridView();
             pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvNhaCungCap).BeginInit();
@@ -58,11 +59,27 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlTop.Controls.Add(txtMaNCC);
             pnlTop.Controls.Add(lblMaNCC);
             pnlTop.Controls.Add(lblTitle);
+            pnlTop.Controls.Add(btnXuatExcel);
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Location = new Point(0, 0);
             pnlTop.Name = "pnlTop";
             pnlTop.Size = new Size(950, 230);
             pnlTop.TabIndex = 0;
+            txtTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtTimKiem.Font = new Font("Segoe UI", 10F);
+            txtTimKiem.Location = new Point(620, 15);
+            txtTimKiem.Name = "txtTimKiem";
+            txtTimKiem.Size = new Size(280, 30);
+            txtTimKiem.TabIndex = 14;
+            txtTimKiem.TextChanged += txtTimKiem_TextChanged;
+            lblTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTimKiem.AutoSize = true;
+            lblTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTimKiem.Location = new Point(520, 18);
+            lblTimKiem.Name = "lblTimKiem";
+            lblTimKiem.Size = new Size(91, 23);
+            lblTimKiem.TabIndex = 15;
+            lblTimKiem.Text = "Tìm kiếm:";
             // 
             // txtDiaChi
             // 
@@ -99,9 +116,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             lblDienThoai.Size = new Size(93, 23);
             lblDienThoai.TabIndex = 10;
             lblDienThoai.Text = "Điện thoại:";
-            // 
-            // btnHuy
-            // 
+            btnHuy.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnHuy.BackColor = Color.FromArgb(149, 165, 166);
             btnHuy.FlatAppearance.BorderSize = 0;
             btnHuy.FlatAppearance.MouseDownBackColor = Color.FromArgb(127, 140, 141);
@@ -116,9 +131,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnHuy.Text = "✖ Hủy";
             btnHuy.UseVisualStyleBackColor = false;
             btnHuy.Click += btnHuy_Click;
-            // 
-            // btnLuu
-            // 
+            btnLuu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnLuu.BackColor = Color.FromArgb(46, 204, 113);
             btnLuu.FlatAppearance.BorderSize = 0;
             btnLuu.FlatAppearance.MouseDownBackColor = Color.FromArgb(39, 174, 96);
@@ -133,9 +146,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnLuu.Text = "💾 Lưu";
             btnLuu.UseVisualStyleBackColor = false;
             btnLuu.Click += btnLuu_Click;
-            // 
-            // btnXoa
-            // 
+            btnXoa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnXoa.BackColor = Color.FromArgb(231, 76, 60);
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 57, 43);
@@ -150,9 +161,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnXoa.Text = "🗑 Xóa";
             btnXoa.UseVisualStyleBackColor = false;
             btnXoa.Click += btnXoa_Click;
-            // 
-            // btnSua
-            // 
+            btnSua.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSua.BackColor = Color.FromArgb(241, 196, 15);
             btnSua.FlatAppearance.BorderSize = 0;
             btnSua.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 172, 13);
@@ -167,9 +176,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnSua.Text = "✎ Sửa";
             btnSua.UseVisualStyleBackColor = false;
             btnSua.Click += btnSua_Click;
-            // 
-            // btnThem
-            // 
+            btnThem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnThem.BackColor = Color.FromArgb(52, 152, 219);
             btnThem.FlatAppearance.BorderSize = 0;
             btnThem.FlatAppearance.MouseDownBackColor = Color.FromArgb(41, 128, 185);
@@ -231,25 +238,19 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             lblTitle.Size = new Size(308, 32);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "QUẢN LÝ NHÀ CUNG CẤP";
-            // 
-            // txtTimKiem
-            // 
-            txtTimKiem.Font = new Font("Segoe UI", 10F);
-            txtTimKiem.Location = new Point(620, 15);
-            txtTimKiem.Name = "txtTimKiem";
-            txtTimKiem.Size = new Size(280, 30);
-            txtTimKiem.TabIndex = 14;
-            txtTimKiem.TextChanged += txtTimKiem_TextChanged;
-            // 
-            // lblTimKiem
-            // 
-            lblTimKiem.AutoSize = true;
-            lblTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblTimKiem.Location = new Point(520, 18);
-            lblTimKiem.Name = "lblTimKiem";
-            lblTimKiem.Size = new Size(91, 23);
-            lblTimKiem.TabIndex = 15;
-            lblTimKiem.Text = "Tìm kiếm:";
+            btnXuatExcel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnXuatExcel.BackColor = Color.FromArgb(39, 174, 96);
+            btnXuatExcel.FlatAppearance.BorderSize = 0;
+            btnXuatExcel.FlatStyle = FlatStyle.Flat;
+            btnXuatExcel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnXuatExcel.ForeColor = Color.White;
+            btnXuatExcel.Location = new Point(650, 170);
+            btnXuatExcel.Name = "btnXuatExcel";
+            btnXuatExcel.Size = new Size(130, 40);
+            btnXuatExcel.TabIndex = 16;
+            btnXuatExcel.Text = "📊 Xuất Excel";
+            btnXuatExcel.UseVisualStyleBackColor = false;
+            btnXuatExcel.Click += btnXuatExcel_Click;
             // 
             // dgvNhaCungCap
             // 
@@ -304,5 +305,6 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Label lblTimKiem;
         private System.Windows.Forms.DataGridView dgvNhaCungCap;
+        private System.Windows.Forms.Button btnXuatExcel;
     }
 }

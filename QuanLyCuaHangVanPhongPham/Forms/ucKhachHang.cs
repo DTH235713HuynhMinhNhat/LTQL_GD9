@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using QuanLyVanPhongPham.Data; // Đảm bảo đúng namespace chứa DbContext của bạn
+using QuanLyVanPhongPham.Utilities;
 
 namespace QuanLyCuaHangVanPhongPham.Forms
 {
@@ -229,6 +230,11 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         }
 
         // --- HÀM TÌM KIẾM & PLACEHOLDER ---
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            ExcelHelper.ExportToExcel(dgvKhachHang, "DanhSachKhachHang");
+        }
+
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
             LoadData();

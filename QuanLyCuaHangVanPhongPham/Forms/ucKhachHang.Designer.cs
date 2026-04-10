@@ -17,271 +17,271 @@ namespace QuanLyCuaHangVanPhongPham.Forms
 
         private void InitializeComponent()
         {
-            this.pnlTop = new System.Windows.Forms.Panel();
-            this.txtDiaChi = new System.Windows.Forms.TextBox();
-            this.lblDiaChi = new System.Windows.Forms.Label();
-            this.txtDienThoai = new System.Windows.Forms.TextBox();
-            this.lblDienThoai = new System.Windows.Forms.Label();
-            this.btnHuy = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.txtTenKH = new System.Windows.Forms.TextBox();
-            this.lblTenKH = new System.Windows.Forms.Label();
-            this.txtMaKH = new System.Windows.Forms.TextBox();
-            this.lblMaKH = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.lblTimKiem = new System.Windows.Forms.Label();
-            this.dgvKhachHang = new System.Windows.Forms.DataGridView();
-            this.pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
-            this.SuspendLayout();
+            pnlTop = new Panel();
+            txtTimKiem = new TextBox();
+            lblTimKiem = new Label();
+            txtDiaChi = new TextBox();
+            lblDiaChi = new Label();
+            txtDienThoai = new TextBox();
+            lblDienThoai = new Label();
+            btnHuy = new Button();
+            btnLuu = new Button();
+            btnXoa = new Button();
+            btnSua = new Button();
+            btnThem = new Button();
+            txtTenKH = new TextBox();
+            lblTenKH = new Label();
+            txtMaKH = new TextBox();
+            lblMaKH = new Label();
+            lblTitle = new Label();
+            btnXuatExcel = new Button();
+            dgvKhachHang = new DataGridView();
+            pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvKhachHang).BeginInit();
+            SuspendLayout();
             // 
             // pnlTop
             // 
-            this.pnlTop.BackColor = System.Drawing.Color.White;
-            this.pnlTop.Controls.Add(this.txtTimKiem);
-            this.pnlTop.Controls.Add(this.lblTimKiem);
-            this.pnlTop.Controls.Add(this.txtDiaChi);
-            this.pnlTop.Controls.Add(this.lblDiaChi);
-            this.pnlTop.Controls.Add(this.txtDienThoai);
-            this.pnlTop.Controls.Add(this.lblDienThoai);
-            this.pnlTop.Controls.Add(this.btnHuy);
-            this.pnlTop.Controls.Add(this.btnLuu);
-            this.pnlTop.Controls.Add(this.btnXoa);
-            this.pnlTop.Controls.Add(this.btnSua);
-            this.pnlTop.Controls.Add(this.btnThem);
-            this.pnlTop.Controls.Add(this.txtTenKH);
-            this.pnlTop.Controls.Add(this.lblTenKH);
-            this.pnlTop.Controls.Add(this.txtMaKH);
-            this.pnlTop.Controls.Add(this.lblMaKH);
-            this.pnlTop.Controls.Add(this.lblTitle);
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(0, 0);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(950, 230);
-            this.pnlTop.TabIndex = 0;
+            pnlTop.BackColor = Color.White;
+            pnlTop.Controls.Add(txtTimKiem);
+            pnlTop.Controls.Add(lblTimKiem);
+            pnlTop.Controls.Add(txtDiaChi);
+            pnlTop.Controls.Add(lblDiaChi);
+            pnlTop.Controls.Add(txtDienThoai);
+            pnlTop.Controls.Add(lblDienThoai);
+            pnlTop.Controls.Add(btnHuy);
+            pnlTop.Controls.Add(btnLuu);
+            pnlTop.Controls.Add(btnXoa);
+            pnlTop.Controls.Add(btnSua);
+            pnlTop.Controls.Add(btnThem);
+            pnlTop.Controls.Add(txtTenKH);
+            pnlTop.Controls.Add(lblTenKH);
+            pnlTop.Controls.Add(txtMaKH);
+            pnlTop.Controls.Add(lblMaKH);
+            pnlTop.Controls.Add(lblTitle);
+            pnlTop.Controls.Add(btnXuatExcel);
+            pnlTop.Dock = DockStyle.Top;
+            pnlTop.Location = new Point(0, 0);
+            pnlTop.Name = "pnlTop";
+            pnlTop.Size = new Size(950, 230);
+            pnlTop.TabIndex = 0;
+            txtTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtTimKiem.Font = new Font("Segoe UI", 10F);
+            txtTimKiem.Location = new Point(620, 15);
+            txtTimKiem.Name = "txtTimKiem";
+            txtTimKiem.Size = new Size(280, 30);
+            txtTimKiem.TabIndex = 14;
+            txtTimKiem.TextChanged += txtTimKiem_TextChanged;
+            lblTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblTimKiem.AutoSize = true;
+            lblTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTimKiem.Location = new Point(520, 18);
+            lblTimKiem.Name = "lblTimKiem";
+            lblTimKiem.Size = new Size(91, 23);
+            lblTimKiem.TabIndex = 15;
+            lblTimKiem.Text = "Tìm kiếm:";
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDiaChi.Location = new System.Drawing.Point(420, 110);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(400, 30);
-            this.txtDiaChi.TabIndex = 13;
+            txtDiaChi.Font = new Font("Segoe UI", 10F);
+            txtDiaChi.Location = new Point(420, 110);
+            txtDiaChi.Name = "txtDiaChi";
+            txtDiaChi.Size = new Size(400, 30);
+            txtDiaChi.TabIndex = 13;
             // 
             // lblDiaChi
             // 
-            this.lblDiaChi.AutoSize = true;
-            this.lblDiaChi.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDiaChi.Location = new System.Drawing.Point(340, 113);
-            this.lblDiaChi.Name = "lblDiaChi";
-            this.lblDiaChi.Size = new System.Drawing.Size(66, 23);
-            this.lblDiaChi.TabIndex = 12;
-            this.lblDiaChi.Text = "Địa chỉ:";
+            lblDiaChi.AutoSize = true;
+            lblDiaChi.Font = new Font("Segoe UI", 10F);
+            lblDiaChi.Location = new Point(340, 113);
+            lblDiaChi.Name = "lblDiaChi";
+            lblDiaChi.Size = new Size(66, 23);
+            lblDiaChi.TabIndex = 12;
+            lblDiaChi.Text = "Địa chỉ:";
             // 
             // txtDienThoai
             // 
-            this.txtDienThoai.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDienThoai.Location = new System.Drawing.Point(130, 110);
-            this.txtDienThoai.Name = "txtDienThoai";
-            this.txtDienThoai.Size = new System.Drawing.Size(180, 30);
-            this.txtDienThoai.TabIndex = 11;
+            txtDienThoai.Font = new Font("Segoe UI", 10F);
+            txtDienThoai.Location = new Point(130, 110);
+            txtDienThoai.Name = "txtDienThoai";
+            txtDienThoai.Size = new Size(180, 30);
+            txtDienThoai.TabIndex = 11;
             // 
             // lblDienThoai
             // 
-            this.lblDienThoai.AutoSize = true;
-            this.lblDienThoai.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDienThoai.Location = new System.Drawing.Point(30, 113);
-            this.lblDienThoai.Name = "lblDienThoai";
-            this.lblDienThoai.Size = new System.Drawing.Size(93, 23);
-            this.lblDienThoai.TabIndex = 10;
-            this.lblDienThoai.Text = "Điện thoại:";
-            // 
-            // btnHuy
-            // 
-            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(149, 165, 166);
-            this.btnHuy.FlatAppearance.BorderSize = 0;
-            this.btnHuy.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(127, 140, 141);
-            this.btnHuy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(189, 195, 199);
-            this.btnHuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHuy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnHuy.ForeColor = System.Drawing.Color.White;
-            this.btnHuy.Location = new System.Drawing.Point(540, 170);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(90, 40);
-            this.btnHuy.TabIndex = 9;
-            this.btnHuy.Text = "✖ Hủy";
-            this.btnHuy.UseVisualStyleBackColor = false;
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(46, 204, 113);
-            this.btnLuu.FlatAppearance.BorderSize = 0;
-            this.btnLuu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(39, 174, 96);
-            this.btnLuu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(88, 214, 141);
-            this.btnLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLuu.ForeColor = System.Drawing.Color.White;
-            this.btnLuu.Location = new System.Drawing.Point(430, 170);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(90, 40);
-            this.btnLuu.TabIndex = 8;
-            this.btnLuu.Text = "💾 Lưu";
-            this.btnLuu.UseVisualStyleBackColor = false;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(231, 76, 60);
-            this.btnXoa.FlatAppearance.BorderSize = 0;
-            this.btnXoa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(192, 57, 43);
-            this.btnXoa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(236, 112, 99);
-            this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXoa.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(320, 170);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(90, 40);
-            this.btnXoa.TabIndex = 7;
-            this.btnXoa.Text = "🗑 Xóa";
-            this.btnXoa.UseVisualStyleBackColor = false;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.BackColor = System.Drawing.Color.FromArgb(241, 196, 15);
-            this.btnSua.FlatAppearance.BorderSize = 0;
-            this.btnSua.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(212, 172, 13);
-            this.btnSua.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(247, 220, 111);
-            this.btnSua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSua.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(210, 170);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(90, 40);
-            this.btnSua.TabIndex = 6;
-            this.btnSua.Text = "✎ Sửa";
-            this.btnSua.UseVisualStyleBackColor = false;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.BackColor = System.Drawing.Color.FromArgb(52, 152, 219);
-            this.btnThem.FlatAppearance.BorderSize = 0;
-            this.btnThem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(41, 128, 185);
-            this.btnThem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(93, 173, 226);
-            this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Location = new System.Drawing.Point(100, 170);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(90, 40);
-            this.btnThem.TabIndex = 5;
-            this.btnThem.Text = "✚ Thêm";
-            this.btnThem.UseVisualStyleBackColor = false;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            lblDienThoai.AutoSize = true;
+            lblDienThoai.Font = new Font("Segoe UI", 10F);
+            lblDienThoai.Location = new Point(30, 113);
+            lblDienThoai.Name = "lblDienThoai";
+            lblDienThoai.Size = new Size(93, 23);
+            lblDienThoai.TabIndex = 10;
+            lblDienThoai.Text = "Điện thoại:";
+            btnHuy.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnHuy.BackColor = Color.FromArgb(149, 165, 166);
+            btnHuy.FlatAppearance.BorderSize = 0;
+            btnHuy.FlatAppearance.MouseDownBackColor = Color.FromArgb(127, 140, 141);
+            btnHuy.FlatAppearance.MouseOverBackColor = Color.FromArgb(189, 195, 199);
+            btnHuy.FlatStyle = FlatStyle.Flat;
+            btnHuy.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnHuy.ForeColor = Color.White;
+            btnHuy.Location = new Point(540, 170);
+            btnHuy.Name = "btnHuy";
+            btnHuy.Size = new Size(90, 40);
+            btnHuy.TabIndex = 9;
+            btnHuy.Text = "✖ Hủy";
+            btnHuy.UseVisualStyleBackColor = false;
+            btnHuy.Click += btnHuy_Click;
+            btnLuu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnLuu.BackColor = Color.FromArgb(46, 204, 113);
+            btnLuu.FlatAppearance.BorderSize = 0;
+            btnLuu.FlatAppearance.MouseDownBackColor = Color.FromArgb(39, 174, 96);
+            btnLuu.FlatAppearance.MouseOverBackColor = Color.FromArgb(88, 214, 141);
+            btnLuu.FlatStyle = FlatStyle.Flat;
+            btnLuu.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnLuu.ForeColor = Color.White;
+            btnLuu.Location = new Point(430, 170);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new Size(90, 40);
+            btnLuu.TabIndex = 8;
+            btnLuu.Text = "💾 Lưu";
+            btnLuu.UseVisualStyleBackColor = false;
+            btnLuu.Click += btnLuu_Click;
+            btnXoa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnXoa.BackColor = Color.FromArgb(231, 76, 60);
+            btnXoa.FlatAppearance.BorderSize = 0;
+            btnXoa.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 57, 43);
+            btnXoa.FlatAppearance.MouseOverBackColor = Color.FromArgb(236, 112, 99);
+            btnXoa.FlatStyle = FlatStyle.Flat;
+            btnXoa.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnXoa.ForeColor = Color.White;
+            btnXoa.Location = new Point(320, 170);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(90, 40);
+            btnXoa.TabIndex = 7;
+            btnXoa.Text = "🗑 Xóa";
+            btnXoa.UseVisualStyleBackColor = false;
+            btnXoa.Click += btnXoa_Click;
+            btnSua.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSua.BackColor = Color.FromArgb(241, 196, 15);
+            btnSua.FlatAppearance.BorderSize = 0;
+            btnSua.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 172, 13);
+            btnSua.FlatAppearance.MouseOverBackColor = Color.FromArgb(247, 220, 111);
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnSua.ForeColor = Color.White;
+            btnSua.Location = new Point(210, 170);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(90, 40);
+            btnSua.TabIndex = 6;
+            btnSua.Text = "✎ Sửa";
+            btnSua.UseVisualStyleBackColor = false;
+            btnSua.Click += btnSua_Click;
+            btnThem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnThem.BackColor = Color.FromArgb(52, 152, 219);
+            btnThem.FlatAppearance.BorderSize = 0;
+            btnThem.FlatAppearance.MouseDownBackColor = Color.FromArgb(41, 128, 185);
+            btnThem.FlatAppearance.MouseOverBackColor = Color.FromArgb(93, 173, 226);
+            btnThem.FlatStyle = FlatStyle.Flat;
+            btnThem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnThem.ForeColor = Color.White;
+            btnThem.Location = new Point(100, 170);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(90, 40);
+            btnThem.TabIndex = 5;
+            btnThem.Text = "✚ Thêm";
+            btnThem.UseVisualStyleBackColor = false;
+            btnThem.Click += btnThem_Click;
             // 
             // txtTenKH
             // 
-            this.txtTenKH.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTenKH.Location = new System.Drawing.Point(420, 70);
-            this.txtTenKH.Name = "txtTenKH";
-            this.txtTenKH.Size = new System.Drawing.Size(300, 30);
-            this.txtTenKH.TabIndex = 4;
+            txtTenKH.Font = new Font("Segoe UI", 10F);
+            txtTenKH.Location = new Point(420, 70);
+            txtTenKH.Name = "txtTenKH";
+            txtTenKH.Size = new Size(300, 30);
+            txtTenKH.TabIndex = 4;
             // 
             // lblTenKH
             // 
-            this.lblTenKH.AutoSize = true;
-            this.lblTenKH.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblTenKH.Location = new System.Drawing.Point(340, 73);
-            this.lblTenKH.Name = "lblTenKH";
-            this.lblTenKH.Size = new System.Drawing.Size(69, 23);
-            this.lblTenKH.TabIndex = 3;
-            this.lblTenKH.Text = "Tên KH:";
+            lblTenKH.AutoSize = true;
+            lblTenKH.Font = new Font("Segoe UI", 10F);
+            lblTenKH.Location = new Point(340, 73);
+            lblTenKH.Name = "lblTenKH";
+            lblTenKH.Size = new Size(67, 23);
+            lblTenKH.TabIndex = 3;
+            lblTenKH.Text = "Tên KH:";
             // 
             // txtMaKH
             // 
-            this.txtMaKH.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtMaKH.Location = new System.Drawing.Point(130, 70);
-            this.txtMaKH.Name = "txtMaKH";
-            this.txtMaKH.ReadOnly = true;
-            this.txtMaKH.Size = new System.Drawing.Size(180, 30);
-            this.txtMaKH.TabIndex = 2;
+            txtMaKH.Font = new Font("Segoe UI", 10F);
+            txtMaKH.Location = new Point(130, 70);
+            txtMaKH.Name = "txtMaKH";
+            txtMaKH.ReadOnly = true;
+            txtMaKH.Size = new Size(180, 30);
+            txtMaKH.TabIndex = 2;
             // 
             // lblMaKH
             // 
-            this.lblMaKH.AutoSize = true;
-            this.lblMaKH.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblMaKH.Location = new System.Drawing.Point(50, 73);
-            this.lblMaKH.Name = "lblMaKH";
-            this.lblMaKH.Size = new System.Drawing.Size(67, 23);
-            this.lblMaKH.TabIndex = 1;
-            this.lblMaKH.Text = "Mã KH:";
+            lblMaKH.AutoSize = true;
+            lblMaKH.Font = new Font("Segoe UI", 10F);
+            lblMaKH.Location = new Point(50, 73);
+            lblMaKH.Name = "lblMaKH";
+            lblMaKH.Size = new Size(65, 23);
+            lblMaKH.TabIndex = 1;
+            lblMaKH.Text = "Mã KH:";
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(20, 15);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(287, 32);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "QUẢN LÝ KHÁCH HÀNG";
-            // 
-            // txtTimKiem
-            // 
-            this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTimKiem.Location = new System.Drawing.Point(620, 15);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(280, 30);
-            this.txtTimKiem.TabIndex = 14;
-            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
-            // 
-            // lblTimKiem
-            // 
-            this.lblTimKiem.AutoSize = true;
-            this.lblTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTimKiem.Location = new System.Drawing.Point(520, 18);
-            this.lblTimKiem.Name = "lblTimKiem";
-            this.lblTimKiem.Size = new System.Drawing.Size(91, 23);
-            this.lblTimKiem.TabIndex = 15;
-            this.lblTimKiem.Text = "Tìm kiếm:";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblTitle.Location = new Point(20, 15);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(287, 32);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "QUẢN LÝ KHÁCH HÀNG";
+            btnXuatExcel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnXuatExcel.BackColor = Color.FromArgb(39, 174, 96);
+            btnXuatExcel.FlatAppearance.BorderSize = 0;
+            btnXuatExcel.FlatStyle = FlatStyle.Flat;
+            btnXuatExcel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnXuatExcel.ForeColor = Color.White;
+            btnXuatExcel.Location = new Point(650, 170);
+            btnXuatExcel.Name = "btnXuatExcel";
+            btnXuatExcel.Size = new Size(140, 40);
+            btnXuatExcel.TabIndex = 16;
+            btnXuatExcel.Text = "📊 Xuất Excel";
+            btnXuatExcel.UseVisualStyleBackColor = false;
+            btnXuatExcel.Click += btnXuatExcel_Click;
             // 
             // dgvKhachHang
             // 
-            this.dgvKhachHang.AllowUserToAddRows = false;
-            this.dgvKhachHang.AllowUserToDeleteRows = false;
-            this.dgvKhachHang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvKhachHang.BackgroundColor = System.Drawing.Color.White;
-            this.dgvKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKhachHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvKhachHang.Location = new System.Drawing.Point(0, 230);
-            this.dgvKhachHang.Name = "dgvKhachHang";
-            this.dgvKhachHang.ReadOnly = true;
-            this.dgvKhachHang.RowHeadersWidth = 51;
-            this.dgvKhachHang.RowTemplate.Height = 29;
-            this.dgvKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKhachHang.Size = new System.Drawing.Size(950, 470);
-            this.dgvKhachHang.TabIndex = 1;
-            this.dgvKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachHang_CellClick);
+            dgvKhachHang.AllowUserToAddRows = false;
+            dgvKhachHang.AllowUserToDeleteRows = false;
+            dgvKhachHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvKhachHang.BackgroundColor = Color.White;
+            dgvKhachHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvKhachHang.Dock = DockStyle.Fill;
+            dgvKhachHang.Location = new Point(0, 230);
+            dgvKhachHang.Name = "dgvKhachHang";
+            dgvKhachHang.ReadOnly = true;
+            dgvKhachHang.RowHeadersWidth = 51;
+            dgvKhachHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvKhachHang.Size = new Size(950, 470);
+            dgvKhachHang.TabIndex = 1;
+            dgvKhachHang.CellClick += dgvKhachHang_CellClick;
             // 
             // ucKhachHang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dgvKhachHang);
-            this.Controls.Add(this.pnlTop);
-            this.Name = "ucKhachHang";
-            this.Size = new System.Drawing.Size(950, 700);
-            this.Load += new System.EventHandler(this.ucKhachHang_Load);
-            this.pnlTop.ResumeLayout(false);
-            this.pnlTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(dgvKhachHang);
+            Controls.Add(pnlTop);
+            Name = "ucKhachHang";
+            Size = new Size(950, 700);
+            Load += ucKhachHang_Load;
+            pnlTop.ResumeLayout(false);
+            pnlTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvKhachHang).EndInit();
+            ResumeLayout(false);
 
         }
 
@@ -305,5 +305,6 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Label lblTimKiem;
         private System.Windows.Forms.DataGridView dgvKhachHang;
+        private System.Windows.Forms.Button btnXuatExcel;
     }
 }

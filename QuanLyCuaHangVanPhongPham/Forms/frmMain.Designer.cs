@@ -312,9 +312,10 @@ namespace QuanLyVanPhongPham.Forms
             Controls.Add(pnlSidebar);
             Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "frmMain";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Hệ thống Quản lý Cửa hàng Văn phòng phẩm";
+            this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Hệ thống Quản lý Cửa hàng Văn phòng phẩm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             pnlSidebar.ResumeLayout(false);
             pnlLogo.ResumeLayout(false);
             pnlLogo.PerformLayout();

@@ -1,9 +1,5 @@
-using System;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
 using QuanLyVanPhongPham.Data;
+using QuanLyVanPhongPham.Utilities;
 
 namespace QuanLyCuaHangVanPhongPham.Forms
 {
@@ -219,6 +215,11 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                 txtTimKiem.Text = "Nhập tên, SĐT, mã NCC...";
                 txtTimKiem.ForeColor = System.Drawing.Color.Gray;
             }
+        }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            ExcelHelper.ExportToExcel(dgvNhaCungCap, "DanhSachNhaCungCap");
         }
     }
 }

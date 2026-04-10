@@ -36,6 +36,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             txtMaNV = new TextBox();
             lblMaNV = new Label();
             lblTitle = new Label();
+            btnXuatExcel = new Button();
             dgvNhanVien = new DataGridView();
             pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvNhanVien).BeginInit();
@@ -62,23 +63,20 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlTop.Controls.Add(txtMaNV);
             pnlTop.Controls.Add(lblMaNV);
             pnlTop.Controls.Add(lblTitle);
+            pnlTop.Controls.Add(btnXuatExcel);
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Location = new Point(0, 0);
             pnlTop.Name = "pnlTop";
             pnlTop.Size = new Size(950, 230);
             pnlTop.TabIndex = 0;
-            // 
-            // txtTimKiem
-            // 
+            txtTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtTimKiem.Font = new Font("Segoe UI", 10F);
             txtTimKiem.Location = new Point(638, 15);
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.Size = new Size(260, 30);
             txtTimKiem.TabIndex = 16;
             txtTimKiem.TextChanged += txtTimKiem_TextChanged;
-            // 
-            // lblTimKiem
-            // 
+            lblTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTimKiem.AutoSize = true;
             lblTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblTimKiem.Location = new Point(538, 18);
@@ -142,9 +140,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             lblDienThoai.Size = new Size(93, 23);
             lblDienThoai.TabIndex = 10;
             lblDienThoai.Text = "Điện thoại:";
-            // 
-            // btnHuy
-            // 
+            btnHuy.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnHuy.BackColor = Color.FromArgb(149, 165, 166);
             btnHuy.FlatAppearance.BorderSize = 0;
             btnHuy.FlatAppearance.MouseDownBackColor = Color.FromArgb(127, 140, 141);
@@ -159,9 +155,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnHuy.Text = "✖ Hủy";
             btnHuy.UseVisualStyleBackColor = false;
             btnHuy.Click += btnHuy_Click;
-            // 
-            // btnLuu
-            // 
+            btnLuu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnLuu.BackColor = Color.FromArgb(46, 204, 113);
             btnLuu.FlatAppearance.BorderSize = 0;
             btnLuu.FlatAppearance.MouseDownBackColor = Color.FromArgb(39, 174, 96);
@@ -176,9 +170,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnLuu.Text = "💾 Lưu";
             btnLuu.UseVisualStyleBackColor = false;
             btnLuu.Click += btnLuu_Click;
-            // 
-            // btnXoa
-            // 
+            btnXoa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnXoa.BackColor = Color.FromArgb(231, 76, 60);
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 57, 43);
@@ -193,9 +185,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnXoa.Text = "🗑 Xóa";
             btnXoa.UseVisualStyleBackColor = false;
             btnXoa.Click += btnXoa_Click;
-            // 
-            // btnSua
-            // 
+            btnSua.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSua.BackColor = Color.FromArgb(241, 196, 15);
             btnSua.FlatAppearance.BorderSize = 0;
             btnSua.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 172, 13);
@@ -210,9 +200,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnSua.Text = "✎ Sửa";
             btnSua.UseVisualStyleBackColor = false;
             btnSua.Click += btnSua_Click;
-            // 
-            // btnThem
-            // 
+            btnThem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnThem.BackColor = Color.FromArgb(52, 152, 219);
             btnThem.FlatAppearance.BorderSize = 0;
             btnThem.FlatAppearance.MouseDownBackColor = Color.FromArgb(41, 128, 185);
@@ -274,6 +262,19 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             lblTitle.Size = new Size(261, 32);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "QUẢN LÝ NHÂN VIÊN";
+            btnXuatExcel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnXuatExcel.BackColor = Color.FromArgb(39, 174, 96);
+            btnXuatExcel.FlatAppearance.BorderSize = 0;
+            btnXuatExcel.FlatStyle = FlatStyle.Flat;
+            btnXuatExcel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnXuatExcel.ForeColor = Color.White;
+            btnXuatExcel.Location = new Point(650, 170);
+            btnXuatExcel.Name = "btnXuatExcel";
+            btnXuatExcel.Size = new Size(132, 40);
+            btnXuatExcel.TabIndex = 20;
+            btnXuatExcel.Text = "📊 Xuất Excel";
+            btnXuatExcel.UseVisualStyleBackColor = false;
+            btnXuatExcel.Click += btnXuatExcel_Click;
             // 
             // dgvNhanVien
             // 
@@ -328,6 +329,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Label lblTimKiem;
         private System.Windows.Forms.DataGridView dgvNhanVien;
+        private System.Windows.Forms.Button btnXuatExcel;
 
         // Thêm 2 components mới cho Chức Vụ
         private System.Windows.Forms.Label lblChucVu;

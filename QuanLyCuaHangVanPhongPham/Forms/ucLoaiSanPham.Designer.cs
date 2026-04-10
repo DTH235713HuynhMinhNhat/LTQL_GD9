@@ -51,9 +51,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(950, 180);
             this.pnlTop.TabIndex = 0;
-            // 
-            // btnHuy
-            // 
+            this.btnHuy.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             this.btnHuy.BackColor = System.Drawing.Color.FromArgb(149, 165, 166);
             this.btnHuy.FlatAppearance.BorderSize = 0;
             this.btnHuy.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(127, 140, 141);
@@ -68,9 +66,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.btnHuy.Text = "✖ Hủy";
             this.btnHuy.UseVisualStyleBackColor = false;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
-            // 
-            // btnLuu
-            // 
+            this.btnLuu.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             this.btnLuu.BackColor = System.Drawing.Color.FromArgb(46, 204, 113);
             this.btnLuu.FlatAppearance.BorderSize = 0;
             this.btnLuu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(39, 174, 96);
@@ -85,9 +81,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.btnLuu.Text = "💾 Lưu";
             this.btnLuu.UseVisualStyleBackColor = false;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // btnXoa
-            // 
+            this.btnXoa.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             this.btnXoa.BackColor = System.Drawing.Color.FromArgb(231, 76, 60);
             this.btnXoa.FlatAppearance.BorderSize = 0;
             this.btnXoa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(192, 57, 43);
@@ -102,9 +96,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.btnXoa.Text = "🗑 Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnSua
-            // 
+            this.btnSua.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             this.btnSua.BackColor = System.Drawing.Color.FromArgb(241, 196, 15);
             this.btnSua.FlatAppearance.BorderSize = 0;
             this.btnSua.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(212, 172, 13);
@@ -119,9 +111,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.btnSua.Text = "✎ Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnThem
-            // 
+            this.btnThem.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             this.btnThem.BackColor = System.Drawing.Color.FromArgb(52, 152, 219);
             this.btnThem.FlatAppearance.BorderSize = 0;
             this.btnThem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(41, 128, 185);

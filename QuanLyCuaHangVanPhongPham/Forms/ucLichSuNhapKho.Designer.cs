@@ -29,14 +29,15 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         private void InitializeComponent()
         {
             pnlTop = new Panel();
-            btnTimKiem = new Button();
-            dtpDenNgay = new DateTimePicker();
-            dtpTuNgay = new DateTimePicker();
-            lblDenNgay = new Label();
-            lblTuNgay = new Label();
-            lblTitle = new Label();
             txtTimKiem = new TextBox();
             lblTimKiem = new Label();
+            btnTimKiem = new Button();
+            btnXuatExcel = new Button();
+            dtpDenNgay = new DateTimePicker();
+            lblDenNgay = new Label();
+            dtpTuNgay = new DateTimePicker();
+            lblTuNgay = new Label();
+            lblTitle = new Label();
             splitContainer1 = new SplitContainer();
             grpDanhSach = new GroupBox();
             dgvPhieuNhap = new DataGridView();
@@ -59,6 +60,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlTop.Controls.Add(txtTimKiem);
             pnlTop.Controls.Add(lblTimKiem);
             pnlTop.Controls.Add(btnTimKiem);
+            pnlTop.Controls.Add(btnXuatExcel);
             pnlTop.Controls.Add(dtpDenNgay);
             pnlTop.Controls.Add(lblDenNgay);
             pnlTop.Controls.Add(dtpTuNgay);
@@ -69,38 +71,22 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlTop.Name = "pnlTop";
             pnlTop.Size = new Size(950, 100);
             pnlTop.TabIndex = 0;
-            // 
-            // lblTitle
-            // 
-            lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblTitle.Location = new Point(20, 22);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(220, 32);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "LỊCH SỬ NHẬP KHO";
-            // 
-            // txtTimKiem
-            // 
+            txtTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtTimKiem.Font = new Font("Segoe UI", 10F);
             txtTimKiem.Location = new Point(340, 58);
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.Size = new Size(370, 30);
             txtTimKiem.TabIndex = 6;
             txtTimKiem.TextChanged += txtTimKiem_TextChanged;
-            // 
-            // lblTimKiem
-            // 
+            lblTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTimKiem.AutoSize = true;
             lblTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblTimKiem.Location = new Point(260, 61);
             lblTimKiem.Name = "lblTimKiem";
-            lblTimKiem.Size = new Size(56, 23);
+            lblTimKiem.Size = new Size(58, 23);
             lblTimKiem.TabIndex = 7;
             lblTimKiem.Text = "Nhập:";
-            // 
-            // btnTimKiem
-            // 
+            btnTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnTimKiem.BackColor = Color.FromArgb(52, 152, 219);
             btnTimKiem.FlatAppearance.BorderSize = 0;
             btnTimKiem.FlatAppearance.MouseDownBackColor = Color.FromArgb(41, 128, 185);
@@ -115,37 +101,42 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnTimKiem.Text = "🔍 Tìm kiếm";
             btnTimKiem.UseVisualStyleBackColor = false;
             btnTimKiem.Click += btnTimKiem_Click;
-            // 
-            // dtpDenNgay
-            // 
+            btnXuatExcel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnXuatExcel.BackColor = Color.FromArgb(39, 174, 96);
+            btnXuatExcel.FlatAppearance.BorderSize = 0;
+            btnXuatExcel.FlatStyle = FlatStyle.Flat;
+            btnXuatExcel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnXuatExcel.ForeColor = Color.White;
+            btnXuatExcel.Location = new Point(871, 56);
+            btnXuatExcel.Name = "btnXuatExcel";
+            btnXuatExcel.Size = new Size(75, 32);
+            btnXuatExcel.TabIndex = 8;
+            btnXuatExcel.Text = "📊 Excel";
+            btnXuatExcel.UseVisualStyleBackColor = false;
+            btnXuatExcel.Click += btnXuatExcel_Click;
+            dtpDenNgay.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             dtpDenNgay.Font = new Font("Segoe UI", 10F);
             dtpDenNgay.Format = DateTimePickerFormat.Short;
-            dtpDenNgay.Location = new Point(580, 20);
+            dtpDenNgay.Location = new Point(580, 26);
             dtpDenNgay.Name = "dtpDenNgay";
             dtpDenNgay.Size = new Size(130, 30);
             dtpDenNgay.TabIndex = 4;
-            // 
-            // lblDenNgay
-            // 
+            lblDenNgay.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblDenNgay.AutoSize = true;
             lblDenNgay.Font = new Font("Segoe UI", 10F);
             lblDenNgay.Location = new Point(490, 30);
             lblDenNgay.Name = "lblDenNgay";
-            lblDenNgay.Size = new Size(86, 23);
+            lblDenNgay.Size = new Size(87, 23);
             lblDenNgay.TabIndex = 3;
             lblDenNgay.Text = "Đến ngày:";
-            // 
-            // dtpTuNgay
-            // 
+            dtpTuNgay.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             dtpTuNgay.Font = new Font("Segoe UI", 10F);
             dtpTuNgay.Format = DateTimePickerFormat.Short;
             dtpTuNgay.Location = new Point(340, 27);
             dtpTuNgay.Name = "dtpTuNgay";
             dtpTuNgay.Size = new Size(130, 30);
             dtpTuNgay.TabIndex = 2;
-            // 
-            // lblTuNgay
-            // 
+            lblTuNgay.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTuNgay.AutoSize = true;
             lblTuNgay.Font = new Font("Segoe UI", 10F);
             lblTuNgay.Location = new Point(260, 30);
@@ -160,7 +151,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             lblTitle.Location = new Point(20, 22);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(220, 32);
+            lblTitle.Size = new Size(241, 32);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "LỊCH SỬ NHẬP KHO";
             // 
@@ -180,8 +171,8 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 
             splitContainer1.Panel2.Controls.Add(grpChiTiet);
             splitContainer1.Panel2.Padding = new Padding(10);
-            splitContainer1.Size = new Size(950, 620);
-            splitContainer1.SplitterDistance = 300;
+            splitContainer1.Size = new Size(950, 600);
+            splitContainer1.SplitterDistance = 290;
             splitContainer1.TabIndex = 1;
             // 
             // grpDanhSach
@@ -191,7 +182,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             grpDanhSach.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             grpDanhSach.Location = new Point(10, 10);
             grpDanhSach.Name = "grpDanhSach";
-            grpDanhSach.Size = new Size(930, 280);
+            grpDanhSach.Size = new Size(930, 270);
             grpDanhSach.TabIndex = 0;
             grpDanhSach.TabStop = false;
             grpDanhSach.Text = "Danh sách Phiếu Nhập";
@@ -209,9 +200,8 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             dgvPhieuNhap.Name = "dgvPhieuNhap";
             dgvPhieuNhap.ReadOnly = true;
             dgvPhieuNhap.RowHeadersWidth = 51;
-            dgvPhieuNhap.RowTemplate.Height = 29;
             dgvPhieuNhap.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPhieuNhap.Size = new Size(924, 251);
+            dgvPhieuNhap.Size = new Size(924, 241);
             dgvPhieuNhap.TabIndex = 0;
             dgvPhieuNhap.SelectionChanged += dgvPhieuNhap_SelectionChanged;
             // 
@@ -222,7 +212,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             grpChiTiet.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             grpChiTiet.Location = new Point(10, 10);
             grpChiTiet.Name = "grpChiTiet";
-            grpChiTiet.Size = new Size(930, 296);
+            grpChiTiet.Size = new Size(930, 286);
             grpChiTiet.TabIndex = 0;
             grpChiTiet.TabStop = false;
             grpChiTiet.Text = "Chi tiết Phiếu Nhập được chọn";
@@ -240,9 +230,8 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             dgvChiTiet.Name = "dgvChiTiet";
             dgvChiTiet.ReadOnly = true;
             dgvChiTiet.RowHeadersWidth = 51;
-            dgvChiTiet.RowTemplate.Height = 29;
             dgvChiTiet.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvChiTiet.Size = new Size(924, 267);
+            dgvChiTiet.Size = new Size(924, 257);
             dgvChiTiet.TabIndex = 1;
             // 
             // ucLichSuNhapKho
@@ -285,5 +274,6 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         private System.Windows.Forms.DataGridView dgvPhieuNhap;
         private System.Windows.Forms.GroupBox grpChiTiet;
         private System.Windows.Forms.DataGridView dgvChiTiet;
+        private System.Windows.Forms.Button btnXuatExcel;
     }
 }

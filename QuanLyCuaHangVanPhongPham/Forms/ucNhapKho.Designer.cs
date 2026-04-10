@@ -61,9 +61,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlHeader.Name = "pnlHeader";
             pnlHeader.Size = new Size(950, 120);
             pnlHeader.TabIndex = 0;
-            // 
-            // cboNhaCungCap
-            // 
+            cboNhaCungCap.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cboNhaCungCap.DropDownStyle = ComboBoxStyle.DropDownList;
             cboNhaCungCap.Font = new Font("Segoe UI", 10F);
             cboNhaCungCap.FormattingEnabled = true;
@@ -71,9 +69,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             cboNhaCungCap.Name = "cboNhaCungCap";
             cboNhaCungCap.Size = new Size(250, 31);
             cboNhaCungCap.TabIndex = 6;
-            // 
-            // lblNCC
-            // 
+            lblNCC.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblNCC.AutoSize = true;
             lblNCC.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblNCC.Location = new Point(490, 68);
@@ -146,9 +142,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlDetailInput.Name = "pnlDetailInput";
             pnlDetailInput.Size = new Size(950, 80);
             pnlDetailInput.TabIndex = 1;
-            // 
-            // btnXoaSP
-            // 
+            btnXoaSP.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnXoaSP.BackColor = Color.FromArgb(231, 76, 60);
             btnXoaSP.FlatAppearance.BorderSize = 0;
             btnXoaSP.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 57, 43);
@@ -163,9 +157,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnXoaSP.Text = "🗑 Xóa SP";
             btnXoaSP.UseVisualStyleBackColor = false;
             btnXoaSP.Click += btnXoaSP_Click;
-            // 
-            // btnThemSP
-            // 
+            btnThemSP.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnThemSP.BackColor = Color.FromArgb(52, 152, 219);
             btnThemSP.FlatAppearance.BorderSize = 0;
             btnThemSP.FlatAppearance.MouseDownBackColor = Color.FromArgb(41, 128, 185);
@@ -180,17 +172,13 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnThemSP.Text = "✚ Thêm SP";
             btnThemSP.UseVisualStyleBackColor = false;
             btnThemSP.Click += btnThemSP_Click;
-            // 
-            // txtGiaNhap
-            // 
+            txtGiaNhap.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtGiaNhap.Font = new Font("Segoe UI", 10F);
             txtGiaNhap.Location = new Point(570, 25);
             txtGiaNhap.Name = "txtGiaNhap";
             txtGiaNhap.Size = new Size(120, 30);
             txtGiaNhap.TabIndex = 11;
-            // 
-            // lblGiaNhap
-            // 
+            lblGiaNhap.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblGiaNhap.AutoSize = true;
             lblGiaNhap.Font = new Font("Segoe UI", 10F);
             lblGiaNhap.Location = new Point(490, 28);
@@ -272,9 +260,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             txtTongTien.TabIndex = 13;
             txtTongTien.Text = "0";
             txtTongTien.TextAlign = HorizontalAlignment.Right;
-            // 
-            // btnHuyPhieu
-            // 
+            btnHuyPhieu.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnHuyPhieu.BackColor = Color.FromArgb(149, 165, 166);
             btnHuyPhieu.FlatAppearance.BorderSize = 0;
             btnHuyPhieu.FlatAppearance.MouseDownBackColor = Color.FromArgb(127, 140, 141);
@@ -289,9 +275,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnHuyPhieu.Text = "✖ Hủy phiếu";
             btnHuyPhieu.UseVisualStyleBackColor = false;
             btnHuyPhieu.Click += btnHuyPhieu_Click;
-            // 
-            // btnLuuPhieu
-            // 
+            btnLuuPhieu.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnLuuPhieu.BackColor = Color.FromArgb(46, 204, 113);
             btnLuuPhieu.FlatAppearance.BorderSize = 0;
             btnLuuPhieu.FlatAppearance.MouseDownBackColor = Color.FromArgb(39, 174, 96);

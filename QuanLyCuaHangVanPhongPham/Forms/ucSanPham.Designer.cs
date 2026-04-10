@@ -55,9 +55,7 @@ namespace QuanLyVanPhongPham.Forms
             pnlHeader.Name = "pnlHeader";
             pnlHeader.Size = new Size(910, 100);
             pnlHeader.TabIndex = 1;
-            // 
-            // lblTimKiem
-            // 
+            lblTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTimKiem.AutoSize = true;
             lblTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblTimKiem.Location = new Point(388, 67);
@@ -65,9 +63,7 @@ namespace QuanLyVanPhongPham.Forms
             lblTimKiem.Size = new Size(91, 23);
             lblTimKiem.TabIndex = 18;
             lblTimKiem.Text = "Tìm kiếm:";
-            // 
-            // cboLoaiSP
-            // 
+            cboLoaiSP.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cboLoaiSP.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLoaiSP.FormattingEnabled = true;
             cboLoaiSP.Location = new Point(110, 60);
@@ -75,9 +71,7 @@ namespace QuanLyVanPhongPham.Forms
             cboLoaiSP.Size = new Size(220, 31);
             cboLoaiSP.TabIndex = 7;
             cboLoaiSP.SelectedIndexChanged += cboLoaiSP_SelectedIndexChanged;
-            // 
-            // lblLoaiSP
-            // 
+            lblLoaiSP.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLoaiSP.AutoSize = true;
             lblLoaiSP.Location = new Point(10, 64);
             lblLoaiSP.Name = "lblLoaiSP";
@@ -156,9 +150,7 @@ namespace QuanLyVanPhongPham.Forms
             btnXuatExcel.Text = "📊 Xuất Excel";
             btnXuatExcel.UseVisualStyleBackColor = false;
             btnXuatExcel.Click += btnXuatExcel_Click;
-            // 
-            // txtTimKiem
-            // 
+            txtTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtTimKiem.Location = new Point(485, 64);
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.Size = new Size(250, 30);

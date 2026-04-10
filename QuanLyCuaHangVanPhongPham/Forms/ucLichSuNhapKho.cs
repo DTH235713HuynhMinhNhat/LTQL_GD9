@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using QuanLyVanPhongPham.Data;
+using QuanLyVanPhongPham.Utilities;
 
 namespace QuanLyCuaHangVanPhongPham.Forms
 {
@@ -144,6 +145,11 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
             LoadDanhSachPhieuNhap();
+        }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            ExcelHelper.ExportToExcel(dgvPhieuNhap, "LichSuNhapKho");
         }
     }
 }

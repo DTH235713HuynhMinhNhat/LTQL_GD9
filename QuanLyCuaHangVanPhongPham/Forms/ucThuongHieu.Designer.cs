@@ -62,9 +62,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlTop.Name = "pnlTop";
             pnlTop.Size = new System.Drawing.Size(950, 200);
             pnlTop.TabIndex = 0;
-            // 
-            // btnHuy
-            // 
+            btnHuy.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             btnHuy.BackColor = System.Drawing.Color.FromArgb(149, 165, 166);
             btnHuy.FlatAppearance.BorderSize = 0;
             btnHuy.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(127, 140, 141);
@@ -79,9 +77,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnHuy.Text = "✖ Hủy";
             btnHuy.UseVisualStyleBackColor = false;
             btnHuy.Click += btnHuy_Click;
-            // 
-            // btnLuu
-            // 
+            btnLuu.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             btnLuu.BackColor = System.Drawing.Color.FromArgb(46, 204, 113);
             btnLuu.FlatAppearance.BorderSize = 0;
             btnLuu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(39, 174, 96);
@@ -96,9 +92,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnLuu.Text = "💾 Lưu";
             btnLuu.UseVisualStyleBackColor = false;
             btnLuu.Click += btnLuu_Click;
-            // 
-            // btnXoa
-            // 
+            btnXoa.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             btnXoa.BackColor = System.Drawing.Color.FromArgb(231, 76, 60);
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(192, 57, 43);
@@ -113,9 +107,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnXoa.Text = "🗑 Xóa";
             btnXoa.UseVisualStyleBackColor = false;
             btnXoa.Click += btnXoa_Click;
-            // 
-            // btnSua
-            // 
+            btnSua.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             btnSua.BackColor = System.Drawing.Color.FromArgb(241, 196, 15);
             btnSua.FlatAppearance.BorderSize = 0;
             btnSua.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(212, 172, 13);
@@ -130,9 +122,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnSua.Text = "✎ Sửa";
             btnSua.UseVisualStyleBackColor = false;
             btnSua.Click += btnSua_Click;
-            // 
-            // btnThem
-            // 
+            btnThem.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             btnThem.BackColor = System.Drawing.Color.FromArgb(52, 152, 219);
             btnThem.FlatAppearance.BorderSize = 0;
             btnThem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(41, 128, 185);

@@ -11,9 +11,13 @@ namespace QuanLyCuaHangVanPhongPham.Forms
 {
     public partial class ucTrangChu : UserControl
     {
-        // Dữ liệu biểu đồ 6 tháng gần nhất
         private List<decimal> _doanhThu6Thang = new List<decimal>();
         private List<string> _thangLabels = new List<string>();
+
+        // Bổ sung cho nâng cấp
+        private List<decimal> _doanhThu7Ngay = new List<decimal>();
+        private List<string> _ngayLabels = new List<string>();
+        private bool _isMonthView = true; // Mặc định xem theo tháng
 
         public ucTrangChu()
         {
@@ -79,10 +83,14 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                 // 3. Cập nhật DataGridView
                 dgvTopSanPham.DataSource = data.TopSanPham;
                 dgvHoaDonGanDay.DataSource = data.HoaDonGanDay;
+                dgvSapHetHang.DataSource = data.DanhSachSapHet;
 
                 // 4. Cập nhật Biểu đồ
                 _doanhThu6Thang = data.DoanhThuChart;
                 _thangLabels = data.LabelsChart;
+                _doanhThu7Ngay = data.DoanhThu7Ngay;
+                _ngayLabels = data.Labels7Ngay;
+
                 pnlChart.Invalidate(); // Vẽ lại biểu đồ
 
                 lblNgayCapNhat.Text = "Cập nhật lúc: " + DateTime.Now.ToString("HH:mm dd/MM/yyyy");
@@ -183,6 +191,35 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                     dto.DoanhThuChart.Add(dt);
                     dto.LabelsChart.Add("T" + thang.Month + "/" + thang.Year.ToString().Substring(2));
                 }
+
+                // 6. Truy vấn Biểu đồ 7 ngày gần nhất
+                dto.DoanhThu7Ngay = new List<decimal>();
+                dto.Labels7Ngay = new List<string>();
+                for (int i = 6; i >= 0; i--)
+                {
+                    DateTime ngay = now.AddDays(-i).Date;
+                    DateTime hetNgay = ngay.AddDays(1).AddTicks(-1);
+
+                    decimal dt = db.HoaDon
+                        .Where(h => h.NgayLap >= ngay && h.NgayLap <= hetNgay)
+                        .Sum(h => (decimal?)h.TongTien) ?? 0;
+
+                    dto.DoanhThu7Ngay.Add(dt);
+                    dto.Labels7Ngay.Add(ngay.ToString("dd/MM"));
+                }
+
+                // 7. Truy vấn Chi tiết Sản phẩm sắp hết (tồn kho <= 5)
+                dto.DanhSachSapHet = db.SanPham
+                    .Where(s => s.SoLuong <= 5)
+                    .OrderBy(s => s.SoLuong)
+                    .Select(s => new
+                    {
+                        s.MaSP,
+                        s.TenSanPham,
+                        Tồn = s.SoLuong,
+                        ĐơnVị = s.DonViTinh
+                    })
+                    .ToList();
             }
             return dto;
         }
@@ -192,7 +229,10 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         // ─────────────────────────────────────────────
         private void pnlChart_Paint(object sender, PaintEventArgs e)
         {
-            if (_doanhThu6Thang == null || _doanhThu6Thang.Count == 0)
+            var activeData = _isMonthView ? _doanhThu6Thang : _doanhThu7Ngay;
+            var activeLabels = _isMonthView ? _thangLabels : _ngayLabels;
+
+            if (activeData == null || activeData.Count == 0)
                 return;
 
             Graphics g = e.Graphics;
@@ -208,7 +248,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
 
             g.Clear(Color.White);
 
-            decimal maxVal = _doanhThu6Thang.Max();
+            decimal maxVal = activeData.Max();
             if (maxVal == 0) maxVal = 1;
 
             int gridLines = 5;
@@ -231,7 +271,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                 }
             }
 
-            int n = _doanhThu6Thang.Count;
+            int n = activeData.Count;
             float barW = chartW / (float)(n * 2);
 
             using (Font fLabel = new Font("Segoe UI", 8.5f, FontStyle.Bold))
@@ -240,7 +280,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                 for (int i = 0; i < n; i++)
                 {
                     float x = padLeft + i * (chartW / (float)n) + barW * 0.5f;
-                    int barH = (int)(chartH * (_doanhThu6Thang[i] / maxVal));
+                    int barH = (int)(chartH * (activeData[i] / maxVal));
                     int topY = padTop + chartH - barH;
 
                     Rectangle barRect = new Rectangle((int)x, topY, (int)barW, barH);
@@ -262,17 +302,17 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                         }
                     }
 
-                    if (_doanhThu6Thang[i] > 0)
+                    if (activeData[i] > 0)
                     {
-                        string val = _doanhThu6Thang[i] >= 1_000_000m
-                            ? (_doanhThu6Thang[i] / 1_000_000m).ToString("0.#") + "M"
-                            : (_doanhThu6Thang[i] / 1_000m).ToString("0.#") + "K";
+                        string val = activeData[i] >= 1_000_000m
+                            ? (activeData[i] / 1_000_000m).ToString("0.#") + "M"
+                            : (activeData[i] / 1_000m).ToString("0.#") + "K";
                         SizeF sz = g.MeasureString(val, fLabel);
                         g.DrawString(val, fLabel, labelBrush, x + barW / 2 - sz.Width / 2, topY - sz.Height - 2);
                     }
 
-                    SizeF lsz = g.MeasureString(_thangLabels[i], fLabel);
-                    g.DrawString(_thangLabels[i], fLabel, labelBrush,
+                    SizeF lsz = g.MeasureString(activeLabels[i], fLabel);
+                    g.DrawString(activeLabels[i], fLabel, labelBrush,
                         x + barW / 2 - lsz.Width / 2,
                         padTop + chartH + 8);
                 }
@@ -280,6 +320,38 @@ namespace QuanLyCuaHangVanPhongPham.Forms
 
             using (Pen axisPen = new Pen(Color.FromArgb(180, 180, 180), 1.5f))
                 g.DrawLine(axisPen, padLeft, padTop + chartH, padLeft + chartW, padTop + chartH);
+        }
+
+        private void ChartView_Toggle(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            _isMonthView = (btn == btn6Thang);
+
+            btn6Thang.BackColor = _isMonthView ? Color.FromArgb(52, 152, 219) : Color.FromArgb(189, 195, 199);
+            btn6Thang.ForeColor = _isMonthView ? Color.White : Color.Black;
+
+            btn7Ngay.BackColor = !_isMonthView ? Color.FromArgb(52, 152, 219) : Color.FromArgb(189, 195, 199);
+            btn7Ngay.ForeColor = !_isMonthView ? Color.White : Color.Black;
+
+            label12.Text = _isMonthView ? "Biểu Đồ Doanh Thu 6 Tháng Gần Nhất" : "Biểu Đồ Doanh Thu 7 Ngày Gần Nhất";
+            pnlChart.Invalidate();
+        }
+
+        private void Tab_Toggle(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            bool isHoaDon = (btn == btnShowHoaDon);
+
+            btnShowHoaDon.BackColor = isHoaDon ? Color.FromArgb(52, 152, 219) : Color.FromArgb(189, 195, 199);
+            btnShowHoaDon.ForeColor = isHoaDon ? Color.White : Color.Black;
+
+            btnShowSapHet.BackColor = !isHoaDon ? Color.FromArgb(231, 76, 60) : Color.FromArgb(189, 195, 199);
+            btnShowSapHet.ForeColor = !isHoaDon ? Color.White : Color.Black;
+
+            dgvHoaDonGanDay.Visible = isHoaDon;
+            dgvSapHetHang.Visible = !isHoaDon;
+
+            label11.Text = isHoaDon ? "Hóa Đơn Mới Thêm Gần Đây" : "Danh Sách Sản Phẩm Sắp Hết Hàng";
         }
 
         private string FormatMoney(decimal value)
@@ -313,5 +385,10 @@ namespace QuanLyCuaHangVanPhongPham.Forms
 
         public List<decimal> DoanhThuChart { get; set; }
         public List<string> LabelsChart { get; set; }
+
+        // Bổ sung cho nâng cấp
+        public List<decimal> DoanhThu7Ngay { get; set; }
+        public List<string> Labels7Ngay { get; set; }
+        public object DanhSachSapHet { get; set; }
     }
 }
