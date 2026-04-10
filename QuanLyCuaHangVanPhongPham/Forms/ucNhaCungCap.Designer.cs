@@ -102,8 +102,10 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 
             // btnHuy
             // 
-            btnHuy.BackColor = Color.Gray;
+            btnHuy.BackColor = Color.FromArgb(149, 165, 166);
             btnHuy.FlatAppearance.BorderSize = 0;
+            btnHuy.FlatAppearance.MouseDownBackColor = Color.FromArgb(127, 140, 141);
+            btnHuy.FlatAppearance.MouseOverBackColor = Color.FromArgb(189, 195, 199);
             btnHuy.FlatStyle = FlatStyle.Flat;
             btnHuy.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnHuy.ForeColor = Color.White;
@@ -111,7 +113,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnHuy.Name = "btnHuy";
             btnHuy.Size = new Size(90, 40);
             btnHuy.TabIndex = 9;
-            btnHuy.Text = "Hủy";
+            btnHuy.Text = "✖ Hủy";
             btnHuy.UseVisualStyleBackColor = false;
             btnHuy.Click += btnHuy_Click;
             // 
@@ -119,6 +121,8 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 
             btnLuu.BackColor = Color.FromArgb(46, 204, 113);
             btnLuu.FlatAppearance.BorderSize = 0;
+            btnLuu.FlatAppearance.MouseDownBackColor = Color.FromArgb(39, 174, 96);
+            btnLuu.FlatAppearance.MouseOverBackColor = Color.FromArgb(88, 214, 141);
             btnLuu.FlatStyle = FlatStyle.Flat;
             btnLuu.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnLuu.ForeColor = Color.White;
@@ -126,7 +130,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(90, 40);
             btnLuu.TabIndex = 8;
-            btnLuu.Text = "Lưu";
+            btnLuu.Text = "💾 Lưu";
             btnLuu.UseVisualStyleBackColor = false;
             btnLuu.Click += btnLuu_Click;
             // 
@@ -134,6 +138,8 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 
             btnXoa.BackColor = Color.FromArgb(231, 76, 60);
             btnXoa.FlatAppearance.BorderSize = 0;
+            btnXoa.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 57, 43);
+            btnXoa.FlatAppearance.MouseOverBackColor = Color.FromArgb(236, 112, 99);
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnXoa.ForeColor = Color.White;
@@ -141,7 +147,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(90, 40);
             btnXoa.TabIndex = 7;
-            btnXoa.Text = "Xóa";
+            btnXoa.Text = "🗑 Xóa";
             btnXoa.UseVisualStyleBackColor = false;
             btnXoa.Click += btnXoa_Click;
             // 
@@ -149,6 +155,8 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 
             btnSua.BackColor = Color.FromArgb(241, 196, 15);
             btnSua.FlatAppearance.BorderSize = 0;
+            btnSua.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 172, 13);
+            btnSua.FlatAppearance.MouseOverBackColor = Color.FromArgb(247, 220, 111);
             btnSua.FlatStyle = FlatStyle.Flat;
             btnSua.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnSua.ForeColor = Color.White;
@@ -156,7 +164,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(90, 40);
             btnSua.TabIndex = 6;
-            btnSua.Text = "Sửa";
+            btnSua.Text = "✎ Sửa";
             btnSua.UseVisualStyleBackColor = false;
             btnSua.Click += btnSua_Click;
             // 
@@ -164,6 +172,8 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 
             btnThem.BackColor = Color.FromArgb(52, 152, 219);
             btnThem.FlatAppearance.BorderSize = 0;
+            btnThem.FlatAppearance.MouseDownBackColor = Color.FromArgb(41, 128, 185);
+            btnThem.FlatAppearance.MouseOverBackColor = Color.FromArgb(93, 173, 226);
             btnThem.FlatStyle = FlatStyle.Flat;
             btnThem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnThem.ForeColor = Color.White;
@@ -171,7 +181,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(90, 40);
             btnThem.TabIndex = 5;
-            btnThem.Text = "Thêm";
+            btnThem.Text = "✚ Thêm";
             btnThem.UseVisualStyleBackColor = false;
             btnThem.Click += btnThem_Click;
             // 

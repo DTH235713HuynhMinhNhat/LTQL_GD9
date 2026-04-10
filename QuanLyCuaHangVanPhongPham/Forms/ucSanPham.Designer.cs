@@ -20,6 +20,7 @@ namespace QuanLyVanPhongPham.Forms
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pnlHeader = new Panel();
+            lblTimKiem = new Label();
             cboLoaiSP = new ComboBox();
             lblLoaiSP = new Label();
             btnXoa = new Button();
@@ -32,7 +33,6 @@ namespace QuanLyVanPhongPham.Forms
             pnlFooter = new Panel();
             lblTongSanPham = new Label();
             lblTongGiaTri = new Label();
-            lblTimKiem = new Label();
             pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
             pnlFooter.SuspendLayout();
@@ -55,6 +55,16 @@ namespace QuanLyVanPhongPham.Forms
             pnlHeader.Name = "pnlHeader";
             pnlHeader.Size = new Size(910, 100);
             pnlHeader.TabIndex = 1;
+            // 
+            // lblTimKiem
+            // 
+            lblTimKiem.AutoSize = true;
+            lblTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTimKiem.Location = new Point(388, 67);
+            lblTimKiem.Name = "lblTimKiem";
+            lblTimKiem.Size = new Size(91, 23);
+            lblTimKiem.TabIndex = 18;
+            lblTimKiem.Text = "Tìm kiếm:";
             // 
             // cboLoaiSP
             // 
@@ -80,58 +90,70 @@ namespace QuanLyVanPhongPham.Forms
             btnXoa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnXoa.BackColor = Color.FromArgb(231, 76, 60);
             btnXoa.FlatAppearance.BorderSize = 0;
+            btnXoa.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 57, 43);
+            btnXoa.FlatAppearance.MouseOverBackColor = Color.FromArgb(236, 112, 99);
             btnXoa.FlatStyle = FlatStyle.Flat;
+            btnXoa.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnXoa.ForeColor = Color.White;
             btnXoa.Location = new Point(793, 10);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(100, 40);
             btnXoa.TabIndex = 5;
-            btnXoa.Text = "Xóa";
+            btnXoa.Text = "🗑 Xóa";
             btnXoa.UseVisualStyleBackColor = false;
             btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
             btnSua.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSua.BackColor = Color.FromArgb(243, 156, 18);
+            btnSua.BackColor = Color.FromArgb(241, 196, 15);
             btnSua.FlatAppearance.BorderSize = 0;
+            btnSua.FlatAppearance.MouseDownBackColor = Color.FromArgb(212, 172, 13);
+            btnSua.FlatAppearance.MouseOverBackColor = Color.FromArgb(247, 220, 111);
             btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnSua.ForeColor = Color.White;
             btnSua.Location = new Point(683, 10);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(100, 40);
             btnSua.TabIndex = 4;
-            btnSua.Text = "Sửa";
+            btnSua.Text = "✎ Sửa";
             btnSua.UseVisualStyleBackColor = false;
             btnSua.Click += btnSua_Click_1;
             // 
             // btnThemMoi
             // 
             btnThemMoi.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnThemMoi.BackColor = Color.FromArgb(155, 89, 182);
+            btnThemMoi.BackColor = Color.FromArgb(52, 152, 219);
             btnThemMoi.FlatAppearance.BorderSize = 0;
+            btnThemMoi.FlatAppearance.MouseDownBackColor = Color.FromArgb(41, 128, 185);
+            btnThemMoi.FlatAppearance.MouseOverBackColor = Color.FromArgb(93, 173, 226);
             btnThemMoi.FlatStyle = FlatStyle.Flat;
+            btnThemMoi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnThemMoi.ForeColor = Color.White;
             btnThemMoi.Location = new Point(573, 10);
             btnThemMoi.Name = "btnThemMoi";
             btnThemMoi.Size = new Size(100, 40);
             btnThemMoi.TabIndex = 2;
-            btnThemMoi.Text = "+ Thêm mới";
+            btnThemMoi.Text = "✚ Thêm mới";
             btnThemMoi.UseVisualStyleBackColor = false;
             btnThemMoi.Click += btnThemMoi_Click_1;
             // 
             // btnXuatExcel
             // 
             btnXuatExcel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnXuatExcel.BackColor = Color.FromArgb(32, 114, 69);
+            btnXuatExcel.BackColor = Color.FromArgb(39, 174, 96);
             btnXuatExcel.FlatAppearance.BorderSize = 0;
+            btnXuatExcel.FlatAppearance.MouseDownBackColor = Color.FromArgb(30, 132, 73);
+            btnXuatExcel.FlatAppearance.MouseOverBackColor = Color.FromArgb(82, 190, 128);
             btnXuatExcel.FlatStyle = FlatStyle.Flat;
+            btnXuatExcel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnXuatExcel.ForeColor = Color.White;
-            btnXuatExcel.Location = new Point(463, 10);
+            btnXuatExcel.Location = new Point(423, 10);
             btnXuatExcel.Name = "btnXuatExcel";
-            btnXuatExcel.Size = new Size(100, 40);
+            btnXuatExcel.Size = new Size(140, 40);
             btnXuatExcel.TabIndex = 3;
-            btnXuatExcel.Text = "Xuất Excel";
+            btnXuatExcel.Text = "📊 Xuất Excel";
             btnXuatExcel.UseVisualStyleBackColor = false;
             btnXuatExcel.Click += btnXuatExcel_Click;
             // 
@@ -219,16 +241,6 @@ namespace QuanLyVanPhongPham.Forms
             lblTongGiaTri.TabIndex = 1;
             lblTongGiaTri.Text = "Tổng giá trị hàng tồn: 0 VNĐ";
             lblTongGiaTri.TextAlign = ContentAlignment.TopRight;
-            // 
-            // lblTimKiem
-            // 
-            lblTimKiem.AutoSize = true;
-            lblTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblTimKiem.Location = new Point(388, 67);
-            lblTimKiem.Name = "lblTimKiem";
-            lblTimKiem.Size = new Size(91, 23);
-            lblTimKiem.TabIndex = 18;
-            lblTimKiem.Text = "Tìm kiếm:";
             // 
             // ucSanPham
             // 

@@ -125,6 +125,9 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // btnThemVaoGio
             // 
             btnThemVaoGio.BackColor = Color.FromArgb(52, 152, 219);
+            btnThemVaoGio.FlatAppearance.BorderSize = 0;
+            btnThemVaoGio.FlatAppearance.MouseDownBackColor = Color.FromArgb(41, 128, 185);
+            btnThemVaoGio.FlatAppearance.MouseOverBackColor = Color.FromArgb(93, 173, 226);
             btnThemVaoGio.FlatStyle = FlatStyle.Flat;
             btnThemVaoGio.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnThemVaoGio.ForeColor = Color.White;
@@ -132,7 +135,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnThemVaoGio.Name = "btnThemVaoGio";
             btnThemVaoGio.Size = new Size(180, 40);
             btnThemVaoGio.TabIndex = 0;
-            btnThemVaoGio.Text = "THÊM VÀO GIỎ";
+            btnThemVaoGio.Text = "\U0001f6d2 THÊM VÀO GIỎ";
             btnThemVaoGio.UseVisualStyleBackColor = false;
             btnThemVaoGio.Click += btnThemVaoGio_Click_1;
             // 
@@ -278,6 +281,9 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 
             btnXoaKhaiGio.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnXoaKhaiGio.BackColor = Color.FromArgb(231, 76, 60);
+            btnXoaKhaiGio.FlatAppearance.BorderSize = 0;
+            btnXoaKhaiGio.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 57, 43);
+            btnXoaKhaiGio.FlatAppearance.MouseOverBackColor = Color.FromArgb(236, 112, 99);
             btnXoaKhaiGio.FlatStyle = FlatStyle.Flat;
             btnXoaKhaiGio.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnXoaKhaiGio.ForeColor = Color.White;
@@ -285,7 +291,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnXoaKhaiGio.Name = "btnXoaKhaiGio";
             btnXoaKhaiGio.Size = new Size(120, 40);
             btnXoaKhaiGio.TabIndex = 0;
-            btnXoaKhaiGio.Text = "Bỏ SP";
+            btnXoaKhaiGio.Text = "🗑 Bỏ SP";
             btnXoaKhaiGio.UseVisualStyleBackColor = false;
             btnXoaKhaiGio.Click += btnXoaKhaiGio_Click_1;
             // 
@@ -293,14 +299,17 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 
             btnThanhToan.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnThanhToan.BackColor = Color.FromArgb(46, 204, 113);
+            btnThanhToan.FlatAppearance.BorderSize = 0;
+            btnThanhToan.FlatAppearance.MouseDownBackColor = Color.FromArgb(39, 174, 96);
+            btnThanhToan.FlatAppearance.MouseOverBackColor = Color.FromArgb(88, 214, 141);
             btnThanhToan.FlatStyle = FlatStyle.Flat;
             btnThanhToan.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnThanhToan.ForeColor = Color.White;
-            btnThanhToan.Location = new Point(260, 80);
+            btnThanhToan.Location = new Point(244, 80);
             btnThanhToan.Name = "btnThanhToan";
-            btnThanhToan.Size = new Size(180, 50);
+            btnThanhToan.Size = new Size(196, 50);
             btnThanhToan.TabIndex = 1;
-            btnThanhToan.Text = "THANH TOÁN";
+            btnThanhToan.Text = "💳 THANH TOÁN";
             btnThanhToan.UseVisualStyleBackColor = false;
             btnThanhToan.Click += btnThanhToan_Click_1;
             // 

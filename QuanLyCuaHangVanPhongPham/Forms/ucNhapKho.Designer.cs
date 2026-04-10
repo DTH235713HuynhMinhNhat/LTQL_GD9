@@ -1,4 +1,4 @@
-﻿namespace QuanLyCuaHangVanPhongPham.Forms
+namespace QuanLyCuaHangVanPhongPham.Forms
 {
     partial class ucNhapKho
     {
@@ -151,14 +151,16 @@
             // 
             btnXoaSP.BackColor = Color.FromArgb(231, 76, 60);
             btnXoaSP.FlatAppearance.BorderSize = 0;
+            btnXoaSP.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 57, 43);
+            btnXoaSP.FlatAppearance.MouseOverBackColor = Color.FromArgb(236, 112, 99);
             btnXoaSP.FlatStyle = FlatStyle.Flat;
             btnXoaSP.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnXoaSP.ForeColor = Color.White;
             btnXoaSP.Location = new Point(810, 23);
             btnXoaSP.Name = "btnXoaSP";
-            btnXoaSP.Size = new Size(88, 35);
+            btnXoaSP.Size = new Size(100, 35);
             btnXoaSP.TabIndex = 13;
-            btnXoaSP.Text = "Xóa SP";
+            btnXoaSP.Text = "🗑 Xóa SP";
             btnXoaSP.UseVisualStyleBackColor = false;
             btnXoaSP.Click += btnXoaSP_Click;
             // 
@@ -166,14 +168,16 @@
             // 
             btnThemSP.BackColor = Color.FromArgb(52, 152, 219);
             btnThemSP.FlatAppearance.BorderSize = 0;
+            btnThemSP.FlatAppearance.MouseDownBackColor = Color.FromArgb(41, 128, 185);
+            btnThemSP.FlatAppearance.MouseOverBackColor = Color.FromArgb(93, 173, 226);
             btnThemSP.FlatStyle = FlatStyle.Flat;
             btnThemSP.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnThemSP.ForeColor = Color.White;
-            btnThemSP.Location = new Point(710, 23);
+            btnThemSP.Location = new Point(700, 23);
             btnThemSP.Name = "btnThemSP";
-            btnThemSP.Size = new Size(88, 35);
+            btnThemSP.Size = new Size(100, 35);
             btnThemSP.TabIndex = 12;
-            btnThemSP.Text = "Thêm SP";
+            btnThemSP.Text = "✚ Thêm SP";
             btnThemSP.UseVisualStyleBackColor = false;
             btnThemSP.Click += btnThemSP_Click;
             // 
@@ -271,16 +275,18 @@
             // 
             // btnHuyPhieu
             // 
-            btnHuyPhieu.BackColor = Color.Gray;
+            btnHuyPhieu.BackColor = Color.FromArgb(149, 165, 166);
             btnHuyPhieu.FlatAppearance.BorderSize = 0;
+            btnHuyPhieu.FlatAppearance.MouseDownBackColor = Color.FromArgb(127, 140, 141);
+            btnHuyPhieu.FlatAppearance.MouseOverBackColor = Color.FromArgb(189, 195, 199);
             btnHuyPhieu.FlatStyle = FlatStyle.Flat;
             btnHuyPhieu.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnHuyPhieu.ForeColor = Color.White;
             btnHuyPhieu.Location = new Point(788, 21);
             btnHuyPhieu.Name = "btnHuyPhieu";
-            btnHuyPhieu.Size = new Size(110, 40);
+            btnHuyPhieu.Size = new Size(120, 40);
             btnHuyPhieu.TabIndex = 11;
-            btnHuyPhieu.Text = "Hủy phiếu";
+            btnHuyPhieu.Text = "✖ Hủy phiếu";
             btnHuyPhieu.UseVisualStyleBackColor = false;
             btnHuyPhieu.Click += btnHuyPhieu_Click;
             // 
@@ -288,14 +294,16 @@
             // 
             btnLuuPhieu.BackColor = Color.FromArgb(46, 204, 113);
             btnLuuPhieu.FlatAppearance.BorderSize = 0;
+            btnLuuPhieu.FlatAppearance.MouseDownBackColor = Color.FromArgb(39, 174, 96);
+            btnLuuPhieu.FlatAppearance.MouseOverBackColor = Color.FromArgb(88, 214, 141);
             btnLuuPhieu.FlatStyle = FlatStyle.Flat;
             btnLuuPhieu.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnLuuPhieu.ForeColor = Color.White;
-            btnLuuPhieu.Location = new Point(658, 21);
+            btnLuuPhieu.Location = new Point(650, 21);
             btnLuuPhieu.Name = "btnLuuPhieu";
-            btnLuuPhieu.Size = new Size(120, 40);
+            btnLuuPhieu.Size = new Size(130, 40);
             btnLuuPhieu.TabIndex = 10;
-            btnLuuPhieu.Text = "Lưu phiếu";
+            btnLuuPhieu.Text = "💾 Lưu phiếu";
             btnLuuPhieu.UseVisualStyleBackColor = false;
             btnLuuPhieu.Click += btnLuuPhieu_Click;
             // 

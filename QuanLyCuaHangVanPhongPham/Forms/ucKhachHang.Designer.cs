@@ -102,8 +102,10 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 
             // btnHuy
             // 
-            this.btnHuy.BackColor = System.Drawing.Color.Gray;
+            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(149, 165, 166);
             this.btnHuy.FlatAppearance.BorderSize = 0;
+            this.btnHuy.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(127, 140, 141);
+            this.btnHuy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(189, 195, 199);
             this.btnHuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHuy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnHuy.ForeColor = System.Drawing.Color.White;
@@ -111,14 +113,16 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(90, 40);
             this.btnHuy.TabIndex = 9;
-            this.btnHuy.Text = "Hủy";
+            this.btnHuy.Text = "✖ Hủy";
             this.btnHuy.UseVisualStyleBackColor = false;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnLuu
             // 
-            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(46, 204, 113);
             this.btnLuu.FlatAppearance.BorderSize = 0;
+            this.btnLuu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(39, 174, 96);
+            this.btnLuu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(88, 214, 141);
             this.btnLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnLuu.ForeColor = System.Drawing.Color.White;
@@ -126,14 +130,16 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(90, 40);
             this.btnLuu.TabIndex = 8;
-            this.btnLuu.Text = "Lưu";
+            this.btnLuu.Text = "💾 Lưu";
             this.btnLuu.UseVisualStyleBackColor = false;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnXoa
             // 
-            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(231, 76, 60);
             this.btnXoa.FlatAppearance.BorderSize = 0;
+            this.btnXoa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(192, 57, 43);
+            this.btnXoa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(236, 112, 99);
             this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXoa.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnXoa.ForeColor = System.Drawing.Color.White;
@@ -141,14 +147,16 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(90, 40);
             this.btnXoa.TabIndex = 7;
-            this.btnXoa.Text = "Xóa";
+            this.btnXoa.Text = "🗑 Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
-            this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
+            this.btnSua.BackColor = System.Drawing.Color.FromArgb(241, 196, 15);
             this.btnSua.FlatAppearance.BorderSize = 0;
+            this.btnSua.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(212, 172, 13);
+            this.btnSua.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(247, 220, 111);
             this.btnSua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSua.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSua.ForeColor = System.Drawing.Color.White;
@@ -156,14 +164,16 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(90, 40);
             this.btnSua.TabIndex = 6;
-            this.btnSua.Text = "Sửa";
+            this.btnSua.Text = "✎ Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
-            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnThem.BackColor = System.Drawing.Color.FromArgb(52, 152, 219);
             this.btnThem.FlatAppearance.BorderSize = 0;
+            this.btnThem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(41, 128, 185);
+            this.btnThem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(93, 173, 226);
             this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnThem.ForeColor = System.Drawing.Color.White;
@@ -171,7 +181,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(90, 40);
             this.btnThem.TabIndex = 5;
-            this.btnThem.Text = "Thêm";
+            this.btnThem.Text = "✚ Thêm";
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 

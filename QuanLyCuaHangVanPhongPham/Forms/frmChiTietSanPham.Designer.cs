@@ -1,4 +1,4 @@
-﻿namespace QuanLyVanPhongPham.Forms
+namespace QuanLyVanPhongPham.Forms
 {
     partial class frmChiTietSanPham
     {
@@ -270,6 +270,9 @@
             // btnLuu
             // 
             this.btnLuu.BackColor = System.Drawing.Color.FromArgb(46, 204, 113);
+            this.btnLuu.FlatAppearance.BorderSize = 0;
+            this.btnLuu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(39, 174, 96);
+            this.btnLuu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(88, 214, 141);
             this.btnLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnLuu.ForeColor = System.Drawing.Color.White;
@@ -277,12 +280,15 @@
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(110, 40);
             this.btnLuu.TabIndex = 4;
-            this.btnLuu.Text = "LƯU";
+            this.btnLuu.Text = "💾 LƯU";
             this.btnLuu.UseVisualStyleBackColor = false;
             // 
             // btnHuy
             // 
-            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(189, 195, 199);
+            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(149, 165, 166);
+            this.btnHuy.FlatAppearance.BorderSize = 0;
+            this.btnHuy.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(127, 140, 141);
+            this.btnHuy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(189, 195, 199);
             this.btnHuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHuy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnHuy.ForeColor = System.Drawing.Color.White;
@@ -290,7 +296,7 @@
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(110, 40);
             this.btnHuy.TabIndex = 5;
-            this.btnHuy.Text = "HỦY";
+            this.btnHuy.Text = "✖ HỦY";
             this.btnHuy.UseVisualStyleBackColor = false;
             // 
             // frmChiTietSanPham

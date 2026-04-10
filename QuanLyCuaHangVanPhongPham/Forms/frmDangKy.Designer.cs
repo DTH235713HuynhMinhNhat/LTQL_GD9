@@ -1,4 +1,4 @@
-﻿namespace QuanLyCuaHangVanPhongPham.Forms
+namespace QuanLyCuaHangVanPhongPham.Forms
 {
     partial class frmDangKy
     {
@@ -116,32 +116,35 @@
             // 
             // btnDangKy
             // 
-            this.btnDangKy.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnDangKy.BackColor = System.Drawing.Color.FromArgb(52, 152, 219);
             this.btnDangKy.FlatAppearance.BorderSize = 0;
+            this.btnDangKy.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(41, 128, 185);
+            this.btnDangKy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(93, 173, 226);
             this.btnDangKy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDangKy.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangKy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnDangKy.ForeColor = System.Drawing.Color.White;
             this.btnDangKy.Location = new System.Drawing.Point(160, 215);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(100, 35);
             this.btnDangKy.TabIndex = 7;
-            this.btnDangKy.Text = "Đăng ký";
+            this.btnDangKy.Text = "📝 Đăng ký";
             this.btnDangKy.UseVisualStyleBackColor = false;
             this.btnDangKy.Click += new System.EventHandler(this.btnDangKy_Click);
-
             // 
             // btnHuy
             // 
-            this.btnHuy.BackColor = System.Drawing.Color.Gray;
+            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(149, 165, 166);
             this.btnHuy.FlatAppearance.BorderSize = 0;
+            this.btnHuy.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(127, 140, 141);
+            this.btnHuy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(189, 195, 199);
             this.btnHuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHuy.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnHuy.ForeColor = System.Drawing.Color.White;
             this.btnHuy.Location = new System.Drawing.Point(275, 215);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(100, 35);
             this.btnHuy.TabIndex = 8;
-            this.btnHuy.Text = "Hủy";
+            this.btnHuy.Text = "✖ Hủy";
             this.btnHuy.UseVisualStyleBackColor = false;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
 

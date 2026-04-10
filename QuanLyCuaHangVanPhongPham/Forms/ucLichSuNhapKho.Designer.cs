@@ -28,241 +28,244 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlTop = new System.Windows.Forms.Panel();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.dtpDenNgay = new System.Windows.Forms.DateTimePicker();
-            this.lblDenNgay = new System.Windows.Forms.Label();
-            this.lblTuNgay = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.lblTimKiem = new System.Windows.Forms.Label();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.grpDanhSach = new System.Windows.Forms.GroupBox();
-            this.dgvPhieuNhap = new System.Windows.Forms.DataGridView();
-            this.grpChiTiet = new System.Windows.Forms.GroupBox();
-            this.dgvChiTiet = new System.Windows.Forms.DataGridView();
-            this.pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.grpDanhSach.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuNhap)).BeginInit();
-            this.grpChiTiet.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvChiTiet)).BeginInit();
-            this.SuspendLayout();
+            pnlTop = new Panel();
+            btnTimKiem = new Button();
+            dtpDenNgay = new DateTimePicker();
+            dtpTuNgay = new DateTimePicker();
+            lblDenNgay = new Label();
+            lblTuNgay = new Label();
+            lblTitle = new Label();
+            txtTimKiem = new TextBox();
+            lblTimKiem = new Label();
+            splitContainer1 = new SplitContainer();
+            grpDanhSach = new GroupBox();
+            dgvPhieuNhap = new DataGridView();
+            grpChiTiet = new GroupBox();
+            dgvChiTiet = new DataGridView();
+            pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            grpDanhSach.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPhieuNhap).BeginInit();
+            grpChiTiet.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvChiTiet).BeginInit();
+            SuspendLayout();
             // 
             // pnlTop
             // 
-            this.pnlTop.BackColor = System.Drawing.Color.White;
-            this.pnlTop.Controls.Add(this.txtTimKiem);
-            this.pnlTop.Controls.Add(this.lblTimKiem);
-            this.pnlTop.Controls.Add(this.btnTimKiem);
-            this.pnlTop.Controls.Add(this.dtpDenNgay);
-            this.pnlTop.Controls.Add(this.lblDenNgay);
-            this.pnlTop.Controls.Add(this.dtpTuNgay);
-            this.pnlTop.Controls.Add(this.lblTuNgay);
-            this.pnlTop.Controls.Add(this.lblTitle);
-            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(0, 0);
-            this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(950, 100);
-            this.pnlTop.TabIndex = 0;
+            pnlTop.BackColor = Color.White;
+            pnlTop.Controls.Add(txtTimKiem);
+            pnlTop.Controls.Add(lblTimKiem);
+            pnlTop.Controls.Add(btnTimKiem);
+            pnlTop.Controls.Add(dtpDenNgay);
+            pnlTop.Controls.Add(lblDenNgay);
+            pnlTop.Controls.Add(dtpTuNgay);
+            pnlTop.Controls.Add(lblTuNgay);
+            pnlTop.Controls.Add(lblTitle);
+            pnlTop.Dock = DockStyle.Top;
+            pnlTop.Location = new Point(0, 0);
+            pnlTop.Name = "pnlTop";
+            pnlTop.Size = new Size(950, 100);
+            pnlTop.TabIndex = 0;
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(20, 22);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(220, 32);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "LỊCH SỬ NHẬP KHO";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblTitle.Location = new Point(20, 22);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(220, 32);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "LỊCH SỬ NHẬP KHO";
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTimKiem.Location = new System.Drawing.Point(340, 58);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(370, 30);
-            this.txtTimKiem.TabIndex = 6;
-            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
+            txtTimKiem.Font = new Font("Segoe UI", 10F);
+            txtTimKiem.Location = new Point(340, 58);
+            txtTimKiem.Name = "txtTimKiem";
+            txtTimKiem.Size = new Size(370, 30);
+            txtTimKiem.TabIndex = 6;
+            txtTimKiem.TextChanged += txtTimKiem_TextChanged;
             // 
             // lblTimKiem
             // 
-            this.lblTimKiem.AutoSize = true;
-            this.lblTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTimKiem.Location = new System.Drawing.Point(260, 61);
-            this.lblTimKiem.Name = "lblTimKiem";
-            this.lblTimKiem.Size = new System.Drawing.Size(56, 23);
-            this.lblTimKiem.TabIndex = 7;
-            this.lblTimKiem.Text = "Nhập:";
+            lblTimKiem.AutoSize = true;
+            lblTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTimKiem.Location = new Point(260, 61);
+            lblTimKiem.Name = "lblTimKiem";
+            lblTimKiem.Size = new Size(56, 23);
+            lblTimKiem.TabIndex = 7;
+            lblTimKiem.Text = "Nhập:";
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btnTimKiem.FlatAppearance.BorderSize = 0;
-            this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTimKiem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnTimKiem.ForeColor = System.Drawing.Color.White;
-            this.btnTimKiem.Location = new System.Drawing.Point(740, 57);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(100, 32);
-            this.btnTimKiem.TabIndex = 5;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = false;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            btnTimKiem.BackColor = Color.FromArgb(52, 152, 219);
+            btnTimKiem.FlatAppearance.BorderSize = 0;
+            btnTimKiem.FlatAppearance.MouseDownBackColor = Color.FromArgb(41, 128, 185);
+            btnTimKiem.FlatAppearance.MouseOverBackColor = Color.FromArgb(93, 173, 226);
+            btnTimKiem.FlatStyle = FlatStyle.Flat;
+            btnTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnTimKiem.ForeColor = Color.White;
+            btnTimKiem.Location = new Point(740, 57);
+            btnTimKiem.Name = "btnTimKiem";
+            btnTimKiem.Size = new Size(120, 32);
+            btnTimKiem.TabIndex = 5;
+            btnTimKiem.Text = "🔍 Tìm kiếm";
+            btnTimKiem.UseVisualStyleBackColor = false;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // dtpDenNgay
             // 
-            this.dtpDenNgay.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDenNgay.Location = new System.Drawing.Point(580, 20);
-            this.dtpDenNgay.Name = "dtpDenNgay";
-            this.dtpDenNgay.Size = new System.Drawing.Size(130, 30);
-            this.dtpDenNgay.TabIndex = 4;
+            dtpDenNgay.Font = new Font("Segoe UI", 10F);
+            dtpDenNgay.Format = DateTimePickerFormat.Short;
+            dtpDenNgay.Location = new Point(580, 20);
+            dtpDenNgay.Name = "dtpDenNgay";
+            dtpDenNgay.Size = new Size(130, 30);
+            dtpDenNgay.TabIndex = 4;
             // 
             // lblDenNgay
             // 
-            this.lblDenNgay.AutoSize = true;
-            this.lblDenNgay.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDenNgay.Location = new System.Drawing.Point(490, 30);
-            this.lblDenNgay.Name = "lblDenNgay";
-            this.lblDenNgay.Size = new System.Drawing.Size(86, 23);
-            this.lblDenNgay.TabIndex = 3;
-            this.lblDenNgay.Text = "Đến ngày:";
+            lblDenNgay.AutoSize = true;
+            lblDenNgay.Font = new Font("Segoe UI", 10F);
+            lblDenNgay.Location = new Point(490, 30);
+            lblDenNgay.Name = "lblDenNgay";
+            lblDenNgay.Size = new Size(86, 23);
+            lblDenNgay.TabIndex = 3;
+            lblDenNgay.Text = "Đến ngày:";
             // 
             // dtpTuNgay
             // 
-            this.dtpTuNgay.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpTuNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTuNgay.Location = new System.Drawing.Point(340, 27);
-            this.dtpTuNgay.Name = "dtpTuNgay";
-            this.dtpTuNgay.Size = new System.Drawing.Size(130, 30);
-            this.dtpTuNgay.TabIndex = 2;
+            dtpTuNgay.Font = new Font("Segoe UI", 10F);
+            dtpTuNgay.Format = DateTimePickerFormat.Short;
+            dtpTuNgay.Location = new Point(340, 27);
+            dtpTuNgay.Name = "dtpTuNgay";
+            dtpTuNgay.Size = new Size(130, 30);
+            dtpTuNgay.TabIndex = 2;
             // 
             // lblTuNgay
             // 
-            this.lblTuNgay.AutoSize = true;
-            this.lblTuNgay.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblTuNgay.Location = new System.Drawing.Point(260, 30);
-            this.lblTuNgay.Name = "lblTuNgay";
-            this.lblTuNgay.Size = new System.Drawing.Size(75, 23);
-            this.lblTuNgay.TabIndex = 1;
-            this.lblTuNgay.Text = "Từ ngày:";
+            lblTuNgay.AutoSize = true;
+            lblTuNgay.Font = new Font("Segoe UI", 10F);
+            lblTuNgay.Location = new Point(260, 30);
+            lblTuNgay.Name = "lblTuNgay";
+            lblTuNgay.Size = new Size(75, 23);
+            lblTuNgay.TabIndex = 1;
+            lblTuNgay.Text = "Từ ngày:";
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(20, 22);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(220, 32);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "LỊCH SỬ NHẬP KHO";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblTitle.Location = new Point(20, 22);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(220, 32);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "LỊCH SỬ NHẬP KHO";
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 100);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Location = new Point(0, 100);
+            splitContainer1.Name = "splitContainer1";
+            splitContainer1.Orientation = Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.grpDanhSach);
-            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(10);
+            splitContainer1.Panel1.Controls.Add(grpDanhSach);
+            splitContainer1.Panel1.Padding = new Padding(10);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.grpChiTiet);
-            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(10);
-            this.splitContainer1.Size = new System.Drawing.Size(950, 620);
-            this.splitContainer1.SplitterDistance = 300;
-            this.splitContainer1.TabIndex = 1;
+            splitContainer1.Panel2.Controls.Add(grpChiTiet);
+            splitContainer1.Panel2.Padding = new Padding(10);
+            splitContainer1.Size = new Size(950, 620);
+            splitContainer1.SplitterDistance = 300;
+            splitContainer1.TabIndex = 1;
             // 
             // grpDanhSach
             // 
-            this.grpDanhSach.Controls.Add(this.dgvPhieuNhap);
-            this.grpDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpDanhSach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.grpDanhSach.Location = new System.Drawing.Point(10, 10);
-            this.grpDanhSach.Name = "grpDanhSach";
-            this.grpDanhSach.Size = new System.Drawing.Size(930, 280);
-            this.grpDanhSach.TabIndex = 0;
-            this.grpDanhSach.TabStop = false;
-            this.grpDanhSach.Text = "Danh sách Phiếu Nhập";
+            grpDanhSach.Controls.Add(dgvPhieuNhap);
+            grpDanhSach.Dock = DockStyle.Fill;
+            grpDanhSach.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            grpDanhSach.Location = new Point(10, 10);
+            grpDanhSach.Name = "grpDanhSach";
+            grpDanhSach.Size = new Size(930, 280);
+            grpDanhSach.TabIndex = 0;
+            grpDanhSach.TabStop = false;
+            grpDanhSach.Text = "Danh sách Phiếu Nhập";
             // 
             // dgvPhieuNhap
             // 
-            this.dgvPhieuNhap.AllowUserToAddRows = false;
-            this.dgvPhieuNhap.AllowUserToDeleteRows = false;
-            this.dgvPhieuNhap.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPhieuNhap.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPhieuNhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPhieuNhap.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPhieuNhap.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dgvPhieuNhap.Location = new System.Drawing.Point(3, 26);
-            this.dgvPhieuNhap.Name = "dgvPhieuNhap";
-            this.dgvPhieuNhap.ReadOnly = true;
-            this.dgvPhieuNhap.RowHeadersWidth = 51;
-            this.dgvPhieuNhap.RowTemplate.Height = 29;
-            this.dgvPhieuNhap.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPhieuNhap.Size = new System.Drawing.Size(924, 251);
-            this.dgvPhieuNhap.TabIndex = 0;
-            this.dgvPhieuNhap.SelectionChanged += new System.EventHandler(this.dgvPhieuNhap_SelectionChanged);
+            dgvPhieuNhap.AllowUserToAddRows = false;
+            dgvPhieuNhap.AllowUserToDeleteRows = false;
+            dgvPhieuNhap.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPhieuNhap.BackgroundColor = Color.White;
+            dgvPhieuNhap.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPhieuNhap.Dock = DockStyle.Fill;
+            dgvPhieuNhap.Font = new Font("Segoe UI", 10F);
+            dgvPhieuNhap.Location = new Point(3, 26);
+            dgvPhieuNhap.Name = "dgvPhieuNhap";
+            dgvPhieuNhap.ReadOnly = true;
+            dgvPhieuNhap.RowHeadersWidth = 51;
+            dgvPhieuNhap.RowTemplate.Height = 29;
+            dgvPhieuNhap.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPhieuNhap.Size = new Size(924, 251);
+            dgvPhieuNhap.TabIndex = 0;
+            dgvPhieuNhap.SelectionChanged += dgvPhieuNhap_SelectionChanged;
             // 
             // grpChiTiet
             // 
-            this.grpChiTiet.Controls.Add(this.dgvChiTiet);
-            this.grpChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpChiTiet.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.grpChiTiet.Location = new System.Drawing.Point(10, 10);
-            this.grpChiTiet.Name = "grpChiTiet";
-            this.grpChiTiet.Size = new System.Drawing.Size(930, 296);
-            this.grpChiTiet.TabIndex = 0;
-            this.grpChiTiet.TabStop = false;
-            this.grpChiTiet.Text = "Chi tiết Phiếu Nhập được chọn";
+            grpChiTiet.Controls.Add(dgvChiTiet);
+            grpChiTiet.Dock = DockStyle.Fill;
+            grpChiTiet.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            grpChiTiet.Location = new Point(10, 10);
+            grpChiTiet.Name = "grpChiTiet";
+            grpChiTiet.Size = new Size(930, 296);
+            grpChiTiet.TabIndex = 0;
+            grpChiTiet.TabStop = false;
+            grpChiTiet.Text = "Chi tiết Phiếu Nhập được chọn";
             // 
             // dgvChiTiet
             // 
-            this.dgvChiTiet.AllowUserToAddRows = false;
-            this.dgvChiTiet.AllowUserToDeleteRows = false;
-            this.dgvChiTiet.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvChiTiet.BackgroundColor = System.Drawing.Color.White;
-            this.dgvChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvChiTiet.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dgvChiTiet.Location = new System.Drawing.Point(3, 26);
-            this.dgvChiTiet.Name = "dgvChiTiet";
-            this.dgvChiTiet.ReadOnly = true;
-            this.dgvChiTiet.RowHeadersWidth = 51;
-            this.dgvChiTiet.RowTemplate.Height = 29;
-            this.dgvChiTiet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvChiTiet.Size = new System.Drawing.Size(924, 267);
-            this.dgvChiTiet.TabIndex = 1;
+            dgvChiTiet.AllowUserToAddRows = false;
+            dgvChiTiet.AllowUserToDeleteRows = false;
+            dgvChiTiet.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvChiTiet.BackgroundColor = Color.White;
+            dgvChiTiet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvChiTiet.Dock = DockStyle.Fill;
+            dgvChiTiet.Font = new Font("Segoe UI", 10F);
+            dgvChiTiet.Location = new Point(3, 26);
+            dgvChiTiet.Name = "dgvChiTiet";
+            dgvChiTiet.ReadOnly = true;
+            dgvChiTiet.RowHeadersWidth = 51;
+            dgvChiTiet.RowTemplate.Height = 29;
+            dgvChiTiet.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvChiTiet.Size = new Size(924, 267);
+            dgvChiTiet.TabIndex = 1;
             // 
             // ucLichSuNhapKho
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.pnlTop);
-            this.Name = "ucLichSuNhapKho";
-            this.Size = new System.Drawing.Size(950, 700);
-            this.Load += new System.EventHandler(this.ucLichSuNhapKho_Load);
-            this.pnlTop.ResumeLayout(false);
-            this.pnlTop.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.grpDanhSach.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuNhap)).EndInit();
-            this.grpChiTiet.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvChiTiet)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(236, 240, 241);
+            Controls.Add(splitContainer1);
+            Controls.Add(pnlTop);
+            Name = "ucLichSuNhapKho";
+            Size = new Size(950, 700);
+            Load += ucLichSuNhapKho_Load;
+            pnlTop.ResumeLayout(false);
+            pnlTop.PerformLayout();
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            grpDanhSach.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvPhieuNhap).EndInit();
+            grpChiTiet.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvChiTiet).EndInit();
+            ResumeLayout(false);
 
         }
 
