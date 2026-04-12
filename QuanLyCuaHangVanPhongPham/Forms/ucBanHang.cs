@@ -500,9 +500,9 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 1. TIÊU ĐỀ
             g.DrawString("HÓA ĐƠN BÁN HÀNG", fontTieuDe, Brushes.Black, new PointF(margin + (fullWidth - g.MeasureString("HÓA ĐƠN BÁN HÀNG", fontTieuDe).Width) / 2, y));
             y += 40;
-            g.DrawString("CỬA HÀNG VĂN PHÒNG PHẨM ABC", fontBold, Brushes.Black, new PointF(margin + (fullWidth - g.MeasureString("CỬA HÀNG VĂN PHÒNG PHẨM ABC", fontBold).Width) / 2, y));
+            g.DrawString("CỬA HÀNG VĂN PHÒNG PHẨM MINH NHAT", fontBold, Brushes.Black, new PointF(margin + (fullWidth - g.MeasureString("CỬA HÀNG VĂN PHÒNG PHẨM ABC", fontBold).Width) / 2, y));
             y += 25;
-            g.DrawString("Đ/C: 123 Đường ABC, Quận XYZ, TP.HCM", fontNoiDung, Brushes.Black, new PointF(margin + (fullWidth - g.MeasureString("Đ/C: 123 Đường ABC, Quận XYZ, TP.HCM", fontNoiDung).Width) / 2, y));
+            g.DrawString("Đ/C: Ung Văn Khiêm, Phường Long Xuyên, An Giang", fontNoiDung, Brushes.Black, new PointF(margin + (fullWidth - g.MeasureString("Đ/C: 123 Đường ABC, Quận XYZ, TP.HCM", fontNoiDung).Width) / 2, y));
             y += 40;
 
             // 2. THÔNG TIN KHÁCH HÀNG & NGÀY LẬP
