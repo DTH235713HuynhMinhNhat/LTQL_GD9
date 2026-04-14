@@ -1,8 +1,11 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
 using QuanLyCuaHangVanPhongPham.Forms;
-using QuanLyVanPhongPham.Data; // Thay bằng namespace chứa DbContext của bạn nếu cần
+using QuanLyVanPhongPham.Data;
+using QuanLyCuaHangVanPhongPham.Utilities;
+ // Thay bằng namespace chứa DbContext của bạn nếu cần
 
 namespace QuanLyVanPhongPham.Forms
 {
@@ -28,31 +31,58 @@ namespace QuanLyVanPhongPham.Forms
 
             try
             {
+                // Mã hóa mật khẩu người dùng nhập vào để so sánh với Hash trong DB
+                string hashedMatKhau = SecurityHelper.HashPassword(matKhau);
+
                 // Kết nối tới Database để kiểm tra
-                using (var db = new QLCHVPPDbContext()) // Đổi tên Context cho khớp với project của bạn
+                using (var db = new QLCHVPPDbContext())
                 {
-                    // Tìm tài khoản khớp với Tên đăng nhập và Mật khẩu
-                    // Đổi 'TaiKhoan', 'TenDangNhap', 'MatKhau' cho khớp với Database của bạn
-                    var user = db.TaiKhoan.FirstOrDefault(t => t.TenDangNhap == tenDangNhap && t.MatKhau == matKhau);
+                    // Tìm tài khoản khớp với Tên đăng nhập
+                    // Sử dụng Include để lấy thông tin nhân viên đi kèm
+                    var user = db.TaiKhoan
+                        .Include(t => t.NhanVien)
+                        .FirstOrDefault(t => t.TenDangNhap == tenDangNhap);
 
                     if (user != null)
                     {
-                        MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        bool isPasswordCorrect = false;
 
-                        // Khởi tạo và mở Form Main
-                        // Truyền object user sang Form Main để phân quyền
-                        frmMain fMain = new frmMain(user);
-                        this.Hide(); // Ẩn form đăng nhập đi
-
-                        // Nếu ShowDialog trả về OK nghĩa là user bấm "Đăng xuất"
-                        if (fMain.ShowDialog() == DialogResult.OK)
+                        // Kiểm tra mật khẩu đã được mã hóa Hash chưa
+                        if (SecurityHelper.VerifyPassword(matKhau, user.MatKhau))
                         {
-                            txtMatKhau.Clear();
-                            this.Show();
+                            isPasswordCorrect = true;
+                        }
+                        else if (user.MatKhau == matKhau) // Dành cho các tài khoản cũ chưa mã hóa
+                        {
+                            isPasswordCorrect = true;
+                            // Cập nhật lại mật khẩu thành dạng mã hóa (Migration)
+                            user.MatKhau = hashedMatKhau;
+                            db.SaveChanges();
+                        }
+
+                        if (isPasswordCorrect)
+                        {
+                            MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // Khởi tạo và mở Form Main
+                            // Truyền object user sang Form Main để phân quyền
+                            frmMain fMain = new frmMain(user);
+                            this.Hide(); // Ẩn form đăng nhập đi
+
+                            // Nếu ShowDialog trả về OK nghĩa là user bấm "Đăng xuất"
+                            if (fMain.ShowDialog() == DialogResult.OK)
+                            {
+                                txtMatKhau.Clear();
+                                this.Show();
+                            }
+                            else
+                            {
+                                this.Close(); // Thoát hẳn chương trình nếu đóng X
+                            }
                         }
                         else
                         {
-                            this.Close(); // Thoát hẳn chương trình nếu đóng X
+                            MessageBox.Show("Tên đăng nhập hoặc mật khẩu không chính xác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else

@@ -29,6 +29,8 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
+            this.lblMaNV = new System.Windows.Forms.Label();
+            this.txtMaNV = new System.Windows.Forms.TextBox();
             this.lblTenDangNhap = new System.Windows.Forms.Label();
             this.lblMatKhau = new System.Windows.Forms.Label();
             this.lblXacNhan = new System.Windows.Forms.Label();
@@ -52,67 +54,79 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.lblTitle.Text = "ĐĂNG KÝ TÀI KHOẢN";
 
             // 
+            // lblMaNV
+            // 
+            this.lblMaNV.AutoSize = true;
+            this.lblMaNV.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaNV.Location = new System.Drawing.Point(30, 75);
+            this.lblMaNV.Name = "lblMaNV";
+            this.lblMaNV.Size = new System.Drawing.Size(89, 17);
+            this.lblMaNV.TabIndex = 1;
+            this.lblMaNV.Text = "Mã nhân viên:";
+            // 
+            // txtMaNV
+            // 
+            this.txtMaNV.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaNV.Location = new System.Drawing.Point(160, 70);
+            this.txtMaNV.Name = "txtMaNV";
+            this.txtMaNV.Size = new System.Drawing.Size(215, 27);
+            this.txtMaNV.TabIndex = 2;
+            // 
             // lblTenDangNhap
             // 
             this.lblTenDangNhap.AutoSize = true;
             this.lblTenDangNhap.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenDangNhap.Location = new System.Drawing.Point(30, 80);
+            this.lblTenDangNhap.Location = new System.Drawing.Point(30, 115);
             this.lblTenDangNhap.Name = "lblTenDangNhap";
             this.lblTenDangNhap.Size = new System.Drawing.Size(98, 17);
-            this.lblTenDangNhap.TabIndex = 1;
+            this.lblTenDangNhap.TabIndex = 3;
             this.lblTenDangNhap.Text = "Tên đăng nhập:";
-
             // 
             // lblMatKhau
             // 
             this.lblMatKhau.AutoSize = true;
             this.lblMatKhau.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMatKhau.Location = new System.Drawing.Point(30, 125);
+            this.lblMatKhau.Location = new System.Drawing.Point(30, 155);
             this.lblMatKhau.Name = "lblMatKhau";
             this.lblMatKhau.Size = new System.Drawing.Size(65, 17);
-            this.lblMatKhau.TabIndex = 2;
+            this.lblMatKhau.TabIndex = 5;
             this.lblMatKhau.Text = "Mật khẩu:";
-
             // 
             // lblXacNhan
             // 
             this.lblXacNhan.AutoSize = true;
             this.lblXacNhan.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblXacNhan.Location = new System.Drawing.Point(30, 170);
+            this.lblXacNhan.Location = new System.Drawing.Point(30, 195);
             this.lblXacNhan.Name = "lblXacNhan";
             this.lblXacNhan.Size = new System.Drawing.Size(117, 17);
-            this.lblXacNhan.TabIndex = 3;
+            this.lblXacNhan.TabIndex = 7;
             this.lblXacNhan.Text = "Xác nhận mật khẩu:";
-
             // 
             // txtTenDangNhap
             // 
             this.txtTenDangNhap.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenDangNhap.Location = new System.Drawing.Point(160, 75);
+            this.txtTenDangNhap.Location = new System.Drawing.Point(160, 110);
             this.txtTenDangNhap.Name = "txtTenDangNhap";
             this.txtTenDangNhap.Size = new System.Drawing.Size(215, 27);
             this.txtTenDangNhap.TabIndex = 4;
-
             // 
             // txtMatKhau
             // 
             this.txtMatKhau.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMatKhau.Location = new System.Drawing.Point(160, 120);
+            this.txtMatKhau.Location = new System.Drawing.Point(160, 150);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Size = new System.Drawing.Size(215, 27);
-            this.txtMatKhau.TabIndex = 5;
+            this.txtMatKhau.TabIndex = 6;
             this.txtMatKhau.UseSystemPasswordChar = true;
-
             // 
             // txtXacNhanMatKhau
             // 
             this.txtXacNhanMatKhau.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtXacNhanMatKhau.Location = new System.Drawing.Point(160, 165);
+            this.txtXacNhanMatKhau.Location = new System.Drawing.Point(160, 190);
             this.txtXacNhanMatKhau.Name = "txtXacNhanMatKhau";
             this.txtXacNhanMatKhau.Size = new System.Drawing.Size(215, 27);
-            this.txtXacNhanMatKhau.TabIndex = 6;
+            this.txtXacNhanMatKhau.TabIndex = 8;
             this.txtXacNhanMatKhau.UseSystemPasswordChar = true;
-
             // 
             // btnDangKy
             // 
@@ -123,10 +137,10 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.btnDangKy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDangKy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnDangKy.ForeColor = System.Drawing.Color.White;
-            this.btnDangKy.Location = new System.Drawing.Point(160, 215);
+            this.btnDangKy.Location = new System.Drawing.Point(160, 240);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(100, 35);
-            this.btnDangKy.TabIndex = 7;
+            this.btnDangKy.TabIndex = 9;
             this.btnDangKy.Text = "📝 Đăng ký";
             this.btnDangKy.UseVisualStyleBackColor = false;
             this.btnDangKy.Click += new System.EventHandler(this.btnDangKy_Click);
@@ -140,10 +154,10 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.btnHuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHuy.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnHuy.ForeColor = System.Drawing.Color.White;
-            this.btnHuy.Location = new System.Drawing.Point(275, 215);
+            this.btnHuy.Location = new System.Drawing.Point(275, 240);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(100, 35);
-            this.btnHuy.TabIndex = 8;
+            this.btnHuy.TabIndex = 10;
             this.btnHuy.Text = "✖ Hủy";
             this.btnHuy.UseVisualStyleBackColor = false;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
@@ -155,15 +169,17 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(424, 281);
+            this.ClientSize = new System.Drawing.Size(424, 310);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnDangKy);
             this.Controls.Add(this.txtXacNhanMatKhau);
             this.Controls.Add(this.txtMatKhau);
             this.Controls.Add(this.txtTenDangNhap);
+            this.Controls.Add(this.txtMaNV);
             this.Controls.Add(this.lblXacNhan);
             this.Controls.Add(this.lblMatKhau);
             this.Controls.Add(this.lblTenDangNhap);
+            this.Controls.Add(this.lblMaNV);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -178,9 +194,11 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblMaNV;
         private System.Windows.Forms.Label lblTenDangNhap;
         private System.Windows.Forms.Label lblMatKhau;
         private System.Windows.Forms.Label lblXacNhan;
+        private System.Windows.Forms.TextBox txtMaNV;
         private System.Windows.Forms.TextBox txtTenDangNhap;
         private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.TextBox txtXacNhanMatKhau;

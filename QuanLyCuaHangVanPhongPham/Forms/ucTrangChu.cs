@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyVanPhongPham.Data;
+using QuanLyVanPhongPham.Utilities;
 
 namespace QuanLyCuaHangVanPhongPham.Forms
 {
@@ -361,6 +363,64 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             if (value >= 1_000_000)
                 return (value / 1_000_000m).ToString("0.##") + " tr ₫";
             return value.ToString("N0") + " ₫";
+        }
+
+        private void btnXuatBaoCao_Click(object sender, EventArgs e)
+        {
+            DateTime tuNgay = dtpTuNgay.Value.Date;
+            DateTime denNgay = dtpDenNgay.Value.Date.AddDays(1).AddTicks(-1);
+
+            if (tuNgay > denNgay)
+            {
+                MessageBox.Show("Ngày bắt đầu không thể lớn hơn ngày kết thúc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (var db = new QLCHVPPDbContext())
+                {
+                    var data = (from hd in db.HoaDon
+                                join kh in db.KhachHang on hd.MaKH equals kh.MaKH
+                                join nv in db.NhanVien on hd.MaNV equals nv.MaNV
+                                where hd.NgayLap >= tuNgay && hd.NgayLap <= denNgay
+                                orderby hd.NgayLap ascending
+                                select new
+                                {
+                                    MaHD = hd.MaHD,
+                                    NgayLap = hd.NgayLap,
+                                    KhachHang = kh.TenKhachHang,
+                                    NhanVien = nv.HoTen,
+                                    TongTien = hd.TongTien
+                                }).ToList();
+
+                    if (data.Count == 0)
+                    {
+                        MessageBox.Show("Không có dữ liệu hóa đơn trong khoảng thời gian này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    // Sử dụng DataTable để tránh lỗi hiển thị của DataGridView
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Mã Hóa Đơn");
+                    dt.Columns.Add("Ngày Lập", typeof(DateTime));
+                    dt.Columns.Add("Khách Hàng");
+                    dt.Columns.Add("Nhân Viên Bán");
+                    dt.Columns.Add("Tổng Tiền (VNĐ)", typeof(decimal));
+
+                    foreach (var item in data)
+                    {
+                        dt.Rows.Add(item.MaHD, item.NgayLap, item.KhachHang, item.NhanVien, item.TongTien);
+                    }
+
+                    string fileName = $"BaoCaoDoanhThu_{tuNgay:ddMMyy}_to_{dtpDenNgay.Value:ddMMyy}";
+                    ExcelHelper.ExportDataTableToExcel(dt, fileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xuất báo cáo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 

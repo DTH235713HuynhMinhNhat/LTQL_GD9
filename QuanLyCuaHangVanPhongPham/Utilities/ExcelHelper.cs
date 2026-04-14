@@ -77,5 +77,47 @@ namespace QuanLyVanPhongPham.Utilities
                 }
             }
         }
+        /// <summary>
+        /// Xuất dữ liệu từ DataTable ra file Excel (.xlsx)
+        /// </summary>
+        public static void ExportDataTableToExcel(DataTable dt, string sheetName = "Sheet1")
+        {
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Excel Workbook|*.xlsx";
+                sfd.FileName = $"{sheetName}_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (var workbook = new XLWorkbook())
+                        {
+                            var worksheet = workbook.Worksheets.Add("Data");
+
+                            // Chèn DataTable trực tiếp vào worksheet
+                            worksheet.Cell(1, 1).InsertTable(dt);
+
+                            // Tự động căn chỉnh độ rộng cột
+                            worksheet.Columns().AdjustToContents();
+
+                            workbook.SaveAs(sfd.FileName);
+                        }
+
+                        MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi xuất Excel: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

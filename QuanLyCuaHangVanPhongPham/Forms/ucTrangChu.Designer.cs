@@ -28,8 +28,8 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             lblDoanhThuValue = new Label();
             lblChiPhiValue = new Label();
             lblLoiNhuanValue = new Label();
@@ -61,6 +61,11 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             label10 = new Label();
             label11 = new Label();
             label12 = new Label();
+            dtpTuNgay = new DateTimePicker();
+            dtpDenNgay = new DateTimePicker();
+            btnXuatBaoCao = new Button();
+            label13 = new Label();
+            label14 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvTopSanPham).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvHoaDonGanDay).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvSapHetHang).BeginInit();
@@ -168,14 +173,14 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             dgvTopSanPham.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvTopSanPham.BackgroundColor = Color.White;
             dgvTopSanPham.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(240, 240, 240);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(240, 240, 240);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvTopSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(240, 240, 240);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(240, 240, 240);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvTopSanPham.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvTopSanPham.ColumnHeadersHeight = 35;
             dgvTopSanPham.EnableHeadersVisualStyles = false;
             dgvTopSanPham.Location = new Point(34, 267);
@@ -198,14 +203,14 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             dgvHoaDonGanDay.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvHoaDonGanDay.BackgroundColor = Color.White;
             dgvHoaDonGanDay.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(240, 240, 240);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(240, 240, 240);
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(64, 64, 64);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvHoaDonGanDay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(240, 240, 240);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(240, 240, 240);
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvHoaDonGanDay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvHoaDonGanDay.ColumnHeadersHeight = 35;
             dgvHoaDonGanDay.EnableHeadersVisualStyles = false;
             dgvHoaDonGanDay.Location = new Point(549, 267);
@@ -216,7 +221,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             dgvHoaDonGanDay.RowHeadersWidth = 51;
             dgvHoaDonGanDay.RowTemplate.Height = 30;
             dgvHoaDonGanDay.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvHoaDonGanDay.Size = new Size(537, 240);
+            dgvHoaDonGanDay.Size = new Size(665, 240);
             dgvHoaDonGanDay.TabIndex = 10;
             // 
             // pnlChart
@@ -226,7 +231,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             pnlChart.Location = new Point(34, 560);
             pnlChart.Margin = new Padding(3, 4, 3, 4);
             pnlChart.Name = "pnlChart";
-            pnlChart.Size = new Size(1051, 333);
+            pnlChart.Size = new Size(1179, 415);
             pnlChart.TabIndex = 11;
             pnlChart.Paint += pnlChart_Paint;
             // 
@@ -239,7 +244,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btnRefresh.FlatStyle = FlatStyle.Flat;
             btnRefresh.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             btnRefresh.ForeColor = Color.White;
-            btnRefresh.Location = new Point(949, 33);
+            btnRefresh.Location = new Point(1077, 33);
             btnRefresh.Margin = new Padding(3, 4, 3, 4);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(137, 53);
@@ -254,7 +259,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             lblNgayCapNhat.AutoSize = true;
             lblNgayCapNhat.Font = new Font("Segoe UI", 9F, FontStyle.Italic);
             lblNgayCapNhat.ForeColor = Color.Gray;
-            lblNgayCapNhat.Location = new Point(949, 93);
+            lblNgayCapNhat.Location = new Point(1077, 93);
             lblNgayCapNhat.Name = "lblNgayCapNhat";
             lblNgayCapNhat.Size = new Size(104, 20);
             lblNgayCapNhat.TabIndex = 13;
@@ -280,7 +285,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             btn6Thang.FlatStyle = FlatStyle.Flat;
             btn6Thang.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             btn6Thang.ForeColor = Color.White;
-            btn6Thang.Location = new Point(544, 519);
+            btn6Thang.Location = new Point(549, 518);
             btn6Thang.Margin = new Padding(3, 4, 3, 4);
             btn6Thang.Name = "btn6Thang";
             btn6Thang.Size = new Size(108, 33);
@@ -333,7 +338,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             dgvSapHetHang.ReadOnly = true;
             dgvSapHetHang.RowHeadersVisible = false;
             dgvSapHetHang.RowHeadersWidth = 51;
-            dgvSapHetHang.Size = new Size(537, 240);
+            dgvSapHetHang.Size = new Size(665, 240);
             dgvSapHetHang.TabIndex = 26;
             dgvSapHetHang.Visible = false;
             // 
@@ -364,7 +369,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
             label3.ForeColor = Color.DimGray;
-            label3.Location = new Point(510, 33);
+            label3.Location = new Point(509, 33);
             label3.Name = "label3";
             label3.Size = new Size(142, 23);
             label3.TabIndex = 16;
@@ -469,11 +474,73 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             label12.TabIndex = 25;
             label12.Text = "Biểu Đồ Doanh Thu 6 Tháng Gần Nhất";
             // 
+            // dtpTuNgay
+            // 
+            dtpTuNgay.Format = DateTimePickerFormat.Short;
+            dtpTuNgay.Location = new Point(761, 150);
+            dtpTuNgay.Name = "dtpTuNgay";
+            dtpTuNgay.Size = new Size(120, 27);
+            dtpTuNgay.TabIndex = 31;
+            // 
+            // dtpDenNgay
+            // 
+            dtpDenNgay.Format = DateTimePickerFormat.Short;
+            dtpDenNgay.Location = new Point(897, 150);
+            dtpDenNgay.Name = "dtpDenNgay";
+            dtpDenNgay.Size = new Size(120, 27);
+            dtpDenNgay.TabIndex = 32;
+            // 
+            // btnXuatBaoCao
+            // 
+            btnXuatBaoCao.BackColor = Color.FromArgb(46, 204, 113);
+            btnXuatBaoCao.FlatStyle = FlatStyle.Flat;
+            btnXuatBaoCao.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnXuatBaoCao.ForeColor = Color.White;
+            btnXuatBaoCao.Location = new Point(942, 33);
+            btnXuatBaoCao.Name = "btnXuatBaoCao";
+            btnXuatBaoCao.Size = new Size(120, 53);
+            btnXuatBaoCao.TabIndex = 33;
+            btnXuatBaoCao.Text = "Xuất Báo Cáo";
+            btnXuatBaoCao.UseVisualStyleBackColor = false;
+            btnXuatBaoCao.Click += btnXuatBaoCao_Click;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 8F);
+            label13.Location = new Point(761, 127);
+            label13.Name = "label13";
+            label13.Size = new Size(58, 19);
+            label13.TabIndex = 34;
+            label13.Text = "Từ ngày";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 8F);
+            label14.Location = new Point(897, 127);
+            label14.Name = "label14";
+            label14.Size = new Size(68, 19);
+            label14.TabIndex = 35;
+            label14.Text = "Đến ngày";
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label12.ForeColor = Color.Black;
+            label12.Location = new Point(30, 523);
+            label12.Name = "label12";
+            label12.Size = new Size(363, 28);
+            label12.TabIndex = 25;
+            label12.Text = "Biểu Đồ Doanh Thu 6 Tháng Gần Nhất";
+            // 
             // ucTrangChu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(245, 246, 250);
+            Controls.Add(label14);
+            Controls.Add(label13);
             Controls.Add(label12);
             Controls.Add(label11);
             Controls.Add(label10);
@@ -505,10 +572,13 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             Controls.Add(btn6Thang);
             Controls.Add(btnShowHoaDon);
             Controls.Add(btnShowSapHet);
+            Controls.Add(dtpTuNgay);
+            Controls.Add(dtpDenNgay);
+            Controls.Add(btnXuatBaoCao);
             Font = new Font("Segoe UI", 9F);
             Margin = new Padding(3, 4, 3, 4);
             Name = "ucTrangChu";
-            Size = new Size(1120, 907);
+            Size = new Size(1248, 989);
             Load += ucTrangChu_Load;
             ((System.ComponentModel.ISupportInitialize)dgvTopSanPham).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvHoaDonGanDay).EndInit();
@@ -551,5 +621,10 @@ namespace QuanLyCuaHangVanPhongPham.Forms
         private System.Windows.Forms.Button btnShowHoaDon;
         private System.Windows.Forms.Button btnShowSapHet;
         private System.Windows.Forms.DataGridView dgvSapHetHang;
+        private System.Windows.Forms.DateTimePicker dtpTuNgay;
+        private System.Windows.Forms.DateTimePicker dtpDenNgay;
+        private System.Windows.Forms.Button btnXuatBaoCao;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }
