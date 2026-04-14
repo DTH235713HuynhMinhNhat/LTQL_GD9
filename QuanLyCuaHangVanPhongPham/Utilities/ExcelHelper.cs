@@ -15,9 +15,18 @@ namespace QuanLyVanPhongPham.Utilities
         /// <param name="sheetName">Tên sheet trong Excel</param>
         public static void ExportToExcel(DataGridView dgv, string sheetName = "Sheet1")
         {
-            if (dgv.Rows.Count == 0)
+            bool hasData = dgv.Rows.Count > 0;
+            
+            // Nếu Rows.Count = 0, kiểm tra xem có DataSource không (phòng trường hợp grid chưa kịp render)
+            if (!hasData && dgv.DataSource != null)
             {
-                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (dgv.DataSource is System.Collections.IList list) hasData = list.Count > 0;
+                else if (dgv.DataSource is DataTable dt) hasData = dt.Rows.Count > 0;
+            }
+
+            if (!hasData)
+            {
+                MessageBox.Show("Không tìm thấy dữ liệu trong bảng để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -84,7 +93,7 @@ namespace QuanLyVanPhongPham.Utilities
         {
             if (dt == null || dt.Rows.Count == 0)
             {
-                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Dữ liệu báo cáo trống, không có gì để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

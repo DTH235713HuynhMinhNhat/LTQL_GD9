@@ -28,6 +28,10 @@ namespace QuanLyCuaHangVanPhongPham.Forms
 
         private async void ucTrangChu_Load(object sender, EventArgs e)
         {
+            // Mặc định chọn từ đầu tháng đến hiện tại cho phần báo cáo
+            dtpTuNgay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            dtpDenNgay.Value = DateTime.Now;
+
             await LoadDashboardAsync();
         }
 
@@ -381,16 +385,18 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                 using (var db = new QLCHVPPDbContext())
                 {
                     var data = (from hd in db.HoaDon
-                                join kh in db.KhachHang on hd.MaKH equals kh.MaKH
-                                join nv in db.NhanVien on hd.MaNV equals nv.MaNV
+                                join kh in db.KhachHang on hd.MaKH equals kh.MaKH into khJoin
+                                from kh in khJoin.DefaultIfEmpty()
+                                join nv in db.NhanVien on hd.MaNV equals nv.MaNV into nvJoin
+                                from nv in nvJoin.DefaultIfEmpty()
                                 where hd.NgayLap >= tuNgay && hd.NgayLap <= denNgay
                                 orderby hd.NgayLap ascending
                                 select new
                                 {
                                     MaHD = hd.MaHD,
                                     NgayLap = hd.NgayLap,
-                                    KhachHang = kh.TenKhachHang,
-                                    NhanVien = nv.HoTen,
+                                    KhachHang = kh != null ? kh.TenKhachHang : "Khách vãng lai",
+                                    NhanVien = nv != null ? nv.HoTen : "Không xác định",
                                     TongTien = hd.TongTien
                                 }).ToList();
 
