@@ -1,0 +1,11 @@
+﻿  Determining projects to restore...
+  All projects are up-to-date for restore.
+  QuanLyCuaHangVanPhongPham -> F:\LTQL_DoAn\QuanLyCuaHangVanPhongPham - GD9\QuanLyCuaHangVanPhongPham\bin\Debug\net8.0-windows\QuanLyCuaHangVanPhongPham.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.94
+
+Workload updates are available. Run `dotnet workload list` for more information.

@@ -10,14 +10,14 @@ namespace QuanLyCuaHangVanPhongPham.Forms
     public partial class ucBanHang : UserControl
     {
         private QLCHVPPDbContext db = new QLCHVPPDbContext();
-        private TaiKhoan? _currentUser;
+        private TaiKhoan _currentUser;
 
         // Tạo biến hộp số có mũi tên lên xuống
         private NumericUpDown nudSoLuong;
 
         public ucBanHang() : this(null) { }
 
-        public ucBanHang(TaiKhoan? user)
+        public ucBanHang(TaiKhoan user)
         {
             InitializeComponent();
             _currentUser = user;
