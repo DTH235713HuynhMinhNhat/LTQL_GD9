@@ -27,6 +27,12 @@ namespace QuanLyCuaHangVanPhongPham.Forms
 
         private void ucLichSuNhapKho_Load(object sender, EventArgs e)
         {
+            // Thêm placeholder cho ô tìm kiếm
+            txtTimKiem.Text = "Nhập mã phiếu, nhà cung cấp...";
+            txtTimKiem.ForeColor = System.Drawing.Color.Gray;
+            txtTimKiem.Enter += txtTimKiem_Enter;
+            txtTimKiem.Leave += txtTimKiem_Leave;
+
             // Mặc định load dữ liệu trong tháng hiện tại
             dtpTuNgay.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             dtpDenNgay.Value = DateTime.Now.Date.AddDays(1).AddTicks(-1);
@@ -49,6 +55,7 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                     DateTime denNgay = dtpDenNgay.Value.Date.AddDays(1).AddTicks(-1); // Lấy đến hết ngày hôm đó
 
                     string keyword = txtTimKiem.Text.Trim();
+                    if (keyword == "Nhập mã phiếu, nhà cung cấp...") keyword = "";
 
                     var query = from pn in db.PhieuNhap
                                 join ncc in db.NhaCungCap on pn.MaNCC equals ncc.MaNCC
@@ -142,9 +149,32 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             }
         }
 
+        // --- Xử lý Placeholder ---
+        private void txtTimKiem_Enter(object sender, EventArgs e)
+        {
+            if (txtTimKiem.Text == "Nhập mã phiếu, nhà cung cấp...")
+            {
+                txtTimKiem.Text = "";
+                txtTimKiem.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+
+        private void txtTimKiem_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTimKiem.Text))
+            {
+                txtTimKiem.Text = "Nhập mã phiếu, nhà cung cấp...";
+                txtTimKiem.ForeColor = System.Drawing.Color.Gray;
+            }
+        }
+
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
-            LoadDanhSachPhieuNhap();
+            // Tránh tìm kiếm khi đang là placeholder
+            if (txtTimKiem.Text != "Nhập mã phiếu, nhà cung cấp...")
+            {
+                LoadDanhSachPhieuNhap();
+            }
         }
 
         private void btnXuatExcel_Click(object sender, EventArgs e)

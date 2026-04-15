@@ -10,13 +10,17 @@ namespace QuanLyCuaHangVanPhongPham.Forms
     public partial class ucBanHang : UserControl
     {
         private QLCHVPPDbContext db = new QLCHVPPDbContext();
+        private TaiKhoan? _currentUser;
 
         // Tạo biến hộp số có mũi tên lên xuống
         private NumericUpDown nudSoLuong;
 
-        public ucBanHang()
+        public ucBanHang() : this(null) { }
+
+        public ucBanHang(TaiKhoan? user)
         {
             InitializeComponent();
+            _currentUser = user;
 
             // Khởi tạo control NumericUpDown ẩn
             nudSoLuong = new NumericUpDown();
@@ -45,10 +49,6 @@ namespace QuanLyCuaHangVanPhongPham.Forms
             // 2. Nút bấm Mới Thêm
             btnThemVaoGio.Click -= btnThemVaoGio_Click_1;
             btnThemVaoGio.Click += btnThemVaoGio_Click_1;
-
-            
-
-            
 
             // 3. Giỏ hàng & Thanh toán
             dgvSanPham.CellDoubleClick -= DgvSanPham_CellDoubleClick;
@@ -395,13 +395,21 @@ namespace QuanLyCuaHangVanPhongPham.Forms
                     string maHD = "HD" + DateTime.Now.ToString("yyyyMMddHHmmss");
                     string maKH = cboKhachHang.SelectedValue.ToString();
 
-                    // Lấy mã nhân viên đầu tiên nếu không có session
-                    var checkNV = db.NhanVien.FirstOrDefault();
-                    if (checkNV == null)
+                    // Lấy mã nhân viên từ session, nếu không có mới tìm trong DB
+                    string maNV;
+                    if (_currentUser != null && !string.IsNullOrEmpty(_currentUser.MaNV))
                     {
-                        throw new Exception("Hệ thống chưa có nhân viên nào. Vui lòng thêm nhân viên trước!");
+                        maNV = _currentUser.MaNV;
                     }
-                    string maNV = checkNV.MaNV;
+                    else
+                    {
+                        var checkNV = db.NhanVien.FirstOrDefault();
+                        if (checkNV == null)
+                        {
+                            throw new Exception("Hệ thống chưa có nhân viên nào. Vui lòng thêm nhân viên trước!");
+                        }
+                        maNV = checkNV.MaNV;
+                    }
 
                     decimal tongTien = 0;
                     foreach (DataGridViewRow row in dgvGioHang.Rows)
@@ -525,10 +533,11 @@ namespace QuanLyCuaHangVanPhongPham.Forms
 
             foreach (DataGridViewRow row in dgvGioHang.Rows)
             {
-                string ten = row.Cells["colTenSP"].Value.ToString();
-                string sl = row.Cells["colSoLuong"].Value.ToString();
-                decimal gia = Convert.ToDecimal(row.Cells["colDonGia"].Value);
-                decimal tt = Convert.ToDecimal(row.Cells["colThanhTien"].Value);
+                if (row.IsNewRow) continue;
+                string ten = row.Cells["colTenSP"].Value?.ToString() ?? "Unknown";
+                string sl = row.Cells["colSoLuong"].Value?.ToString() ?? "0";
+                decimal gia = Convert.ToDecimal(row.Cells["colDonGia"].Value ?? 0);
+                decimal tt = Convert.ToDecimal(row.Cells["colThanhTien"].Value ?? 0);
 
                 g.DrawString(ten, fontNoiDung, Brushes.Black, margin, y);
                 g.DrawString(sl, fontNoiDung, Brushes.Black, margin + 350, y);

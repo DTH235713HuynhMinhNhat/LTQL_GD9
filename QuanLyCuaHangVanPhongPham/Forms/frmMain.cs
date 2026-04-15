@@ -104,7 +104,7 @@ namespace QuanLyVanPhongPham.Forms
 
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
-            AddUserControl(new ucBanHang(), sender);
+            AddUserControl(new ucBanHang(_currentUser), sender);
         }
 
         // ==========================================
